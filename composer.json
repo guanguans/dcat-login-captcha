@@ -1,11 +1,16 @@
 {
     "name": "guanguans/dcat-login-captcha",
-    "description": "A PHP package template repository. - 一个PHP软件包模板存储库。",
+    "alias": "guanguans.dcat-login-captcha",
+    "description": "dcat admin login captcha. - dcat admin 登录验证码。",
     "keywords": [
-        "package",
-        "template",
-        "PHP",
-        "skeleton"
+        "dcat-admin",
+        "dcat",
+        "admin",
+        "login-captcha",
+        "login",
+        "captcha",
+        "laravel",
+        "extension"
     ],
     "homepage": "https://github.com/guanguans/dcat-login-captcha",
     "support": {
@@ -25,7 +30,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.2"
+        "php": ">=7.1",
+        "dcat/laravel-admin": "^2.0",
+        "gregwar/captcha": "^1.1"
     },
     "require-dev": {
         "brainmaestro/composer-git-hooks": "^2.7",
@@ -57,6 +64,16 @@
         }
     ],
     "extra": {
+        "dcat-admin": "Guanguans\\DcatLoginCaptcha\\DcatLoginCaptchaServiceProvider",
+        "laravel": {
+            "providers": [
+                "Guanguans\\DcatLoginCaptcha\\DcatLoginCaptchaServiceProvider"
+            ],
+            "aliases": {
+                "CaptchaBuilder": "Guanguans\\DcatLoginCaptcha\\Facades\\CaptchaBuilder",
+                "PhraseBuilder": "Guanguans\\DcatLoginCaptcha\\Facades\\PhraseBuilder"
+            }
+        },
         "hooks": {
             "pre-commit": [
                 "composer lint",

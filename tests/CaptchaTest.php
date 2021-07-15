@@ -10,12 +10,10 @@
 
 namespace Guanguans\DcatLoginCaptcha\Tests;
 
-use Guanguans\DcatLoginCaptcha\PackageSkeleton;
-
-class PackageSkeletonTest extends TestCase
+class CaptchaTest extends TestCase
 {
     public function testTest()
     {
-        $this->assertTrue(PackageSkeleton::test());
+        $this->assertTrue(true);
     }
 }

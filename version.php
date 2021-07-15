@@ -8,12 +8,8 @@
  * This source file is subject to the MIT license that is bundled.
  */
 
-namespace Guanguans\DcatLoginCaptcha;
-
-class PackageSkeleton
-{
-    public static function test()
-    {
-        return true;
-    }
-}
+return [
+    '1.0.0' => [
+        'Initialize extension.',
+    ],
+];
