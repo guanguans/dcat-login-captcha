@@ -1,0 +1,16 @@
+.idea/
+.php_cs
+.phplint-cache
+.php_cs.cache
+.php-cs-fixer.cache
+.phpunit.result.cache
+build/
+composer.lock
+coverage/
+clover.xml
+phpunit.xml
+psalm.xml
+vendor/
+tests.php
+.DS_Store
+.history/
