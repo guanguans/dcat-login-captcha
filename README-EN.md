@@ -1,8 +1,8 @@
 # dcat-login-captcha
 
-[简体中文](README_zh_CN.md) | [ENGLISH](README.md)
+[简体中文](README.md) | [ENGLISH](README-EN.md)
 
-> 一个 PHP 软件包模板存储库。- A PHP package template repository.
+> dact admin login captcha. - dcat admin 登录验证码。
 
 [![tests](https://github.com/guanguans/dcat-login-captcha/workflows/tests/badge.svg)](https://github.com/guanguans/dcat-login-captcha/actions)
 [![check & fix styling](https://github.com/guanguans/dcat-login-captcha/actions/workflows/php-cs-fixer.yml/badge.svg)](https://github.com/guanguans/dcat-login-captcha/actions)
@@ -11,47 +11,41 @@
 [![Total Downloads](https://poser.pugx.org/guanguans/dcat-login-captcha/downloads)](//packagist.org/packages/guanguans/dcat-login-captcha)
 [![License](https://poser.pugx.org/guanguans/dcat-login-captcha/license)](//packagist.org/packages/guanguans/dcat-login-captcha)
 
-## 环境要求
+## Requirement
 
-* PHP >= 7.2
+* dcat-admin >= 2.0
 
-## 安装
+## Installation
 
 ``` bash
-$ composer require guanguans/dcat-login-captcha --prefer-dist -vvv
+$ composer require guanguans/dcat-login-captcha -vvv
 ```
 
-## 使用
+## Usage
 
-1. 替换 `guanguans/dcat-login-captcha` -> `vendorName/package-name`
-2. 替换 `Guanguans\\DcatLoginCaptcha` -> `VendorName\\PackageName`
-3. 替换 `Guanguans\DcatLoginCaptcha` -> `VendorName\PackageName`
-4. 替换 `ityaozm@gmail.com` -> `your email`
-5. 执行 `$ composer dumpautoload`
-
-## 测试
+## Testing
 
 ``` bash
 $ composer test
 ```
 
-## 变更日志
+## Changelog
 
-请参阅 [CHANGELOG](CHANGELOG.md) 获取最近有关更改的更多信息。
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
-## 贡献指南
+## Contributing
 
-请参阅 [CONTRIBUTING](.github/CONTRIBUTING.md) 有关详细信息。
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
-## 安全漏洞
+## Security Vulnerabilities
 
-请查看[我们的安全政策](../../security/policy)了解如何报告安全漏洞。
+Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
 
-## 贡献者
+## Credits
 
 * [guanguans](https://github.com/guanguans)
-* [所有贡献者](../../contributors)
+* [All Contributors](../../contributors)
 
-## 协议
+## License
 
-MIT 许可证（MIT）。有关更多信息，请参见[协议文件](LICENSE)。
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
