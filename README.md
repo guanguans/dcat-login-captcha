@@ -23,6 +23,8 @@ $ composer require guanguans/dcat-login-captcha -vvv
 
 ## 使用
 
+![usage](docs/usage.png)
+
 ## 测试
 
 ``` bash
