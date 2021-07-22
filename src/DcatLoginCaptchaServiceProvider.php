@@ -19,6 +19,7 @@ use Gregwar\Captcha\PhraseBuilder;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\MessageBag;
 
 class DcatLoginCaptchaServiceProvider extends ServiceProvider
 {
@@ -73,7 +74,7 @@ class DcatLoginCaptchaServiceProvider extends ServiceProvider
     protected function buildCaptchaScript()
     {
         return (string) view('guanguans.dcat-login-captcha::captcha', [
-            'captchaUrl' => admin_route('captcha.generate'),
+            'captchaUrl' => \dcat_login_captcha_url(),
         ]);
     }
 
@@ -96,14 +97,17 @@ class DcatLoginCaptchaServiceProvider extends ServiceProvider
             if (Helper::matchRequestPath('POST:admin/auth/login')) {
                 $validator = Validator::make(Request::post(), ['captcha' => 'required|dcat_login_captcha']);
 
-                $validator->fails() && $this->error($validator->errors()->first());
+                $validator->fails() && $this->error($validator);
             }
         });
     }
 
-    protected function error($error)
+    /**
+     * @param array|MessageBag|\Illuminate\Validation\Validator $validationMessages
+     */
+    protected function error($validationMessages)
     {
-        throw new HttpResponseException($this->validationErrorsResponse($error));
+        throw new HttpResponseException($this->validationErrorsResponse($validationMessages));
     }
 
     public function settingForm()

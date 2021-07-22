@@ -31,3 +31,17 @@ if (! function_exists('dcat_login_captcha_check')) {
         return true;
     }
 }
+
+if (! function_exists('dcat_login_captcha_url')) {
+    /**
+     * 登录验证码 url 地址.
+     */
+    function dcat_login_captcha_url(string $routeName = null): string
+    {
+        if (is_null($routeName)) {
+            return admin_route('captcha.generate');
+        }
+
+        return admin_route($routeName);
+    }
+}
