@@ -18,7 +18,6 @@ use Gregwar\Captcha\CaptchaBuilder;
 use Gregwar\Captcha\PhraseBuilder;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class DcatLoginCaptchaServiceProvider extends ServiceProvider
@@ -85,31 +84,19 @@ class DcatLoginCaptchaServiceProvider extends ServiceProvider
     {
         parent::init();
 
+        Validator::extend('dcat_login_captcha', function ($attribute, $value, $parameters, \Illuminate\Validation\Validator $validator) {
+            return \dcat_login_captcha_check($value);
+        }, static::trans('login_captcha.captcha_error'));
+
         Admin::booting(function () {
             if (Helper::matchRequestPath('GET:admin/auth/login')) {
                 Admin::script($this->buildCaptchaScript());
             }
 
             if (Helper::matchRequestPath('POST:admin/auth/login')) {
-                $validator = Validator::make(Request::post(), [
-                    'captcha' => [
-                        'required',
-                        sprintf('size:%s', static::setting('length') ?? 4),
-                        function ($attribute, $value, $fail) {
-                            if (is_null(Session::get(DcatLoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase'))) {
-                                return $fail(static::trans('login_captcha.captcha_expired'));
-                            }
+                $validator = Validator::make(Request::post(), ['captcha' => 'required|dcat_login_captcha']);
 
-                            if (! PhraseBuilder::comparePhrases(Session::get(DcatLoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase'), Request::post('captcha'))) {
-                                return $fail(static::trans('login_captcha.captcha_error'));
-                            }
-
-                            Session::forget(DcatLoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase');
-                        },
-                    ],
-                ]);
-
-                $validator->fails() && $this->error($validator);
+                $validator->fails() && $this->error($validator->errors()->first());
             }
         });
     }
