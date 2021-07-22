@@ -92,22 +92,24 @@ class DcatLoginCaptchaServiceProvider extends ServiceProvider
 
             if (Helper::matchRequestPath('POST:admin/auth/login')) {
                 $validator = Validator::make(Request::post(), [
-                    'captcha' => 'required',
+                    'captcha' => [
+                        'required',
+                        sprintf('size:%s', static::setting('length') ?? 4),
+                        function ($attribute, $value, $fail) {
+                            if (is_null(Session::get(DcatLoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase'))) {
+                                return $fail(static::trans('login_captcha.captcha_expired'));
+                            }
+
+                            if (! PhraseBuilder::comparePhrases(Session::get(DcatLoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase'), Request::post('captcha'))) {
+                                return $fail(static::trans('login_captcha.captcha_error'));
+                            }
+
+                            Session::forget(DcatLoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase');
+                        },
+                    ],
                 ]);
 
-                if ($validator->fails()) {
-                    $this->error($validator);
-                }
-
-                if (is_null(Session::get(DcatLoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase'))) {
-                    $this->error(['captcha' => static::trans('login_captcha.captcha_expired')]);
-                }
-
-                if (! PhraseBuilder::comparePhrases(Session::get(DcatLoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase'), Request::post('captcha'))) {
-                    $this->error(['captcha' => static::trans('login_captcha.captcha_error')]);
-                }
-
-                Session::forget(DcatLoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase');
+                $validator->fails() && $this->error($validator);
             }
         });
     }
