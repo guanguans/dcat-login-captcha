@@ -32,3 +32,7 @@ All notable changes to `guanguans/dcat-login-captcha` will be documented in this
 
 * Add SetResponseContentType Middleware.
 * Add content type setting config.
+
+## 1.0.5 - 2021-07-23
+
+* Add BootingAdmin.

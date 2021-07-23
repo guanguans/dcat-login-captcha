@@ -35,4 +35,7 @@ return [
         'Add SetResponseContentType Middleware.',
         'Add content type setting config.',
     ],
+    '1.0.5' => [
+        'Add BootingAdmin.',
+    ],
 ];
