@@ -74,7 +74,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     protected function buildCaptchaScript()
     {
         return (string) view('guanguans.dcat-login-captcha::captcha', [
-            'captchaUrl' => \dcat_login_captcha_url(),
+            'captchaUrl' => \login_captcha_url(),
         ]);
     }
 
@@ -86,7 +86,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         parent::init();
 
         Validator::extend('dcat_login_captcha', function ($attribute, $value, $parameters, \Illuminate\Validation\Validator $validator) {
-            return \dcat_login_captcha_check($value);
+            return \login_captcha_check($value);
         }, static::trans('login_captcha.captcha_error'));
 
         Admin::booting(function () {
