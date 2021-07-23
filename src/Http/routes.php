@@ -10,6 +10,7 @@
 
 use Guanguans\DcatLoginCaptcha\Http\Controllers\CaptchaController;
 use Guanguans\DcatLoginCaptcha\Http\Middleware\CleanObContents;
+use Guanguans\DcatLoginCaptcha\Http\Middleware\SetResponseContentType;
 use Illuminate\Support\Facades\Route;
 
-Route::get('captcha/generate', sprintf('%s@generate', CaptchaController::class))->name('captcha.generate')->middleware(CleanObContents::class);
+Route::get('captcha/generate', sprintf('%s@generate', CaptchaController::class))->name('captcha.generate')->middleware([SetResponseContentType::class, CleanObContents::class]);
