@@ -36,7 +36,7 @@
     },
     "require-dev": {
         "brainmaestro/composer-git-hooks": "^2.7",
-        "friendsofphp/php-cs-fixer": "^2.17",
+        "friendsofphp/php-cs-fixer": "^2.17 || ^3.0",
         "mockery/mockery": "^1.2",
         "nyholm/nsa": "^1.2",
         "overtrue/phplint": "^2.3 || ^3.0",
