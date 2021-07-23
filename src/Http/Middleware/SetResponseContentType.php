@@ -21,7 +21,7 @@ class SetResponseContentType
      *
      * @param \Illuminate\Http\Request $request
      *
-     * @return mixed
+     * @return \Illuminate\Http\Response
      */
     public function handle($request, Closure $next)
     {
