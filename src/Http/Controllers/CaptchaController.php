@@ -16,8 +16,6 @@ class CaptchaController extends Controller
 {
     public function generate()
     {
-        ob_get_contents() && ob_clean();
-
         return \response(login_captcha_get())->header('Content-Type', 'image/png');
     }
 }
