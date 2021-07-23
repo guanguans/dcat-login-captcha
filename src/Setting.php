@@ -11,6 +11,7 @@
 namespace Guanguans\DcatLoginCaptcha;
 
 use Dcat\Admin\Extend\Setting as Form;
+use Illuminate\Validation\Rule;
 
 class Setting extends Form
 {
@@ -62,6 +63,14 @@ class Setting extends Form
         $this->text('height', LoginCaptchaServiceProvider::trans('login_captcha.height'))
             ->required()
             ->rules('required|integer|min:30|max:80');
+
+        $this->text('type', LoginCaptchaServiceProvider::trans('login_captcha.type'))
+            ->help('png、jpeg、gif')
+            ->required()
+            ->rules([
+                'required',
+                Rule::in(['png', 'jpeg', 'gif']),
+            ]);
 
         $this->text('font', LoginCaptchaServiceProvider::trans('login_captcha.font'))
             ->rules('nullable|file');

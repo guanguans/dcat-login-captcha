@@ -13,6 +13,7 @@ return [
     'charset' => 'abcdefghijklmnpqrstuvwxyz23456789ABCDEFGHIJKLMNOPQRSTUVWXYZ',
     'width' => 150,
     'height' => 43,
+    'type' => 'png', // ['png', 'jpeg', 'gif']
     'font' => null,
     'fingerprint' => null,
     'phrase_session_key' => 'login_captcha_phrase',

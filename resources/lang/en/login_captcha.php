@@ -18,6 +18,7 @@ return [
     'charset' => 'Charsets',
     'width' => 'Width',
     'height' => 'Height',
+    'type' => 'Type',
     'font' => 'Font path',
     'fingerprint' => 'Fingerprint',
     'phrase_session_key' => 'Captcha phrase session key',

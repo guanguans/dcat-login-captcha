@@ -11,6 +11,7 @@
 namespace Guanguans\DcatLoginCaptcha\Http\Middleware;
 
 use Closure;
+use Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider;
 use Illuminate\Http\Response;
 
 class SetResponseContentType
@@ -25,7 +26,7 @@ class SetResponseContentType
     public function handle($request, Closure $next)
     {
         return tap($next($request), function (Response $response) {
-            $response->header('Content-Type', 'image/png');
+            $response->header('Content-Type', sprintf('image/%s', LoginCaptchaServiceProvider::setting('type')));
         });
     }
 }
