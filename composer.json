@@ -1,7 +1,7 @@
 {
     "name": "guanguans/dcat-login-captcha",
-    "alias": "guanguans.dcat-login-captcha",
-    "description": "dcat admin login captcha. - dcat admin 登录验证码。",
+    "alias": "Login Captcha",
+    "description": "Dcat admin login captcha. - Dcat admin 登录验证码。",
     "keywords": [
         "dcat-admin",
         "dcat",
