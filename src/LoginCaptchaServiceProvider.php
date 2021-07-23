@@ -52,6 +52,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         $this->app->singleton(PhraseBuilder::class, function ($app) {
             return new PhraseBuilder(static::setting('length'), static::setting('charset'));
         });
+
         $this->app->alias(PhraseBuilder::class, 'gregwar.phrase-builder');
     }
 
@@ -59,6 +60,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     {
         $this->app->singleton(CaptchaBuilder::class, function ($app) {
             $builder = new CaptchaBuilder(null, $app[PhraseBuilder::class]);
+
             $builder->build(
                 static::setting('width'),
                 static::setting('height'),
@@ -68,6 +70,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
 
             return $builder;
         });
+
         $this->app->alias(CaptchaBuilder::class, 'gregwar.captcha-builder');
     }
 
