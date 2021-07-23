@@ -31,4 +31,8 @@ return [
     '1.0.3' => [
         'Add CleanObContents Middleware.',
     ],
+    '1.0.4' => [
+        'Add SetResponseContentType Middleware.',
+        'Add content type setting config.',
+    ],
 ];

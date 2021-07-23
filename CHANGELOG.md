@@ -27,3 +27,8 @@ All notable changes to `guanguans/dcat-login-captcha` will be documented in this
 ## 1.0.3 - 2021-07-23
 
 * Add CleanObContents Middleware.
+
+## 1.0.4 - 2021-07-23
+
+* Add SetResponseContentType Middleware.
+* Add content type setting config.
