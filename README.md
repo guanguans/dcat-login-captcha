@@ -17,9 +17,15 @@
 
 ## 安装
 
+### Composer 安装
+
 ``` bash
 $ composer require guanguans/dcat-login-captcha -vvv
 ```
+
+### 后台 -> 开发工具 -> 扩展列表
+
+安装本扩展。
 
 ## 使用
 

@@ -17,9 +17,15 @@
 
 ## Installation
 
+### Composer installation
+
 ``` bash
 $ composer require guanguans/dcat-login-captcha -vvv
 ```
+
+### Backend -> Helpers -> Extensions
+
+Install this extension.
 
 ## Usage
 
