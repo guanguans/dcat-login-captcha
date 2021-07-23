@@ -27,11 +27,11 @@ $ composer require guanguans/dcat-login-captcha -vvv
 
 Enable this extension.
 
-## Usage
+## View
 
-1 | 2 | 3
+example 1 | example 2 | example 3
 ---|---|---
-![usage](docs/display1.png)|![usage](docs/display2.png)|![usage](docs/display3.png)
+![example1](docs/example1.png)|![example2](docs/example2.png)|![example3](docs/example3.png)
 
 ## Testing
 
