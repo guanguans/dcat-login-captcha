@@ -23,3 +23,7 @@ All notable changes to `guanguans/dcat-login-captcha` will be documented in this
 * Update extension alias and description.
 * Optimize LoginCaptchaServiceProvider.
 * Optimize setting form.
+
+## 1.0.3 - 2021-07-23
+
+* Add CleanObContents Middleware.

@@ -28,4 +28,7 @@ return [
         'Optimize LoginCaptchaServiceProvider.',
         'Optimize setting form.',
     ],
+    '1.0.3' => [
+        'Add CleanObContents Middleware.',
+    ],
 ];
