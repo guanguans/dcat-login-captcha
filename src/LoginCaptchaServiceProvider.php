@@ -12,14 +12,10 @@ namespace Guanguans\DcatLoginCaptcha;
 
 use Dcat\Admin\Admin;
 use Dcat\Admin\Extend\ServiceProvider;
-use Dcat\Admin\Support\Helper;
 use Dcat\Admin\Traits\HasFormResponse;
 use Gregwar\Captcha\CaptchaBuilder;
 use Gregwar\Captcha\PhraseBuilder;
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\MessageBag;
 
 class LoginCaptchaServiceProvider extends ServiceProvider
 {
@@ -41,12 +37,27 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     /**
      * {@inheritdoc}
      */
+    public function init()
+    {
+        parent::init();
+
+        $this->setupConfig();
+        $this->extendValidator();
+        Admin::booting($this->app->make(BootingAdmin::class));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function register()
     {
         $this->registerPhraseBuilder();
         $this->registerCaptchaBuilder();
     }
 
+    /**
+     * Register PhraseBuilder.
+     */
     protected function registerPhraseBuilder()
     {
         $this->app->singleton(PhraseBuilder::class, function ($app) {
@@ -56,6 +67,9 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         $this->app->alias(PhraseBuilder::class, 'gregwar.phrase-builder');
     }
 
+    /**
+     * Register CaptchaBuilder.
+     */
     protected function registerCaptchaBuilder()
     {
         $this->app->singleton(CaptchaBuilder::class, function ($app) {
@@ -72,18 +86,6 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         });
 
         $this->app->alias(CaptchaBuilder::class, 'gregwar.captcha-builder');
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function init()
-    {
-        parent::init();
-
-        $this->setupConfig();
-        $this->extendValidator();
-        $this->bootingAdmin();
     }
 
     /**
@@ -106,39 +108,6 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         Validator::extend('dcat_login_captcha', function ($attribute, $value, $parameters, \Illuminate\Validation\Validator $validator) {
             return \login_captcha_check($value);
         }, static::trans('login_captcha.captcha_error'));
-    }
-
-    /**
-     * Boot Admin.
-     */
-    protected function bootingAdmin()
-    {
-        Admin::booting(function () {
-            if (Helper::matchRequestPath('GET:admin/auth/login')) {
-                Admin::script($this->buildCaptchaScript());
-            }
-
-            if (Helper::matchRequestPath('POST:admin/auth/login')) {
-                $validator = Validator::make(Request::post(), ['captcha' => 'required|dcat_login_captcha']);
-
-                $validator->fails() and $this->error($validator);
-            }
-        });
-    }
-
-    protected function buildCaptchaScript()
-    {
-        return (string) view('guanguans.dcat-login-captcha::captcha', [
-            'captchaUrl' => \login_captcha_url(),
-        ]);
-    }
-
-    /**
-     * @param array|MessageBag|\Illuminate\Validation\Validator $validationMessages
-     */
-    protected function error($validationMessages)
-    {
-        throw new HttpResponseException($this->validationErrorsResponse($validationMessages));
     }
 
     /**
