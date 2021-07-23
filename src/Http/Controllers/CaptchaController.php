@@ -10,10 +10,7 @@
 
 namespace Guanguans\DcatLoginCaptcha\Http\Controllers;
 
-use Guanguans\DcatLoginCaptcha\Facades\CaptchaBuilder;
-use Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Session;
 
 class CaptchaController extends Controller
 {
@@ -21,8 +18,6 @@ class CaptchaController extends Controller
     {
         ob_get_contents() && ob_clean();
 
-        Session::put(LoginCaptchaServiceProvider::setting('phrase_session_key'), CaptchaBuilder::getPhrase());
-
-        return \response(CaptchaBuilder::get())->header('Content-Type', 'image/png');
+        return \response(login_captcha_get())->header('Content-Type', 'image/png');
     }
 }

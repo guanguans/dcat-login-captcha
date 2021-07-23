@@ -18,19 +18,16 @@ if (! function_exists('login_captcha_check')) {
      */
     function login_captcha_check(string $value): bool
     {
-        if (! PhraseBuilder::comparePhrases(Session::get(LoginCaptchaServiceProvider::setting('phrase_session_key')), $value)) {
-            return false;
-        }
-
-        Session::forget(LoginCaptchaServiceProvider::setting('phrase_session_key'));
-
-        return true;
+        return PhraseBuilder::comparePhrases(
+            Session::get(LoginCaptchaServiceProvider::setting('phrase_session_key')),
+            $value
+        );
     }
 }
 
 if (! function_exists('login_captcha_url')) {
     /**
-     * 登录验证码 url 地址.
+     * 获取登录验证码 url 地址.
      */
     function login_captcha_url(string $routeName = null): string
     {
@@ -39,5 +36,17 @@ if (! function_exists('login_captcha_url')) {
         }
 
         return admin_route($routeName);
+    }
+}
+
+if (! function_exists('login_captcha_get')) {
+    /**
+     * 获取登录验证码图像内容.
+     */
+    function login_captcha_get(int $quality = 90): string
+    {
+        Session::put(LoginCaptchaServiceProvider::setting('phrase_session_key'), CaptchaBuilder::getPhrase());
+
+        return CaptchaBuilder::get($quality);
     }
 }
