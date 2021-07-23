@@ -5,3 +5,13 @@ All notable changes to `guanguans/dcat-login-captcha` will be documented in this
 ## 1.0.0 - 2021-07-23
 
 * Initial release.
+
+## 1.0.1 - 2021-07-23
+
+* Add default config file.
+* Add annotation for facades.
+* Optimize `login_captcha_check` function.
+* Optimize captcha generate.
+* Optimize get setting config.
+* Rename `dcat_login_captcha_check`->`login_captcha_check`.
+* Rename `dcat_login_captcha_url`->`login_captcha_url`.

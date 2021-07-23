@@ -10,6 +10,15 @@
 
 return [
     '1.0.0' => [
-        'Initialize extension.',
+        'Initial release.',
+    ],
+    '1.0.1' => [
+        'Add default config file.',
+        'Add annotation for facades.',
+        'Optimize `login_captcha_check` function.',
+        'Optimize captcha generate.',
+        'Optimize get setting config.',
+        'Rename `dcat_login_captcha_check`->`login_captcha_check`.',
+        'Rename `dcat_login_captcha_url`->`login_captcha_url`.',
     ],
 ];
