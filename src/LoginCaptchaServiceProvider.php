@@ -50,7 +50,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     protected function registerPhraseBuilder()
     {
         $this->app->singleton(PhraseBuilder::class, function ($app) {
-            return new PhraseBuilder(static::setting('length') ?? 4, static::setting('charset') ?? 'abcdefghijklmnpqrstuvwxyz23456789ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+            return new PhraseBuilder(static::setting('length'), static::setting('charset'));
         });
         $this->app->alias(PhraseBuilder::class, 'gregwar.phrase-builder');
     }
@@ -60,8 +60,8 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         $this->app->singleton(CaptchaBuilder::class, function ($app) {
             $builder = new CaptchaBuilder(null, $app[PhraseBuilder::class]);
             $builder->build(
-                static::setting('width') ?? 150,
-                static::setting('height') ?? 43,
+                static::setting('width'),
+                static::setting('height'),
                 static::setting('font'),
                 static::setting('fingerprint')
             );
@@ -85,6 +85,8 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     {
         parent::init();
 
+        $this->setupConfig();
+
         Validator::extend('dcat_login_captcha', function ($attribute, $value, $parameters, \Illuminate\Validation\Validator $validator) {
             return \login_captcha_check($value);
         }, static::trans('login_captcha.captcha_error'));
@@ -100,6 +102,18 @@ class LoginCaptchaServiceProvider extends ServiceProvider
                 $validator->fails() && $this->error($validator);
             }
         });
+    }
+
+    /**
+     * Set up the config.
+     */
+    protected function setupConfig()
+    {
+        $source = __DIR__.'/../config/login_captcha.php';
+
+        $this->mergeConfigFrom($source, 'login_captcha');
+
+        static::setting() or static::setting(config('login_captcha'));
     }
 
     /**

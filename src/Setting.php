@@ -27,13 +27,8 @@ class Setting extends Form
      */
     protected function formatInput(array $input)
     {
-        $input['length'] = $input['length'] ?: 4;
-        $input['charset'] = $input['charset'] ?: 'abcdefghijklmnpqrstuvwxyz23456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $input['width'] = $input['width'] ?: 150;
-        $input['height'] = $input['height'] ?: 43;
         $input['font'] = $input['font'] ?: null;
         $input['fingerprint'] = $input['fingerprint'] ?: null;
-        $input['phrase_session_key'] = $input['phrase_session_key'] ?: 'login_captcha_phrase';
 
         return $input;
     }
@@ -45,19 +40,19 @@ class Setting extends Form
     {
         $this->text('length', LoginCaptchaServiceProvider::trans('login_captcha.length'))
             ->required()
-            ->default(4);
+            ->default(config('login_captcha.length'));
 
         $this->textarea('charset', LoginCaptchaServiceProvider::trans('login_captcha.charset'))
             ->required()
-            ->default('abcdefghijklmnpqrstuvwxyz23456789ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+            ->default(config('login_captcha.charset'));
 
         $this->text('width', LoginCaptchaServiceProvider::trans('login_captcha.width'))
             ->required()
-            ->default(150);
+            ->default(config('login_captcha.width'));
 
         $this->text('height', LoginCaptchaServiceProvider::trans('login_captcha.height'))
             ->required()
-            ->default(43);
+            ->default(config('login_captcha.height'));
 
         $this->text('font', LoginCaptchaServiceProvider::trans('login_captcha.font'));
 
@@ -65,6 +60,6 @@ class Setting extends Form
 
         $this->text('phrase_session_key', LoginCaptchaServiceProvider::trans('login_captcha.phrase_session_key'))
             ->required()
-            ->default('login_captcha_phrase');
+            ->default(config('login_captcha.phrase_session_key'));
     }
 }
