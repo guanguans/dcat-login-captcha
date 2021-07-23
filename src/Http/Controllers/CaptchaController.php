@@ -11,7 +11,7 @@
 namespace Guanguans\DcatLoginCaptcha\Http\Controllers;
 
 use Gregwar\Captcha\CaptchaBuilder;
-use Guanguans\DcatLoginCaptcha\DcatLoginCaptchaServiceProvider;
+use Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Session;
 
@@ -25,7 +25,7 @@ class CaptchaController extends Controller
         /* @var CaptchaBuilder $builder */
         $builder = app(CaptchaBuilder::class);
 
-        Session::put(DcatLoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase', $builder->getPhrase());
+        Session::put(LoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase', $builder->getPhrase());
 
         return \response($builder->get())->header('Content-Type', 'image/png');
     }

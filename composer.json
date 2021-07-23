@@ -67,10 +67,10 @@
         }
     ],
     "extra": {
-        "dcat-admin": "Guanguans\\DcatLoginCaptcha\\DcatLoginCaptchaServiceProvider",
+        "dcat-admin": "Guanguans\\DcatLoginCaptcha\\LoginCaptchaServiceProvider",
         "laravel": {
             "providers": [
-                "Guanguans\\DcatLoginCaptcha\\DcatLoginCaptchaServiceProvider"
+                "Guanguans\\DcatLoginCaptcha\\LoginCaptchaServiceProvider"
             ],
             "aliases": {
                 "CaptchaBuilder": "Guanguans\\DcatLoginCaptcha\\Facades\\CaptchaBuilder",

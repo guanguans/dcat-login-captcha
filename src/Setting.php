@@ -43,27 +43,27 @@ class Setting extends Form
      */
     public function form()
     {
-        $this->text('length', DcatLoginCaptchaServiceProvider::trans('login_captcha.length'))
+        $this->text('length', LoginCaptchaServiceProvider::trans('login_captcha.length'))
             ->required()
             ->default(4);
 
-        $this->textarea('charset', DcatLoginCaptchaServiceProvider::trans('login_captcha.charset'))
+        $this->textarea('charset', LoginCaptchaServiceProvider::trans('login_captcha.charset'))
             ->required()
             ->default('abcdefghijklmnpqrstuvwxyz23456789ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
-        $this->text('width', DcatLoginCaptchaServiceProvider::trans('login_captcha.width'))
+        $this->text('width', LoginCaptchaServiceProvider::trans('login_captcha.width'))
             ->required()
             ->default(150);
 
-        $this->text('height', DcatLoginCaptchaServiceProvider::trans('login_captcha.height'))
+        $this->text('height', LoginCaptchaServiceProvider::trans('login_captcha.height'))
             ->required()
             ->default(43);
 
-        $this->text('font', DcatLoginCaptchaServiceProvider::trans('login_captcha.font'));
+        $this->text('font', LoginCaptchaServiceProvider::trans('login_captcha.font'));
 
-        $this->text('fingerprint', DcatLoginCaptchaServiceProvider::trans('login_captcha.fingerprint'));
+        $this->text('fingerprint', LoginCaptchaServiceProvider::trans('login_captcha.fingerprint'));
 
-        $this->text('phrase_session_key', DcatLoginCaptchaServiceProvider::trans('login_captcha.phrase_session_key'))
+        $this->text('phrase_session_key', LoginCaptchaServiceProvider::trans('login_captcha.phrase_session_key'))
             ->required()
             ->default('login_captcha_phrase');
     }

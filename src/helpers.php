@@ -9,7 +9,7 @@
  */
 
 use Gregwar\Captcha\PhraseBuilder;
-use Guanguans\DcatLoginCaptcha\DcatLoginCaptchaServiceProvider;
+use Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider;
 use Illuminate\Support\Facades\Session;
 
 if (! function_exists('dcat_login_captcha_check')) {
@@ -18,15 +18,15 @@ if (! function_exists('dcat_login_captcha_check')) {
      */
     function dcat_login_captcha_check(string $value): bool
     {
-        if (is_null(Session::get(DcatLoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase'))) {
+        if (is_null(Session::get(LoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase'))) {
             return false;
         }
 
-        if (! PhraseBuilder::comparePhrases(Session::get(DcatLoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase'), $value)) {
+        if (! PhraseBuilder::comparePhrases(Session::get(LoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase'), $value)) {
             return false;
         }
 
-        Session::forget(DcatLoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase');
+        Session::forget(LoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase');
 
         return true;
     }

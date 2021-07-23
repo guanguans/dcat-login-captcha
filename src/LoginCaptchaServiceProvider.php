@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
 
-class DcatLoginCaptchaServiceProvider extends ServiceProvider
+class LoginCaptchaServiceProvider extends ServiceProvider
 {
     use HasFormResponse;
 
