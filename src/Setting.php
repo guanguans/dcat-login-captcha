@@ -28,9 +28,18 @@ class Setting extends Form
     protected function formatInput(array $input)
     {
         $input['font'] = $input['font'] ?: null;
-        $input['fingerprint'] = $input['fingerprint'] ?: null;
 
         return $input;
+    }
+
+    /**
+     * 处理请求.
+     *
+     * @return \Dcat\Admin\Http\JsonResponse
+     */
+    public function handle(array $input)
+    {
+        return parent::handle($input);
     }
 
     /**
@@ -40,26 +49,26 @@ class Setting extends Form
     {
         $this->text('length', LoginCaptchaServiceProvider::trans('login_captcha.length'))
             ->required()
-            ->default(config('login_captcha.length'));
+            ->rules('required|integer|min:3|max:6');
 
         $this->textarea('charset', LoginCaptchaServiceProvider::trans('login_captcha.charset'))
             ->required()
-            ->default(config('login_captcha.charset'));
+            ->rules('required');
 
         $this->text('width', LoginCaptchaServiceProvider::trans('login_captcha.width'))
             ->required()
-            ->default(config('login_captcha.width'));
+            ->rules('required|integer|min:100|max:200');
 
         $this->text('height', LoginCaptchaServiceProvider::trans('login_captcha.height'))
             ->required()
-            ->default(config('login_captcha.height'));
+            ->rules('required|integer|min:30|max:80');
 
-        $this->text('font', LoginCaptchaServiceProvider::trans('login_captcha.font'));
+        $this->text('font', LoginCaptchaServiceProvider::trans('login_captcha.font'))
+            ->rules('nullable|file');
 
-        $this->text('fingerprint', LoginCaptchaServiceProvider::trans('login_captcha.fingerprint'));
+        $this->hidden('fingerprint', LoginCaptchaServiceProvider::trans('login_captcha.fingerprint'));
 
-        $this->text('phrase_session_key', LoginCaptchaServiceProvider::trans('login_captcha.phrase_session_key'))
-            ->required()
-            ->default(config('login_captcha.phrase_session_key'));
+        $this->hidden('phrase_session_key', LoginCaptchaServiceProvider::trans('login_captcha.phrase_session_key'))
+            ->required();
     }
 }
