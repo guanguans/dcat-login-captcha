@@ -74,13 +74,6 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         $this->app->alias(CaptchaBuilder::class, 'gregwar.captcha-builder');
     }
 
-    protected function buildCaptchaScript()
-    {
-        return (string) view('guanguans.dcat-login-captcha::captcha', [
-            'captchaUrl' => \login_captcha_url(),
-        ]);
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -89,22 +82,8 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         parent::init();
 
         $this->setupConfig();
-
-        Validator::extend('dcat_login_captcha', function ($attribute, $value, $parameters, \Illuminate\Validation\Validator $validator) {
-            return \login_captcha_check($value);
-        }, static::trans('login_captcha.captcha_error'));
-
-        Admin::booting(function () {
-            if (Helper::matchRequestPath('GET:admin/auth/login')) {
-                Admin::script($this->buildCaptchaScript());
-            }
-
-            if (Helper::matchRequestPath('POST:admin/auth/login')) {
-                $validator = Validator::make(Request::post(), ['captcha' => 'required|dcat_login_captcha']);
-
-                $validator->fails() && $this->error($validator);
-            }
-        });
+        $this->extendValidator();
+        $this->bootingAdmin();
     }
 
     /**
@@ -120,6 +99,41 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     }
 
     /**
+     * Extend validator rules.
+     */
+    protected function extendValidator()
+    {
+        Validator::extend('dcat_login_captcha', function ($attribute, $value, $parameters, \Illuminate\Validation\Validator $validator) {
+            return \login_captcha_check($value);
+        }, static::trans('login_captcha.captcha_error'));
+    }
+
+    /**
+     * Boot Admin.
+     */
+    protected function bootingAdmin()
+    {
+        Admin::booting(function () {
+            if (Helper::matchRequestPath('GET:admin/auth/login')) {
+                Admin::script($this->buildCaptchaScript());
+            }
+
+            if (Helper::matchRequestPath('POST:admin/auth/login')) {
+                $validator = Validator::make(Request::post(), ['captcha' => 'required|dcat_login_captcha']);
+
+                $validator->fails() and $this->error($validator);
+            }
+        });
+    }
+
+    protected function buildCaptchaScript()
+    {
+        return (string) view('guanguans.dcat-login-captcha::captcha', [
+            'captchaUrl' => \login_captcha_url(),
+        ]);
+    }
+
+    /**
      * @param array|MessageBag|\Illuminate\Validation\Validator $validationMessages
      */
     protected function error($validationMessages)
@@ -127,6 +141,9 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         throw new HttpResponseException($this->validationErrorsResponse($validationMessages));
     }
 
+    /**
+     * Setting form.
+     */
     public function settingForm()
     {
         return new Setting($this);
