@@ -9,5 +9,11 @@
  */
 
 namespace {
+    class CaptchaBuilder extends \Guanguans\DcatLoginCaptcha\Facades\CaptchaBuilder
+    {
+    }
 
+    class PhraseBuilder extends \Guanguans\DcatLoginCaptcha\Facades\PhraseBuilder
+    {
+    }
 }
