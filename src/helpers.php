@@ -18,15 +18,15 @@ if (! function_exists('login_captcha_check')) {
      */
     function login_captcha_check(string $value): bool
     {
-        if (is_null(Session::get(LoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase'))) {
+        if (is_null(Session::get(LoginCaptchaServiceProvider::setting('phrase_session_key')))) {
             return false;
         }
 
-        if (! PhraseBuilder::comparePhrases(Session::get(LoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase'), $value)) {
+        if (! PhraseBuilder::comparePhrases(Session::get(LoginCaptchaServiceProvider::setting('phrase_session_key')), $value)) {
             return false;
         }
 
-        Session::forget(LoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase');
+        Session::forget(LoginCaptchaServiceProvider::setting('phrase_session_key'));
 
         return true;
     }

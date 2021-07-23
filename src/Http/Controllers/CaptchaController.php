@@ -25,7 +25,7 @@ class CaptchaController extends Controller
         /* @var CaptchaBuilder $builder */
         $builder = app(CaptchaBuilder::class);
 
-        Session::put(LoginCaptchaServiceProvider::setting('phrase_session_key') ?? 'login_captcha_phrase', $builder->getPhrase());
+        Session::put(LoginCaptchaServiceProvider::setting('phrase_session_key'), $builder->getPhrase());
 
         return \response($builder->get())->header('Content-Type', 'image/png');
     }
