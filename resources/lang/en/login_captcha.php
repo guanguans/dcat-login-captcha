@@ -14,11 +14,11 @@ return [
     'captcha_expired' => 'Captcha expired',
     'captcha_error' => 'Captcha error',
     'setting' => 'Login captcha setting',
-    'length' => 'Length',
+    'length' => 'Characters length',
     'charset' => 'Charsets',
     'width' => 'Width',
     'height' => 'Height',
-    'font' => 'Font',
+    'font' => 'Font path',
     'fingerprint' => 'Fingerprint',
     'phrase_session_key' => 'Captcha phrase session key',
 ];
