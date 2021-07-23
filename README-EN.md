@@ -25,7 +25,7 @@ $ composer require guanguans/dcat-login-captcha -vvv
 
 ### Backend -> Helpers -> Extensions
 
-Install this extension.
+Enable this extension.
 
 ## Usage
 
