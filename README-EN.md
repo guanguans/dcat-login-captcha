@@ -23,7 +23,9 @@ $ composer require guanguans/dcat-login-captcha -vvv
 
 ## Usage
 
-![usage](docs/usage.png)
+1 | 2 | 3
+---|---|---
+![usage](docs/display1.png)|![usage](docs/display2.png)|![usage](docs/display3.png)
 
 ## Testing
 
