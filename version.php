@@ -38,4 +38,8 @@ return [
     '1.0.5' => [
         'Add BootingHandler.',
     ],
+    '1.0.6' => [
+        'Rename src/BootingAdmin.php -> src/BootingHandler.php.',
+        'Remove src/Http/Controllers/CaptchaController.php`.',
+    ],
 ];
