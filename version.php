@@ -36,6 +36,6 @@ return [
         'Add content type setting config.',
     ],
     '1.0.5' => [
-        'Add BootingAdmin.',
+        'Add BootingHandler.',
     ],
 ];

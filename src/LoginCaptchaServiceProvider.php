@@ -43,7 +43,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
 
         $this->setupConfig();
         $this->extendValidator();
-        Admin::booting($this->app->make(BootingAdmin::class));
+        Admin::booting($this->app->make(BootingHandler::class));
     }
 
     /**
