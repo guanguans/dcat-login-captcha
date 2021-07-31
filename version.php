@@ -42,4 +42,7 @@ return [
         'Rename src/BootingAdmin.php -> src/BootingHandler.php.',
         'Remove src/Http/Controllers/CaptchaController.php`.',
     ],
+    '1.0.7' => [
+        '* Optimize `buildCaptchaJsScript`.',
+    ],
 ];

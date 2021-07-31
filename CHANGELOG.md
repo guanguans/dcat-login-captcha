@@ -41,3 +41,8 @@ All notable changes to `guanguans/dcat-login-captcha` will be documented in this
 
 * Rename src/BootingAdmin.php -> src/BootingHandler.php.
 * Remove src/Http/Controllers/CaptchaController.php`.
+
+## 1.0.7 - 2021-07-31
+
+* Optimize `buildCaptchaJsScript`.
+
