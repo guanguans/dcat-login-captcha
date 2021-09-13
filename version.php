@@ -43,6 +43,9 @@ return [
         'Remove src/Http/Controllers/CaptchaController.php`.',
     ],
     '1.0.7' => [
-        '* Optimize `buildCaptchaJsScript`.',
+        'Optimize `buildCaptchaJsScript`.',
+    ],
+    '1.0.8' => [
+        'Fix cant match routing path(#8).',
     ],
 ];

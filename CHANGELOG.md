@@ -46,3 +46,6 @@ All notable changes to `guanguans/dcat-login-captcha` will be documented in this
 
 * Optimize `buildCaptchaJsScript`.
 
+## 1.0.8 - 2021-09-13
+
+* Fix cant match routing path(#8).
