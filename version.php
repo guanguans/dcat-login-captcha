@@ -48,4 +48,11 @@ return [
     '1.0.8' => [
         'Fix cant match routing path(#8).',
     ],
+    '1.0.9' => [
+        'Add parameters to the `SetResponseContentType` middleware.',
+        'Update github config files.',
+        'Update phpunit/phpunit requirement from ^7.0 || ^8.0 to ^7.0 || ^8.0 || ^9.0.',
+        'Optimize booting `BootingHandler`.',
+        'Optimize setting form .',
+    ],
 ];
