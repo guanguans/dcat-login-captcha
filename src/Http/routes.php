@@ -10,6 +10,7 @@
 
 use Guanguans\DcatLoginCaptcha\Http\Middleware\CleanObContents;
 use Guanguans\DcatLoginCaptcha\Http\Middleware\SetResponseContentType;
+use Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider;
 use Illuminate\Support\Facades\Route;
 
 Route::get('captcha/generate', function () {
@@ -17,6 +18,6 @@ Route::get('captcha/generate', function () {
 })
 ->name('captcha.generate')
 ->middleware([
-    SetResponseContentType::class,
+    sprintf('%s:%s', SetResponseContentType::class, LoginCaptchaServiceProvider::setting('type')),
     CleanObContents::class,
 ]);
