@@ -11,7 +11,6 @@
 namespace Guanguans\DcatLoginCaptcha;
 
 use Dcat\Admin\Extend\Setting as Form;
-use Illuminate\Validation\Rule;
 
 class Setting extends Form
 {
@@ -53,6 +52,7 @@ class Setting extends Form
             ->rules('required|integer|min:3|max:6');
 
         $this->textarea('charset', LoginCaptchaServiceProvider::trans('login_captcha.charset'))
+            ->rows(3)
             ->required()
             ->rules('required');
 
@@ -64,12 +64,15 @@ class Setting extends Form
             ->required()
             ->rules('required|integer|min:30|max:80');
 
-        $this->text('type', LoginCaptchaServiceProvider::trans('login_captcha.type'))
-            ->help('png、jpeg、gif')
+        $this->radio('type', LoginCaptchaServiceProvider::trans('login_captcha.type'))
+            ->options([
+                'png' => 'png',
+                'jpeg' => 'jpeg',
+                'gif' => 'gif',
+            ])
             ->required()
             ->rules([
                 'required',
-                Rule::in(['png', 'jpeg', 'gif']),
             ]);
 
         $this->text('font', LoginCaptchaServiceProvider::trans('login_captcha.font'))
@@ -77,7 +80,6 @@ class Setting extends Form
 
         $this->hidden('fingerprint', LoginCaptchaServiceProvider::trans('login_captcha.fingerprint'));
 
-        $this->hidden('phrase_session_key', LoginCaptchaServiceProvider::trans('login_captcha.phrase_session_key'))
-            ->required();
+        $this->hidden('phrase_session_key', LoginCaptchaServiceProvider::trans('login_captcha.phrase_session_key'));
     }
 }
