@@ -2,6 +2,10 @@
 
 All notable changes to `guanguans/dcat-login-captcha` will be documented in this file.
 
+## 1.0.10 - 2021-11-9
+
+* Compatible callback type.
+
 ## 1.0.9 - 2021-10-17
 
 * Add parameters to the `SetResponseContentType` middleware.

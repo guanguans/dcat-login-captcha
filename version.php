@@ -55,4 +55,7 @@ return [
         'Optimize booting `BootingHandler`.',
         'Optimize setting form .',
     ],
+    '1.0.10' => [
+        'Compatible callback type.',
+    ],
 ];
