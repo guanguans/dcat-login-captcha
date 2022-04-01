@@ -16,5 +16,5 @@ return [
     'type' => 'png', // ['png', 'jpeg', 'gif']
     'font' => null,
     'fingerprint' => null,
-    'phrase_session_key' => 'login_captcha_phrase',
+    'captcha_phrase_session_key' => 'login_captcha_phrase',
 ];

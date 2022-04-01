@@ -80,6 +80,6 @@ class Setting extends Form
 
         $this->hidden('fingerprint', LoginCaptchaServiceProvider::trans('login_captcha.fingerprint'));
 
-        $this->hidden('phrase_session_key', LoginCaptchaServiceProvider::trans('login_captcha.phrase_session_key'));
+        $this->hidden('captcha_phrase_session_key', LoginCaptchaServiceProvider::trans('login_captcha.captcha_phrase_session_key'));
     }
 }

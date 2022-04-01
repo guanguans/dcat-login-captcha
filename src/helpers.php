@@ -20,7 +20,7 @@ if (! function_exists('login_captcha_check')) {
     function login_captcha_check(string $value): bool
     {
         return PhraseBuilder::comparePhrases(
-            Session::get(LoginCaptchaServiceProvider::setting('phrase_session_key')),
+            Session::get(LoginCaptchaServiceProvider::setting('captcha_phrase_session_key')),
             $value
         );
     }
@@ -46,7 +46,7 @@ if (! function_exists('login_captcha_get')) {
      */
     function login_captcha_get(int $quality = 90): string
     {
-        Session::put(LoginCaptchaServiceProvider::setting('phrase_session_key'), CaptchaBuilder::getPhrase());
+        Session::put(LoginCaptchaServiceProvider::setting('captcha_phrase_session_key'), CaptchaBuilder::getPhrase());
 
         return CaptchaBuilder::get($quality);
     }

@@ -21,5 +21,5 @@ return [
     'type' => 'Type',
     'font' => 'Font path',
     'fingerprint' => 'Fingerprint',
-    'phrase_session_key' => 'Captcha phrase session key',
+    'captcha_phrase_session_key' => 'Captcha phrase session key',
 ];
