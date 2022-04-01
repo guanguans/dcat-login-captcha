@@ -58,4 +58,12 @@ return [
     '1.0.10' => [
         'Compatible callback type.',
     ],
+    '1.0.11' => [
+        'Rename `phrase_session_key` -> `captcha_phrase_session_key`.',
+        'Generate captcha random url.',
+        'Replace `Closure routing` -> `CaptchaController`.',
+        'Bump actions/cache from 2 to 3.',
+        'Bump actions/checkout from 2 to 3.',
+        'Update overtrue/phplint requirement from ^2.3 || ^3.0 to ^2.3 || ^3.0 || ^4.0.',
+    ],
 ];
