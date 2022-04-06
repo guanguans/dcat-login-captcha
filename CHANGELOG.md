@@ -2,6 +2,11 @@
 
 All notable changes to `guanguans/dcat-login-captcha` will be documented in this file.
 
+## 1.0.12 - 2022-04-06
+
+* Bump codecov/codecov-action from 2.1.0 to 3.
+* Update author info.
+
 ## 1.0.11 - 2022-04-01
 
 * Rename `phrase_session_key` -> `captcha_phrase_session_key`.

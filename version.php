@@ -66,4 +66,8 @@ return [
         'Bump actions/checkout from 2 to 3.',
         'Update overtrue/phplint requirement from ^2.3 || ^3.0 to ^2.3 || ^3.0 || ^4.0.',
     ],
+    '1.0.12' => [
+        'Bump codecov/codecov-action from 2.1.0 to 3.',
+        'Update author info.',
+    ],
 ];
