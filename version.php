@@ -70,4 +70,7 @@ return [
         'Bump codecov/codecov-action from 2.1.0 to 3.',
         'Update author info.',
     ],
+    '1.0.13' => [
+        'Update JS.',
+    ],
 ];

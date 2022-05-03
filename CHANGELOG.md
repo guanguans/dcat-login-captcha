@@ -2,6 +2,10 @@
 
 All notable changes to `guanguans/dcat-login-captcha` will be documented in this file.
 
+## 1.0.13 - 2022-05-03
+
+* Update JS.
+
 ## 1.0.12 - 2022-04-06
 
 * Bump codecov/codecov-action from 2.1.0 to 3.
