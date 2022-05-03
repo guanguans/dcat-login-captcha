@@ -50,23 +50,22 @@ class BootingHandler
 
         return <<<js
 (function () {
-    captchaTpl = '<fieldset class="form-label-group form-group position-relative has-icon-left dcat-login-captcha">';
-    captchaTpl += '<input id="captcha" type="text" style="width: 61%;" class="form-control" name="captcha" placeholder="$langCaptcha" required />';
-    captchaTpl += '<span class="captcha-img" style="width: 37%;height: 33.5px;position: absolute;top: 0;right: 0;border-radius: .25rem;border: 1px solid #dbe3e6;">';
-    captchaTpl += '<img id="verify" src="$captchaUrl" data-src="$captchaUrl" alt="$langCaptcha" title="$langRefreshCaptcha" class="captcha" style="cursor: pointer;width: 100%;height: 100%;border-radius: .25rem;">';
-    captchaTpl += '</span>';
-    captchaTpl += '<div class="form-control-position">';
-    captchaTpl += '<i class="feather icon-image"></i>';
-    captchaTpl += '</div>';
-    captchaTpl += '<label for="captcha">$langCaptcha</label>';
-    captchaTpl += '<div class="help-block with-errors"></div>';
-    captchaTpl += '</fieldset>';
+    captchaHtml = `
+<fieldset class="form-label-group form-group position-relative has-icon-left dcat-login-captcha">
+    <input id="captcha" class="form-control" type="text" style="width: 61%;" name="captcha" placeholder="$langCaptcha" required>
+    <span class="captcha-img" style="width: 37%;height: 33.5px;position: absolute;top: 0;right: 0;border-radius: .25rem;border: 1px solid #dbe3e6;">
+        <img id="verify" class="captcha" src="$captchaUrl" data-src="$captchaUrl" alt="$langCaptcha" title="$langRefreshCaptcha" style="cursor: pointer;width: 100%;height: 100%;border-radius: .25rem;">
+    </span>
+    <div class="form-control-position"><i class="feather icon-image"></i></div>
+    <label for="captcha">$langCaptcha</label>
+    <div class="help-block with-errors"></div>
+</fieldset>
+`;
 
-    $(captchaTpl).insertAfter($("#login-form fieldset.form-label-group").get(1));
+    $(captchaHtml).insertAfter($("#login-form fieldset.form-label-group").get(1));
 
     $("#verify").click(function () {
-        verifyImg = $(this).data("src");
-        $(this).attr("src", verifyImg.replace(/\?.*$/, "") + "?" + Math.random());
+        $(this).attr("src", $(this).data("src").replace(/\?.*$/, "") + "?" + Math.random());
     });
 
     $(".dcat-login-captcha .with-errors").bind("DOMNodeInserted", function () {
