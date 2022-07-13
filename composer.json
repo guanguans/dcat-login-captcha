@@ -2,6 +2,8 @@
     "name": "guanguans/dcat-login-captcha",
     "alias": "Login Captcha",
     "description": "Dcat admin login captcha. - Dcat admin 登录验证码。",
+    "license": "MIT",
+    "type": "library",
     "keywords": [
         "dcat-admin",
         "dcat",
@@ -12,11 +14,6 @@
         "laravel",
         "extension"
     ],
-    "homepage": "https://github.com/guanguans/dcat-login-captcha",
-    "support": {
-        "issues": "https://github.com/guanguans/dcat-login-captcha/issues",
-        "source": "https://github.com/guanguans/dcat-login-captcha"
-    },
     "authors": [
         {
             "name": "<a href='https://github.com/guanguans' target='_blank'>guanguans</a>",
@@ -25,10 +22,17 @@
             "role": "developer"
         }
     ],
-    "type": "library",
-    "license": "MIT",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
+    "homepage": "https://github.com/guanguans/dcat-login-captcha",
+    "support": {
+        "issues": "https://github.com/guanguans/dcat-login-captcha/issues",
+        "source": "https://github.com/guanguans/dcat-login-captcha"
+    },
+    "funding": [
+        {
+            "type": "wechat",
+            "url": "https://www.guanguans.cn/images/wechat.jpeg"
+        }
+    ],
     "require": {
         "php": ">=7.1",
         "dcat/laravel-admin": "^2.0",
@@ -44,6 +48,8 @@
         "phpunit/phpunit": "^8.0 || ^9.0",
         "vimeo/psalm": "^4.0"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Guanguans\\DcatLoginCaptcha\\": "src"
@@ -60,23 +66,8 @@
     "config": {
         "sort-packages": true
     },
-    "funding": [
-        {
-            "type": "wechat",
-            "url": "https://www.guanguans.cn/images/wechat.jpeg"
-        }
-    ],
     "extra": {
         "dcat-admin": "Guanguans\\DcatLoginCaptcha\\LoginCaptchaServiceProvider",
-        "laravel": {
-            "providers": [
-                "Guanguans\\DcatLoginCaptcha\\LoginCaptchaServiceProvider"
-            ],
-            "aliases": {
-                "CaptchaBuilder": "Guanguans\\DcatLoginCaptcha\\Facades\\CaptchaBuilder",
-                "PhraseBuilder": "Guanguans\\DcatLoginCaptcha\\Facades\\PhraseBuilder"
-            }
-        },
         "hooks": {
             "pre-commit": [
                 "composer lint",
@@ -90,38 +81,35 @@
                 "composer md-lint",
                 "composer test"
             ]
+        },
+        "laravel": {
+            "aliases": {
+                "CaptchaBuilder": "Guanguans\\DcatLoginCaptcha\\Facades\\CaptchaBuilder",
+                "PhraseBuilder": "Guanguans\\DcatLoginCaptcha\\Facades\\PhraseBuilder"
+            },
+            "providers": [
+                "Guanguans\\DcatLoginCaptcha\\LoginCaptchaServiceProvider"
+            ]
         }
     },
     "scripts": {
-        "post-update-cmd": [
-            "cghooks update"
-        ],
-        "post-merge": "composer install",
         "post-install-cmd": [
             "cghooks add --ignore-lock",
             "cghooks update"
         ],
+        "post-update-cmd": [
+            "cghooks update"
+        ],
+        "benchmark": "./vendor/bin/phpbench run --retry-threshold=3 --iterations=15 --revs=1000 --warmup=2",
         "cghooks": "./vendor/bin/cghooks",
         "lint": "./vendor/bin/phplint --no-cache --configuration=.phplint.yml --ansi",
-        "md-lint": "lint-md --config .lintmdrc ./*.md ./.github/ ./docs/",
         "md-fix": "lint-md --config .lintmdrc --fix ./*.md ./.github/ ./docs/",
-        "style-lint": "./vendor/bin/php-cs-fixer fix --using-cache=no --config=.php-cs-fixer.php --diff --dry-run --ansi",
-        "style-fix": "./vendor/bin/php-cs-fixer fix --using-cache=no --config=.php-cs-fixer.php --ansi",
+        "md-lint": "lint-md --config .lintmdrc ./*.md ./.github/ ./docs/",
+        "post-merge": "composer install",
         "psalm": "./vendor/bin/psalm",
+        "style-fix": "./vendor/bin/php-cs-fixer fix --using-cache=no --config=.php-cs-fixer.php --ansi",
+        "style-lint": "./vendor/bin/php-cs-fixer fix --using-cache=no --config=.php-cs-fixer.php --diff --dry-run --ansi",
         "test": "./vendor/bin/phpunit --coverage-text --colors=always --verbose",
-        "test-coverage": "./vendor/bin/phpunit --coverage-html=coverage/ --coverage-clover=clover.xml --color=always --verbose",
-        "benchmark": "./vendor/bin/phpbench run --retry-threshold=3 --iterations=15 --revs=1000 --warmup=2"
-    },
-    "scripts-descriptions": {
-        "cghooks": "Run git cghooks.",
-        "lint": "Run phplint checks.",
-        "md-lint": "Run markdown checks.",
-        "md-fix": "Run markdown fixing.",
-        "style-lint": "Run style checks (only dry run - no fixing!).",
-        "style-fix": "Run style checks and fix violations.",
-        "psalm": "Run psalm checks.",
-        "test": "Run all tests.",
-        "test-coverage": "Run all tests with coverage.",
-        "benchmark": "Run all benchmark."
+        "test-coverage": "./vendor/bin/phpunit --coverage-html=coverage/ --coverage-clover=clover.xml --color=always --verbose"
     }
 }
