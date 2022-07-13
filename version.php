@@ -73,4 +73,8 @@ return [
     '1.0.13' => [
         'Update JS.',
     ],
+    '1.0.14' => [
+        'Rename login_captcha_get -> login_captcha_content.',
+        'Update github config files.',
+    ],
 ];
