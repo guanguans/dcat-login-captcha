@@ -24,11 +24,12 @@ class BootingHandler
 
     public function __invoke()
     {
-        if (Helper::matchRequestPath('GET:'.$authLoginBasePath = ltrim(admin_base_path('auth/login'), '/'))) {
+        $authLoginPath = ltrim(admin_base_path('auth/login'), '/');
+        if (Helper::matchRequestPath("GET:$authLoginPath")) {
             Admin::script($this->buildCaptchaScript());
         }
 
-        if (Helper::matchRequestPath('POST:'.$authLoginBasePath)) {
+        if (Helper::matchRequestPath("POST:$authLoginPath")) {
             $validator = Validator::make(Request::post(), [
                 'captcha' => 'required|dcat_login_captcha',
             ]);

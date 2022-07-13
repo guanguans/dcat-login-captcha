@@ -12,15 +12,12 @@ namespace Guanguans\DcatLoginCaptcha;
 
 use Dcat\Admin\Admin;
 use Dcat\Admin\Extend\ServiceProvider;
-use Dcat\Admin\Traits\HasFormResponse;
 use Gregwar\Captcha\CaptchaBuilder;
 use Gregwar\Captcha\PhraseBuilder;
 use Illuminate\Support\Facades\Validator;
 
 class LoginCaptchaServiceProvider extends ServiceProvider
 {
-    use HasFormResponse;
-
     /**
      * @var bool
      */
@@ -40,7 +37,6 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     public function init()
     {
         parent::init();
-
         $this->setupConfig();
         $this->extendValidator();
         Admin::booting($this->app->make(BootingHandler::class));
