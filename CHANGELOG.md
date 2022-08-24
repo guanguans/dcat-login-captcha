@@ -2,6 +2,10 @@
 
 All notable changes to `guanguans/dcat-login-captcha` will be documented in this file.
 
+## 1.0.15 - 2022-08-24
+
+* Fix captcha check.
+
 ## 1.0.14 - 2022-07-13
 
 * Rename login_captcha_get -> login_captcha_content.

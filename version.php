@@ -77,4 +77,7 @@ return [
         'Rename login_captcha_get -> login_captcha_content.',
         'Update github config files.',
     ],
+    '1.0.15' => [
+        'Fix captcha check.',
+    ],
 ];
