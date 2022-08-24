@@ -20,7 +20,7 @@ if (! function_exists('login_captcha_check')) {
     function login_captcha_check(string $value): bool
     {
         return PhraseBuilder::comparePhrases(
-            Session::get(LoginCaptchaServiceProvider::setting('captcha_phrase_session_key')),
+            Session::pull(LoginCaptchaServiceProvider::setting('captcha_phrase_session_key')),
             $value
         );
     }
