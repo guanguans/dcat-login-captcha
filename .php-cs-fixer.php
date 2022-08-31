@@ -18,9 +18,15 @@ EOF;
 
 $finder = PhpCsFixer\Finder::create()
     ->in([
-        __DIR__,
-        __DIR__ . '/src',
-        __DIR__ . '/tests',
+        __DIR__.'/config',
+        __DIR__.'/resources',
+        __DIR__.'/src',
+        __DIR__.'/tests',
+        __DIR__.'/updates',
+    ])
+    ->append([
+        __DIR__.'/.php-cs-fixer.php',
+        __DIR__.'/version.php',
     ])
     ->exclude([
         __DIR__.'/vendor',
@@ -37,7 +43,7 @@ return (new PhpCsFixer\Config())
         '@Symfony' => true,
         'header_comment' => [
             'header' => $header,
-            'comment_type' => 'PHPDoc'
+            'comment_type' => 'PHPDoc',
         ],
         'array_syntax' => ['syntax' => 'short'],
         'ordered_imports' => ['sort_algorithm' => 'alpha'],
