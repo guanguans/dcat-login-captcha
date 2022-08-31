@@ -65,19 +65,28 @@ return [
         'Bump actions/cache from 2 to 3.',
         'Bump actions/checkout from 2 to 3.',
         'Update overtrue/phplint requirement from ^2.3 || ^3.0 to ^2.3 || ^3.0 || ^4.0.',
+        'update_admin_settings_for_dcat_login_captcha.php',
     ],
     '1.0.12' => [
         'Bump codecov/codecov-action from 2.1.0 to 3.',
         'Update author info.',
+        'update_admin_settings_for_dcat_login_captcha.php',
     ],
     '1.0.13' => [
         'Update JS.',
+        'update_admin_settings_for_dcat_login_captcha.php',
     ],
     '1.0.14' => [
         'Rename login_captcha_get -> login_captcha_content.',
         'Update github config files.',
+        'update_admin_settings_for_dcat_login_captcha.php',
     ],
     '1.0.15' => [
         'Fix captcha check.',
+        'update_admin_settings_for_dcat_login_captcha.php',
+    ],
+    '1.0.16' => [
+        'Add migration files.',
+        'update_admin_settings_for_dcat_login_captcha.php',
     ],
 ];
