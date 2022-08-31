@@ -38,6 +38,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     {
         parent::init();
         $this->setupConfig();
+        // $this->loadMigrationsFrom(__DIR__.'/../updates/update_admin_settings_for_dcat_login_captcha.php');
         $this->extendValidator();
         Admin::booting($this->app->make(BootingHandler::class));
     }
