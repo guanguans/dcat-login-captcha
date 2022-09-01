@@ -2,6 +2,12 @@
 
 All notable changes to `guanguans/dcat-login-captcha` will be documented in this file.
 
+## 1.0.18 - 2022-09-01
+
+* Update to single action controller.
+* Fix setting.
+* Optimize migration file.
+
 ## 1.0.17 - 2022-08-31
 
 * Fix migration file name.

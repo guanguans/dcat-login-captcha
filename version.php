@@ -93,4 +93,10 @@ return [
         'Fix migration file name.',
         '2022_08_31_164022_update_admin_settings_for_dcat_login_captcha.php',
     ],
+    '1.0.18' => [
+        'Update to single action controller.',
+        'Fix setting.',
+        'Optimize migration file.',
+        '2022_08_31_164022_update_admin_settings_for_dcat_login_captcha.php',
+    ],
 ];
