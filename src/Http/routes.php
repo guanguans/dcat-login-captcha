@@ -14,7 +14,7 @@ use Guanguans\DcatLoginCaptcha\Http\Middleware\SetResponseContentType;
 use Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider;
 use Illuminate\Support\Facades\Route;
 
-Route::get('captcha/generate', sprintf('%s@generate', CaptchaController::class))
+Route::get('captcha/generate', CaptchaController::class)
     ->name('captcha.generate')
     ->middleware([
         sprintf('%s:%s', SetResponseContentType::class, LoginCaptchaServiceProvider::setting('type')),

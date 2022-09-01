@@ -14,7 +14,7 @@ use Illuminate\Routing\Controller;
 
 class CaptchaController extends Controller
 {
-    public function generate()
+    public function __invoke()
     {
         return response(login_captcha_content());
     }
