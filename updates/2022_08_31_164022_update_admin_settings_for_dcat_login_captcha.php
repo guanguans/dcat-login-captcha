@@ -35,8 +35,7 @@ class UpdateAdminSettingsForDcatLoginCaptcha extends Migration
             ->firstOrFail()
             ->mergeCasts(['value' => 'array']);
 
-        $diff = array_diff_key(config('login_captcha'), $value = $setting->value);
-        $setting->value = array_merge($value, $diff);
+        $setting->value += config('login_captcha');
         $setting->save();
     }
 
