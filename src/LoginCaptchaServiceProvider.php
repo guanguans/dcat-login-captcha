@@ -89,7 +89,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
 
         $this->mergeConfigFrom($source, 'login_captcha');
 
-        static::setting(static::setting() + config('login_captcha'));
+        static::setting((array) static::setting() + config('login_captcha'));
     }
 
     /**
