@@ -19,11 +19,6 @@ use Illuminate\Support\Facades\Validator;
 class LoginCaptchaServiceProvider extends ServiceProvider
 {
     /**
-     * @var bool
-     */
-    protected $defer = true;
-
-    /**
      * @var string[]
      */
     protected $exceptRoutes = [
@@ -113,20 +108,5 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     public function settingForm()
     {
         return new Setting($this);
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return [
-            PhraseBuilder::class,
-            'gregwar.phrase-builder',
-            CaptchaBuilder::class,
-            'gregwar.captcha-builder',
-        ];
     }
 }
