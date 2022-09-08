@@ -30,13 +30,17 @@ class UpdateAdminSettingsForDcatLoginCaptcha extends Migration
      */
     public function up()
     {
-        $setting = Setting::query()
-            ->where('slug', 'guanguans:dcat-login-captcha')
-            ->firstOrFail()
-            ->mergeCasts(['value' => 'array']);
+        try {
+            $setting = Setting::query()
+                ->where('slug', 'guanguans:dcat-login-captcha')
+                ->firstOrFail()
+                ->mergeCasts(['value' => 'array']);
 
-        $setting->value += config('login_captcha');
-        $setting->save();
+            $setting->value += config('login_captcha');
+            $setting->save();
+        } catch (Throwable $e) {
+            logger()->error(sprintf('Dcat-login-captcha upgrade error error: %s', $e->getMessage()));
+        }
     }
 
     /**
