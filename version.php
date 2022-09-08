@@ -91,4 +91,9 @@ return [
         'Fix setting.',
         'Optimize migration file.',
     ],
+    '1.0.19' => [
+        'Fix loading config.',
+        'Remove version update migration.',
+        'Cancel service late registration.',
+    ],
 ];
