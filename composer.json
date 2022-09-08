@@ -96,12 +96,20 @@
         "benchmark": "./vendor/bin/phpbench run --retry-threshold=3 --iterations=15 --revs=1000 --warmup=2",
         "cghooks": "./vendor/bin/cghooks",
         "checks": [
+            "@mark-start",
             "@md-lint",
+            "@mark-separate",
             "@lint",
+            "@mark-separate",
             "@style-lint",
-            "@test"
+            "@mark-separate",
+            "@test",
+            "@mark-finish"
         ],
         "lint": "./vendor/bin/phplint --no-cache --configuration=.phplint.yml --ansi",
+        "mark-finish": "printf '\\n!\\n!\\t\\033[0;32m%s\\033[0m\\n!\\n\\n' \"Finished\"",
+        "mark-separate": "printf '\\n!\\n!\\t\\033[0;33m%s\\033[0m\\n!\\n\\n' \"----------------\"",
+        "mark-start": "printf '\\n!\\n!\\t\\033[0;36m%s\\033[0m\\n!\\n\\n' \"Started\"",
         "md-fix": "@md-lint --fix",
         "md-lint": "lint-md --config .lintmdrc ./*.md ./.github/ ./docs/",
         "post-merge": [
