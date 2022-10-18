@@ -49,6 +49,7 @@ class BootingHandler
             LoginCaptchaServiceProvider::trans('login_captcha.refresh_captcha'),
         ];
 
+        /* @lang JavaScript */
         return <<<js
 (function () {
     captchaHtml = `
