@@ -18,8 +18,6 @@ class SetResponseContentType
     /**
      * Handle an incoming request.
      *
-     * @param $request
-     *
      * @return \Illuminate\Http\Response
      */
     public function handle($request, Closure $next, string $type)
