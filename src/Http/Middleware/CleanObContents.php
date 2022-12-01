@@ -10,8 +10,6 @@
 
 namespace Guanguans\DcatLoginCaptcha\Http\Middleware;
 
-use Closure;
-
 class CleanObContents
 {
     /**
@@ -21,7 +19,7 @@ class CleanObContents
      *
      * @return \Illuminate\Http\Response
      */
-    public function handle($request, Closure $next)
+    public function handle($request, \Closure $next)
     {
         ob_get_contents() and ob_clean();
 
