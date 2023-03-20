@@ -85,11 +85,11 @@ class LoginCaptchaServiceProvider extends ServiceProvider
      */
     protected function setupConfig()
     {
-        $source = __DIR__.'/../config/login_captcha.php';
+        $source = __DIR__.'/../config/login-captcha.php';
 
-        $this->mergeConfigFrom($source, 'login_captcha');
+        $this->mergeConfigFrom($source, 'login-captcha');
 
-        static::setting((array) static::setting() + config('login_captcha'));
+        static::setting((array) static::setting() + (array) config('login-captcha', []));
     }
 
     /**
