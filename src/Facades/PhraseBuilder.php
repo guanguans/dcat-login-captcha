@@ -22,9 +22,6 @@ use Illuminate\Support\Facades\Facade;
  */
 class PhraseBuilder extends Facade
 {
-    /**
-     * {@inheritdoc}
-     */
     public static function getFacadeAccessor()
     {
         return 'gregwar.phrase-builder';

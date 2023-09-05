@@ -44,9 +44,6 @@ use Illuminate\Support\Facades\Facade;
  */
 class CaptchaBuilder extends Facade
 {
-    /**
-     * {@inheritdoc}
-     */
     public static function getFacadeAccessor()
     {
         return 'gregwar.captcha-builder';

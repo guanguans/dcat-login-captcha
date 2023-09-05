@@ -26,9 +26,6 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         'permission' => 'captcha/generate',
     ];
 
-    /**
-     * {@inheritdoc}
-     */
     public function init()
     {
         parent::init();
@@ -38,9 +35,6 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         Admin::booting($this->app->make(BootingHandler::class));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function register()
     {
         $this->registerPhraseBuilder();
