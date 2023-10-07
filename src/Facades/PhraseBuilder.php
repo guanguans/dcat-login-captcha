@@ -13,10 +13,10 @@ namespace Guanguans\DcatLoginCaptcha\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static build($length = null, $charset = null)
- * @method static comparePhrases($str1, $str2)
- * @method static doNiceize($str)
- * @method static niceize($str)
+ * @method static void build(void $length = null, void $charset = null)
+ * @method static void niceize(void $str)
+ * @method static void doNiceize(void $str)
+ * @method static void comparePhrases(void $str1, void $str2)
  *
  * @see \Gregwar\Captcha\PhraseBuilder
  */

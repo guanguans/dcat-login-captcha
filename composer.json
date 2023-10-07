@@ -83,6 +83,11 @@
         "sort-packages": true
     },
     "extra": {
+        "bamarni-bin": {
+            "bin-links": true,
+            "forward-command": true,
+            "target-directory": "vendor-bin"
+        },
         "dcat-admin": "Guanguans\\DcatLoginCaptcha\\LoginCaptchaServiceProvider",
         "hooks": {
             "post-merge": [
@@ -138,8 +143,8 @@
         "composer-unused-checker": "@php ./vendor/bin/composer-unused --ansi -v",
         "composer-validate": "@composer validate --check-lock --strict --ansi -v",
         "doctum": "@php ./vendor/bin/doctum.php update doctum.php --ansi -v",
-        "facades-lint": "@facades-update -- --lint",
-        "facades-update": "/usr/local/opt/php@8.1/bin/php -f ./bin/facades.php",
+        "facade-lint": "@facade-update --lint",
+        "facade-update": "/opt/local/bin/php81 -f ./facade.php -- Guanguans\\\\DcatLoginCaptcha\\\\Facades\\\\CaptchaBuilder Guanguans\\\\DcatLoginCaptcha\\\\Facades\\\\PhraseBuilder",
         "infection": "@php ./vendor/bin/infection --test-framework=pest --show-mutations --threads=4 --ansi -v",
         "json-lint": "@php ./vendor/bin/jsonlint *.json .*rc",
         "lint": [
