@@ -33,19 +33,16 @@
         }
     ],
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.3",
         "dcat/laravel-admin": "^2.0",
-        "gregwar/captcha": "^1.1"
+        "gregwar/captcha": "^1.2"
     },
     "require-dev": {
-        "brainmaestro/composer-git-hooks": "^2.7",
-        "friendsofphp/php-cs-fixer": "^3.0",
-        "mockery/mockery": "^1.2",
-        "nyholm/nsa": "^1.2",
-        "overtrue/phplint": "^2.3 || ^3.0 || ^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0",
-        "phpbench/phpbench": "^1.0",
-        "phpunit/phpunit": "^8.0 || ^9.0",
-        "vimeo/psalm": "^4.0 || ^5.0"
+        "brainmaestro/composer-git-hooks": "^2.8",
+        "friendsofphp/php-cs-fixer": "^3.4",
+        "mockery/mockery": "^1.6",
+        "phpunit/phpunit": "^9.6",
+        "vimeo/psalm": "^4.30 || ^5.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -96,15 +93,9 @@
         "benchmark": "./vendor/bin/phpbench run --retry-threshold=3 --iterations=15 --revs=1000 --warmup=2",
         "cghooks": "./vendor/bin/cghooks",
         "checks": [
-            "@mark-start",
             "@md-lint",
-            "@mark-separate",
-            "@lint",
-            "@mark-separate",
             "@style-lint",
-            "@mark-separate",
-            "@test",
-            "@mark-finish"
+            "@test"
         ],
         "lint": "./vendor/bin/phplint --no-cache --configuration=.phplint.yml --ansi",
         "mark-finish": "printf '\\n!\\n!\\t\\033[0;32m%s\\033[0m\\n!\\n\\n' \"Finished\"",
