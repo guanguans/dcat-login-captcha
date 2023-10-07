@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is part of the guanguans/dcat-login-captcha.
  *
@@ -9,6 +11,17 @@
  */
 
 namespace {
-    class CaptchaBuilder extends \Guanguans\DcatLoginCaptcha\Facades\CaptchaBuilder{}
-    class PhraseBuilder extends \Guanguans\DcatLoginCaptcha\Facades\PhraseBuilder{}
+    class CaptchaBuilder extends \Guanguans\DcatLoginCaptcha\Facades\CaptchaBuilder
+    {
+    }
+
+    class PhraseBuilder extends \Guanguans\DcatLoginCaptcha\Facades\PhraseBuilder
+    {
+    }
+}
+
+namespace Foo {
+    class Bar
+    {
+    }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is part of the guanguans/dcat-login-captcha.
  *
@@ -10,12 +12,18 @@
 
 namespace Guanguans\DcatLoginCaptcha\Tests;
 
+/**
+ * @internal
+ * @coversNothing
+ *
+ * @small
+ */
 class TestCase extends \PHPUnit\Framework\TestCase
 {
     /**
      * Tear down the test case.
      */
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         $this->finish();
         parent::tearDown();
@@ -24,7 +32,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * Run extra tear down code.
      */
-    protected function finish()
+    protected function finish(): void
     {
         // call more tear down methods
     }

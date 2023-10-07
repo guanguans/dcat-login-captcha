@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is part of the guanguans/dcat-login-captcha.
  *
@@ -25,10 +27,8 @@ class UpdateAdminSettingsForDcatLoginCaptcha extends Migration
 
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         try {
             $setting = Setting::query()
@@ -45,10 +45,8 @@ class UpdateAdminSettingsForDcatLoginCaptcha extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
     }
 }
