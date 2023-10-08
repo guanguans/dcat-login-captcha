@@ -42,6 +42,7 @@
         "ergebnis/composer-normalize": "^2.20",
         "friendsofphp/php-cs-fixer": "^3.4",
         "guanguans/ai-commit": "^1.8",
+        "guanguans/monorepo-builder-worker": "^1.2",
         "kubawerlos/php-cs-fixer-custom-fixers": "^3.7",
         "mockery/mockery": "^1.6",
         "pestphp/pest": "^1.23 || ^2.0",
