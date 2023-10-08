@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Facade;
  */
 class PhraseBuilder extends Facade
 {
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
         return \Guanguans\DcatLoginCaptcha\PhraseBuilder::class;
     }

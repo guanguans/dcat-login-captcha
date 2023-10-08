@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace Guanguans\DcatLoginCaptcha\Http\Middleware;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Symfony\Component\HttpFoundation\Request;
 
 class SetResponseContentType
 {

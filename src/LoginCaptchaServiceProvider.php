@@ -14,6 +14,7 @@ namespace Guanguans\DcatLoginCaptcha;
 
 use Dcat\Admin\Admin;
 use Dcat\Admin\Extend\ServiceProvider;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -60,6 +61,9 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         return new Setting($this);
     }
 
+    /**
+     * @noinspection RealpathInStreamContextInspection
+     */
     protected function setupConfig(): self
     {
         $this->mergeConfigFrom(realpath($raw = __DIR__.'/../config/login-captcha.php') ?: $raw, 'login-captcha');
@@ -113,6 +117,9 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         return $this;
     }
 
+    /**
+     * @throws BindingResolutionException
+     */
     protected function bootingAdmin(): self
     {
         Admin::booting($this->app->make(BootingHandler::class));

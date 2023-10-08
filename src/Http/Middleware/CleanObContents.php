@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace Guanguans\DcatLoginCaptcha\Http\Middleware;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CleanObContents
 {

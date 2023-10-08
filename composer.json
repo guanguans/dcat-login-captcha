@@ -65,7 +65,7 @@
             "Guanguans\\DcatLoginCaptcha\\": "src"
         },
         "files": [
-            "src/helpers.php"
+            "src/Support/helpers.php"
         ]
     },
     "autoload-dev": {

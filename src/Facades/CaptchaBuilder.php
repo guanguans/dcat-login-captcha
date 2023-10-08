@@ -51,7 +51,7 @@ use Illuminate\Support\Facades\Facade;
  */
 class CaptchaBuilder extends Facade
 {
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
         return \Guanguans\DcatLoginCaptcha\CaptchaBuilder::class;
     }
