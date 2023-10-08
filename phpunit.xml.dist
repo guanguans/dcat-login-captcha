@@ -1,27 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false"
-     backupStaticAttributes="false"
-     bootstrap="vendor/autoload.php"
-     colors="true"
-     convertErrorsToExceptions="true"
-     convertNoticesToExceptions="true"
-     convertWarningsToExceptions="true"
-     processIsolation="false"
-     stopOnFailure="false"
-     verbose="true"
+<phpunit
+  backupGlobals="false"
+  backupStaticAttributes="false"
+  bootstrap="vendor/autoload.php"
+  cacheResultFile="build/phpunit/.phpunit.result.cache"
+  colors="true"
+  convertErrorsToExceptions="true"
+  convertNoticesToExceptions="true"
+  convertWarningsToExceptions="true"
+  processIsolation="false"
+  stopOnFailure="false"
+  verbose="true"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
 >
-    <testsuites>
-        <testsuite name="Guanguans Test Suite">
-            <directory>tests/</directory>
-            <exclude>vendor/</exclude>
-        </testsuite>
-    </testsuites>
-    <filter>
-        <whitelist>
-            <directory suffix=".php">src/</directory>
-            <exclude>
-                <file>src/Skeleton.php</file>
-            </exclude>
-        </whitelist>
-    </filter>
+  <!--printerClass="NunoMaduro\Collision\Adapters\Phpunit\Printer"-->
+  <coverage>
+    <include>
+      <directory suffix=".php">src/</directory>
+    </include>
+    <exclude>
+      <!--<directory>src/Support/</directory>-->
+      <!--<file>src/Channels/DdChannel.php</file>-->
+    </exclude>
+  </coverage>
+  <testsuites>
+    <testsuite name="Guanguans Test Suite">
+      <directory>tests/</directory>
+      <exclude>vendor/</exclude>
+    </testsuite>
+  </testsuites>
+  <php>
+    <env name="APP_KEY" value="base64:e2ASw7JCNMYR6PWInGGQrzUzisuDvv8bhNl14XGbUi8="/>
+  </php>
+  <!--<listeners>
+    <listener class="JohnKary\PHPUnit\Listener\SpeedTrapListener">
+      <arguments>
+        <array>
+          <element key="slowThreshold">
+            <integer>500</integer>
+          </element>
+          <element key="reportLength">
+            <integer>10</integer>
+          </element>
+          <element key="stopOnSlow">
+            <boolean>false</boolean>
+          </element>
+        </array>
+      </arguments>
+    </listener>
+  </listeners>-->
 </phpunit>
