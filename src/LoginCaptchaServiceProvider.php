@@ -16,58 +16,75 @@ use Dcat\Admin\Admin;
 use Dcat\Admin\Extend\ServiceProvider;
 use Gregwar\Captcha\CaptchaBuilder;
 use Gregwar\Captcha\PhraseBuilder;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class LoginCaptchaServiceProvider extends ServiceProvider
 {
-    /** @var array<string> */
+    /** @var bool */
+    protected $defer = false;
+
+    /** @var array<string, string> */
     protected $exceptRoutes = [
         'auth' => 'captcha/generate',
         'permission' => 'captcha/generate',
     ];
 
+    public function register(): void
+    {
+        $this->registerPhraseBuilder()
+            ->registerCaptchaBuilder();
+    }
+
     public function init(): void
     {
         parent::init();
-        $this->setupConfig();
-        $this->loadMigrationsFrom(__DIR__.'/../updates/2022_08_31_164022_update_admin_settings_for_dcat_login_captcha.php');
-        $this->extendValidator();
-        Admin::booting($this->app->make(BootingHandler::class));
+
+        $this->setupConfig()
+            ->loadMigrations()
+            ->extendValidator()
+            ->bootingAdmin();
     }
 
-    public function register(): void
+    public function provides(): array
     {
-        $this->registerPhraseBuilder();
-        $this->registerCaptchaBuilder();
+        return [
+            $this->toAlias(PhraseBuilder::class),
+            $this->toAlias(CaptchaBuilder::class),
+            PhraseBuilder::class,
+            CaptchaBuilder::class,
+        ];
     }
 
-    /**
-     * Setting form.
-     */
     public function settingForm(): Setting
     {
         return new Setting($this);
     }
 
-    /**
-     * Register PhraseBuilder.
-     */
-    protected function registerPhraseBuilder(): void
+    protected function setupConfig(): self
+    {
+        $this->mergeConfigFrom(realpath($raw = __DIR__.'/../config/login-captcha.php') ?: $raw, 'login-captcha');
+        static::setting((array) static::setting() + (array) config('login-captcha', []));
+
+        return $this;
+    }
+
+    protected function registerPhraseBuilder(): self
     {
         $this->app->singleton(PhraseBuilder::class, static function (): PhraseBuilder {
             return new PhraseBuilder(static::setting('length'), static::setting('charset'));
         });
 
-        $this->app->alias(PhraseBuilder::class, 'gregwar.phrase-builder');
+        $this->alias(PhraseBuilder::class);
+
+        return $this;
     }
 
-    /**
-     * Register CaptchaBuilder.
-     */
-    protected function registerCaptchaBuilder(): void
+    protected function registerCaptchaBuilder(): self
     {
-        $this->app->singleton(CaptchaBuilder::class, static function (array $app): CaptchaBuilder {
-            $captchaBuilder = new CaptchaBuilder(null, $app[PhraseBuilder::class]);
+        $this->app->singleton(CaptchaBuilder::class, static function (Application $app): CaptchaBuilder {
+            $captchaBuilder = new CaptchaBuilder(null, $app->get(PhraseBuilder::class));
             $captchaBuilder->build(
                 static::setting('width'),
                 static::setting('height'),
@@ -77,28 +94,57 @@ class LoginCaptchaServiceProvider extends ServiceProvider
             return $captchaBuilder;
         });
 
-        $this->app->alias(CaptchaBuilder::class, 'gregwar.captcha-builder');
+        $this->alias(CaptchaBuilder::class);
+
+        return $this;
     }
 
-    /**
-     * Set up the config.
-     */
-    protected function setupConfig(): void
+    protected function loadMigrations(): self
     {
-        $source = __DIR__.'/../config/login-captcha.php';
+        $this->loadMigrationsFrom(__DIR__.'/../updates/2022_08_31_164022_update_admin_settings_for_dcat_login_captcha.php');
 
-        $this->mergeConfigFrom($source, 'login-captcha');
-
-        static::setting((array) static::setting() + (array) config('login-captcha', []));
+        return $this;
     }
 
-    /**
-     * Extend validator rules.
-     */
-    protected function extendValidator(): void
+    protected function extendValidator(): self
     {
         Validator::extend('dcat_login_captcha', static function ($attribute, $value): bool {
             return login_captcha_check($value);
         }, static::trans('login_captcha.captcha_error'));
+
+        return $this;
+    }
+
+    protected function bootingAdmin(): self
+    {
+        Admin::booting($this->app->make(BootingHandler::class));
+
+        return $this;
+    }
+
+    /**
+     * @param class-string $class
+     */
+    protected function alias(string $class): self
+    {
+        $this->app->alias($class, $this->toAlias($class));
+
+        return $this;
+    }
+
+    /**
+     * @param class-string $class
+     */
+    protected function toAlias(string $class): string
+    {
+        return str($class)
+            ->replaceFirst(__NAMESPACE__, '')
+            ->start('\\DcatLoginCaptcha\\')
+            ->replaceFirst('\\', '')
+            ->explode('\\')
+            ->map(static function (string $name): string {
+                return Str::snake($name, '-');
+            })
+            ->implode('.');
     }
 }

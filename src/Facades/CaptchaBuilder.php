@@ -48,6 +48,6 @@ class CaptchaBuilder extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'gregwar.captcha-builder';
+        return \Gregwar\Captcha\CaptchaBuilder::class;
     }
 }

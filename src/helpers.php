@@ -58,3 +58,31 @@ if (! function_exists('login_captcha_content')) {
         return CaptchaBuilder::get($quality);
     }
 }
+
+if (! function_exists('str')) {
+    /**
+     * @param mixed $string
+     *
+     * @return Stringable|\Stringable
+     *
+     * @codeCoverageIgnore
+     */
+    function str($string = null)
+    {
+        if (0 === func_num_args()) {
+            return new class() implements \Stringable {
+                public function __call($method, $parameters)
+                {
+                    return Str::$method(...$parameters);
+                }
+
+                public function __toString(): string
+                {
+                    return '';
+                }
+            };
+        }
+
+        return Str::of($string);
+    }
+}

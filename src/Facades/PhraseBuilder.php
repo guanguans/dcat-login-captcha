@@ -26,6 +26,6 @@ class PhraseBuilder extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'gregwar.phrase-builder';
+        return \Gregwar\Captcha\PhraseBuilder::class;
     }
 }
