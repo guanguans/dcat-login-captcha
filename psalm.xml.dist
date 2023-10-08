@@ -15,6 +15,7 @@
     <directory name="config"/>
     <directory name="resources"/>
     <directory name="src"/>
+    <directory name="updates"/>
     <ignoreFiles allowMissingFiles="true">
       <directory name="vendor"/>
       <file name="src/UpdateHelper.php"/>

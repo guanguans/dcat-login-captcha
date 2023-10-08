@@ -11,6 +11,7 @@ parameters:
         - config
         - resources
         - src
+        - updates
     tmpDir: build/phpstan
 #    checkOctaneCompatibility: true
 #    checkModelProperties: true
