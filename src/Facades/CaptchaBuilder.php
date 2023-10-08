@@ -46,7 +46,7 @@ use Illuminate\Support\Facades\Facade;
  */
 class CaptchaBuilder extends Facade
 {
-    public static function getFacadeAccessor()
+    protected static function getFacadeAccessor()
     {
         return 'gregwar.captcha-builder';
     }

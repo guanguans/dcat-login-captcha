@@ -22,7 +22,7 @@ class SetResponseContentType
      */
     public function handle(Request $request, \Closure $next, string $type): Response
     {
-        return tap($next($request), function (Response $response) use ($type): void {
+        return tap($next($request), static function (Response $response) use ($type): void {
             $response->header('Content-Type', sprintf('image/%s', $type));
         });
     }

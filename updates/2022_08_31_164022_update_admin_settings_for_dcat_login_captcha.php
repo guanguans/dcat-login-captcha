@@ -20,7 +20,7 @@ class UpdateAdminSettingsForDcatLoginCaptcha extends Migration
         return $this->config('database.connection', config('database.default'));
     }
 
-    public function config($key, $default = null)
+    public function config(string $key, $default = null)
     {
         return config('admin.'.$key, $default);
     }
@@ -38,8 +38,8 @@ class UpdateAdminSettingsForDcatLoginCaptcha extends Migration
 
             $setting->value += config('login_captcha');
             $setting->save();
-        } catch (Throwable $e) {
-            logger()->error(sprintf('Dcat-login-captcha upgrade error error: %s', $e->getMessage()));
+        } catch (Throwable $throwable) {
+            logger()->error(sprintf('Dcat-login-captcha upgrade error error: %s', $throwable->getMessage()));
         }
     }
 

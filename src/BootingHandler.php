@@ -43,7 +43,7 @@ class BootingHandler
     /**
      * Build captcha script.
      */
-    protected function buildCaptchaScript()
+    protected function buildCaptchaScript(): string
     {
         [$captchaUrl, $langCaptcha, $langRefreshCaptcha] = [
             login_captcha_url(),

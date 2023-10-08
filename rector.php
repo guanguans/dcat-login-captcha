@@ -114,9 +114,9 @@ return static function (RectorConfig $rectorConfig): void {
         StaticClosureRector::class => [
             __DIR__.'/tests',
         ],
-        StaticArrowFunctionRector::class => [
-            __DIR__.'/tests/ExceptionNotifyManagerTest.php',
-        ],
+        // StaticArrowFunctionRector::class => [
+        //     __DIR__.'/tests/ExceptionNotifyManagerTest.php',
+        // ],
         // ReturnEarlyIfVariableRector::class => [
         //     __DIR__.'/src/Support/EscapeArg.php',
         // ],

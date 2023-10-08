@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Facade;
  */
 class PhraseBuilder extends Facade
 {
-    public static function getFacadeAccessor()
+    protected static function getFacadeAccessor()
     {
         return 'gregwar.phrase-builder';
     }

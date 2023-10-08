@@ -44,7 +44,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     /**
      * Setting form.
      */
-    public function settingForm()
+    public function settingForm(): Setting
     {
         return new Setting($this);
     }
@@ -54,7 +54,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
      */
     protected function registerPhraseBuilder(): void
     {
-        $this->app->singleton(PhraseBuilder::class, function () {
+        $this->app->singleton(PhraseBuilder::class, static function (): PhraseBuilder {
             return new PhraseBuilder(static::setting('length'), static::setting('charset'));
         });
 
@@ -66,17 +66,15 @@ class LoginCaptchaServiceProvider extends ServiceProvider
      */
     protected function registerCaptchaBuilder(): void
     {
-        $this->app->singleton(CaptchaBuilder::class, function ($app) {
-            $builder = new CaptchaBuilder(null, $app[PhraseBuilder::class]);
-
-            $builder->build(
+        $this->app->singleton(CaptchaBuilder::class, static function (array $app): CaptchaBuilder {
+            $captchaBuilder = new CaptchaBuilder(null, $app[PhraseBuilder::class]);
+            $captchaBuilder->build(
                 static::setting('width'),
                 static::setting('height'),
                 static::setting('font'),
                 static::setting('fingerprint')
             );
-
-            return $builder;
+            return $captchaBuilder;
         });
 
         $this->app->alias(CaptchaBuilder::class, 'gregwar.captcha-builder');
@@ -99,7 +97,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
      */
     protected function extendValidator(): void
     {
-        Validator::extend('dcat_login_captcha', function ($attribute, $value) {
+        Validator::extend('dcat_login_captcha', static function ($attribute, $value): bool {
             return login_captcha_check($value);
         }, static::trans('login_captcha.captcha_error'));
     }
