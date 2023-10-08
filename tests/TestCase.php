@@ -12,28 +12,48 @@ declare(strict_types=1);
 
 namespace Guanguans\DcatLoginCaptcha\Tests;
 
+use Dcat\Admin\AdminServiceProvider;
+use Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider;
+use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Symfony\Component\VarDumper\Test\VarDumperTestTrait;
+
 /**
  * @internal
- * @coversNothing
  *
  * @small
+ * @coversNothing
  */
-class TestCase extends \PHPUnit\Framework\TestCase
+class TestCase extends \Orchestra\Testbench\TestCase
 {
-    /**
-     * Tear down the test case.
-     */
+    use MockeryPHPUnitIntegration;
+    use VarDumperTestTrait;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->startMockery();
+    }
+
     protected function tearDown(): void
     {
-        $this->finish();
+        $this->closeMockery();
         parent::tearDown();
     }
 
-    /**
-     * Run extra tear down code.
-     */
-    protected function finish(): void
+    protected function getPackageProviders($app): array
     {
-        // call more tear down methods
+        return [
+            AdminServiceProvider::class,
+            LoginCaptchaServiceProvider::class,
+        ];
+    }
+
+    protected function defineEnvironment($app): void
+    {
+        // config()->set('login-captcha', 4);
+    }
+
+    protected function defineRoutes($router): void
+    {
     }
 }
