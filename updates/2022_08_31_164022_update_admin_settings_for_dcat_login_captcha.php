@@ -11,15 +11,23 @@ declare(strict_types=1);
  */
 
 use Dcat\Admin\Models\Setting;
+use Illuminate\Config\Repository;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Log;
 
 class UpdateAdminSettingsForDcatLoginCaptcha extends Migration
 {
-    public function getConnection()
+    public function getConnection(): string
     {
         return $this->config('database.connection', config('database.default'));
     }
 
+    /**
+     * @param null|mixed $default
+     *
+     * @return Application|mixed|Repository
+     */
     public function config(string $key, $default = null)
     {
         return config('admin.'.$key, $default);
@@ -36,10 +44,11 @@ class UpdateAdminSettingsForDcatLoginCaptcha extends Migration
                 ->firstOrFail()
                 ->mergeCasts(['value' => 'array']);
 
-            $setting->value += config('login_captcha');
+            /** @noinspection PhpUndefinedFieldInspection */
+            $setting->value += config('login-captcha', []);
             $setting->save();
         } catch (Throwable $throwable) {
-            logger()->error(sprintf('Dcat-login-captcha upgrade error error: %s', $throwable->getMessage()));
+            Log::error('Dcat-login-captcha upgrade error.', ['throwable' => $throwable]);
         }
     }
 
