@@ -49,6 +49,7 @@ if (! function_exists('login_captcha_content')) {
      * @psalm-suppress InvalidNullableReturnType
      * @psalm-suppress NullableReturnStatement
      * @psalm-suppress InvalidArgument
+     * @noinspection PhpVoidFunctionResultUsedInspection
      */
     function login_captcha_content(int $quality = 90): string
     {
@@ -62,7 +63,7 @@ if (! function_exists('str')) {
     /**
      * @param mixed $string
      *
-     * @return Stringable|\Stringable
+     * @return \Illuminate\Support\Stringable|\Stringable
      *
      * @codeCoverageIgnore
      */

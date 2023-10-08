@@ -12,19 +12,16 @@ declare(strict_types=1);
 
 namespace Guanguans\DcatLoginCaptcha;
 
-use Dcat\Admin\Extend\Setting as Form;
+use Dcat\Admin\Http\JsonResponse;
 
-class Setting extends Form
+class Setting extends \Dcat\Admin\Extend\Setting
 {
-    public function title()
+    public function title(): string
     {
         return $this->trans('login_captcha.setting');
     }
 
-    /**
-     * 处理请求.
-     */
-    public function handle(array $input): \Dcat\Admin\Http\JsonResponse
+    public function handle(array $input): JsonResponse
     {
         return parent::handle($input);
     }
@@ -33,20 +30,20 @@ class Setting extends Form
     {
         $this->text('length', LoginCaptchaServiceProvider::trans('login_captcha.length'))
             ->required()
-            ->rules('required|integer|min:3|max:6');
+            ->rules('required|integer|between:3,6');
 
         $this->textarea('charset', LoginCaptchaServiceProvider::trans('login_captcha.charset'))
             ->rows(3)
             ->required()
-            ->rules('required');
+            ->rules('required|string');
 
         $this->text('width', LoginCaptchaServiceProvider::trans('login_captcha.width'))
             ->required()
-            ->rules('required|integer|min:100|max:200');
+            ->rules('required|integer|between:100,200');
 
         $this->text('height', LoginCaptchaServiceProvider::trans('login_captcha.height'))
             ->required()
-            ->rules('required|integer|min:30|max:80');
+            ->rules('required|integer|between:30,80');
 
         $this->radio('type', LoginCaptchaServiceProvider::trans('login_captcha.type'))
             ->options([
@@ -55,17 +52,16 @@ class Setting extends Form
                 'gif' => 'gif',
             ])
             ->required()
-            ->rules('required');
+            ->rules('required|string');
 
         $this->text('font', LoginCaptchaServiceProvider::trans('login_captcha.font'))
             ->rules('nullable|file');
 
         $this->hidden('fingerprint', LoginCaptchaServiceProvider::trans('login_captcha.fingerprint'));
-
         $this->hidden('captcha_phrase_session_key', LoginCaptchaServiceProvider::trans('login_captcha.captcha_phrase_session_key'));
     }
 
-    protected function formatInput(array $input)
+    protected function formatInput(array $input): array
     {
         $input['font'] = $input['font'] ?: null;
 

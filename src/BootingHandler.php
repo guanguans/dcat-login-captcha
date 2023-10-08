@@ -26,12 +26,12 @@ class BootingHandler
 
     public function __invoke(): void
     {
-        $authLoginPath = ltrim(admin_base_path('auth/login'), '/');
-        if (Helper::matchRequestPath("GET:$authLoginPath")) {
+        $loginPath = ltrim(admin_base_path('auth/login'), '/');
+        if (Helper::matchRequestPath("GET:$loginPath")) {
             Admin::script($this->buildCaptchaScript());
         }
 
-        if (Helper::matchRequestPath("POST:$authLoginPath")) {
+        if (Helper::matchRequestPath("POST:$loginPath")) {
             $validator = Validator::make(Request::post(), [
                 'captcha' => 'required|dcat_login_captcha',
             ]);
@@ -40,9 +40,6 @@ class BootingHandler
         }
     }
 
-    /**
-     * Build captcha script.
-     */
     protected function buildCaptchaScript(): string
     {
         [$captchaUrl, $langCaptcha, $langRefreshCaptcha] = [
@@ -81,8 +78,6 @@ class BootingHandler
     }
 
     /**
-     * Throw HttpResponseException.
-     *
      * @param array|\Illuminate\Validation\Validator|MessageBag $validationMessages
      */
     protected function throwHttpResponseException($validationMessages): void
