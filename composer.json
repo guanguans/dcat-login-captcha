@@ -209,6 +209,6 @@
             "vhs < music-dl.tape",
             "@cghooks-install"
         ],
-        "yaml-lint": "@php ./vendor/bin/yaml-lint .*.yml .github/ --ansi -v"
+        "yaml-lint": "@php ./vendor/bin/yaml-lint .github/ --ansi -v"
     }
 }
