@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is part of the guanguans/dcat-login-captcha.
  *
@@ -9,6 +11,7 @@
  */
 
 use Gregwar\Captcha\PhraseBuilder;
+use Guanguans\DcatLoginCaptcha\Facades\CaptchaBuilder;
 use Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -30,9 +33,9 @@ if (! function_exists('login_captcha_url')) {
     /**
      * 获取登录验证码 url 地址.
      */
-    function login_captcha_url(string $routeName = null): string
+    function login_captcha_url(?string $routeName = null): string
     {
-        if (is_null($routeName)) {
+        if (null === $routeName) {
             return admin_route('captcha.generate', ['random' => Str::random()]);
         }
 
