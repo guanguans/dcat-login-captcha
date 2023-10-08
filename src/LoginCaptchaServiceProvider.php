@@ -14,8 +14,6 @@ namespace Guanguans\DcatLoginCaptcha;
 
 use Dcat\Admin\Admin;
 use Dcat\Admin\Extend\ServiceProvider;
-use Gregwar\Captcha\CaptchaBuilder;
-use Gregwar\Captcha\PhraseBuilder;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -139,7 +137,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     {
         return str($class)
             ->replaceFirst(__NAMESPACE__, '')
-            ->start('\\DcatLoginCaptcha\\')
+            ->start('\\DcatLoginCaptcha')
             ->replaceFirst('\\', '')
             ->explode('\\')
             ->map(static function (string $name): string {

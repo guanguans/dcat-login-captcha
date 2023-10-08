@@ -19,13 +19,18 @@ use Illuminate\Support\Facades\Facade;
  * @method static void niceize(void $str)
  * @method static void doNiceize(void $str)
  * @method static void comparePhrases(void $str1, void $str2)
+ * @method static void macro(string $name, callable|object $macro)
+ * @method static void mixin(object $mixin, bool $replace = true)
+ * @method static bool hasMacro(string $name)
+ * @method static void flushMacros()
+ * @method static \Guanguans\DcatLoginCaptcha\PhraseBuilder|\Illuminate\Support\HigherOrderTapProxy tap(null|callable $callback = null)
  *
- * @see \Gregwar\Captcha\PhraseBuilder
+ * @see \Guanguans\DcatLoginCaptcha\PhraseBuilder
  */
 class PhraseBuilder extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \Gregwar\Captcha\PhraseBuilder::class;
+        return \Guanguans\DcatLoginCaptcha\PhraseBuilder::class;
     }
 }

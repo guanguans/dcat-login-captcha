@@ -41,13 +41,18 @@ use Illuminate\Support\Facades\Facade;
  * @method static void inline(void $quality = 90)
  * @method static void output(void $quality = 90)
  * @method static array getFingerprint()
+ * @method static void macro(string $name, callable|object $macro)
+ * @method static void mixin(object $mixin, bool $replace = true)
+ * @method static bool hasMacro(string $name)
+ * @method static void flushMacros()
+ * @method static \Guanguans\DcatLoginCaptcha\CaptchaBuilder|\Illuminate\Support\HigherOrderTapProxy tap(null|callable $callback = null)
  *
- * @see \Gregwar\Captcha\CaptchaBuilder
+ * @see \Guanguans\DcatLoginCaptcha\CaptchaBuilder
  */
 class CaptchaBuilder extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \Gregwar\Captcha\CaptchaBuilder::class;
+        return \Guanguans\DcatLoginCaptcha\CaptchaBuilder::class;
     }
 }
