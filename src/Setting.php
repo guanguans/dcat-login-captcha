@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is part of the guanguans/dcat-login-captcha.
  *
@@ -19,24 +21,15 @@ class Setting extends Form
         return $this->trans('login_captcha.setting');
     }
 
-    protected function formatInput(array $input)
-    {
-        $input['font'] = $input['font'] ?: null;
-
-        return $input;
-    }
-
     /**
      * 处理请求.
-     *
-     * @return \Dcat\Admin\Http\JsonResponse
      */
-    public function handle(array $input)
+    public function handle(array $input): \Dcat\Admin\Http\JsonResponse
     {
         return parent::handle($input);
     }
 
-    public function form()
+    public function form(): void
     {
         $this->text('length', LoginCaptchaServiceProvider::trans('login_captcha.length'))
             ->required()
@@ -70,5 +63,12 @@ class Setting extends Form
         $this->hidden('fingerprint', LoginCaptchaServiceProvider::trans('login_captcha.fingerprint'));
 
         $this->hidden('captcha_phrase_session_key', LoginCaptchaServiceProvider::trans('login_captcha.captcha_phrase_session_key'));
+    }
+
+    protected function formatInput(array $input)
+    {
+        $input['font'] = $input['font'] ?: null;
+
+        return $input;
     }
 }

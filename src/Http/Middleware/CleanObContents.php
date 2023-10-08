@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is part of the guanguans/dcat-login-captcha.
  *
@@ -10,16 +12,15 @@
 
 namespace Guanguans\DcatLoginCaptcha\Http\Middleware;
 
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 class CleanObContents
 {
     /**
      * Handle an incoming request.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function handle($request, \Closure $next)
+    public function handle(Request $request, \Closure $next): Response
     {
         ob_get_contents() and ob_clean();
 
