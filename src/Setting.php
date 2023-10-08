@@ -62,9 +62,7 @@ class Setting extends Form
                 'gif' => 'gif',
             ])
             ->required()
-            ->rules([
-                'required',
-            ]);
+            ->rules('required');
 
         $this->text('font', LoginCaptchaServiceProvider::trans('login_captcha.font'))
             ->rules('nullable|file');

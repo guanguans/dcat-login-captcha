@@ -46,7 +46,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
      */
     protected function registerPhraseBuilder()
     {
-        $this->app->singleton(PhraseBuilder::class, function ($app) {
+        $this->app->singleton(PhraseBuilder::class, function () {
             return new PhraseBuilder(static::setting('length'), static::setting('charset'));
         });
 
@@ -91,7 +91,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
      */
     protected function extendValidator()
     {
-        Validator::extend('dcat_login_captcha', function ($attribute, $value, $parameters, \Illuminate\Validation\Validator $validator) {
+        Validator::extend('dcat_login_captcha', function ($attribute, $value) {
             return \login_captcha_check($value);
         }, static::trans('login_captcha.captcha_error'));
     }

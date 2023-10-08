@@ -46,6 +46,10 @@ if (! function_exists('login_captcha_url')) {
 if (! function_exists('login_captcha_content')) {
     /**
      * 获取登录验证码图像内容.
+     *
+     * @psalm-suppress InvalidNullableReturnType
+     * @psalm-suppress NullableReturnStatement
+     * @psalm-suppress InvalidArgument
      */
     function login_captcha_content(int $quality = 90): string
     {
