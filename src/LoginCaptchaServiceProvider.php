@@ -112,7 +112,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     {
         Validator::extend('dcat_login_captcha', static function ($attribute, $value): bool {
             return login_captcha_check($value);
-        }, static::trans('login_captcha.captcha_error'));
+        }, static::trans('login-captcha.captcha_error'));
 
         return $this;
     }

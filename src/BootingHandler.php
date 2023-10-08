@@ -44,8 +44,8 @@ class BootingHandler
     {
         [$captchaUrl, $langCaptcha, $langRefreshCaptcha] = [
             login_captcha_url(),
-            LoginCaptchaServiceProvider::trans('login_captcha.captcha'),
-            LoginCaptchaServiceProvider::trans('login_captcha.refresh_captcha'),
+            LoginCaptchaServiceProvider::trans('login-captcha.captcha'),
+            LoginCaptchaServiceProvider::trans('login-captcha.refresh_captcha'),
         ];
 
         return /** @lang JavaScript */ <<<js
