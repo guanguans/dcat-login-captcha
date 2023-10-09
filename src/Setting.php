@@ -14,17 +14,11 @@ use Dcat\Admin\Extend\Setting as Form;
 
 class Setting extends Form
 {
-    /**
-     * {@inheritdoc}
-     */
     public function title()
     {
         return $this->trans('login_captcha.setting');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function formatInput(array $input)
     {
         $input['font'] = $input['font'] ?: null;
@@ -42,9 +36,6 @@ class Setting extends Form
         return parent::handle($input);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function form()
     {
         $this->text('length', LoginCaptchaServiceProvider::trans('login_captcha.length'))
