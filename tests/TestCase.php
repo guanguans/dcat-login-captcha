@@ -17,6 +17,7 @@ use Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider;
 use Illuminate\Config\Repository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Route;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Symfony\Component\VarDumper\Test\VarDumperTestTrait;
@@ -75,5 +76,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
     protected function defineRoutes($router): void
     {
+        Route::get('captcha/generate', static function (): void {
+        })->name('dcat.admin.captcha.generate');
     }
 }
