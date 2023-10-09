@@ -37,6 +37,7 @@ use Rector\Naming\Rector\Foreach_\RenameForeachValueVariableToMatchExprVariableR
 use Rector\Php71\Rector\FuncCall\RemoveExtraParametersRector;
 use Rector\PHPUnit\Set\PHPUnitLevelSetList;
 use Rector\PHPUnit\Set\PHPUnitSetList;
+use Rector\Removing\Rector\Class_\RemoveInterfacesRector;
 use Rector\Renaming\Rector\FuncCall\RenameFunctionRector;
 use Rector\Set\ValueObject\DowngradeLevelSetList;
 use Rector\Set\ValueObject\LevelSetList;
@@ -104,6 +105,9 @@ return static function (RectorConfig $rectorConfig): void {
         ],
         RemoveExtraParametersRector::class => [
             // __DIR__.'/src/Macros/QueryBuilderMacro.php',
+        ],
+        RemoveInterfacesRector::class => [
+            __DIR__.'/src/Support/helpers.php',
         ],
         ExplicitBoolCompareRector::class => [
             // __DIR__.'/src/JavascriptRenderer.php',
