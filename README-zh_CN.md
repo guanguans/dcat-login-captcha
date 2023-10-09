@@ -11,53 +11,53 @@
 [![Total Downloads](https://poser.pugx.org/guanguans/dcat-login-captcha/downloads)](https:://packagist.org/packages/guanguans/dcat-login-captcha)
 [![License](https://poser.pugx.org/guanguans/dcat-login-captcha/license)](https:://packagist.org/packages/guanguans/dcat-login-captcha)
 
-## Requirement
+## 环境要求
 
 * PHP >= 7.3
 * laravel >= 7.0
 * dcat-admin >= 2.0
 
-## Installation
+## 安装
 
-### Composer installation
+### Composer 安装
 
 ```bash
 composer require guanguans/dcat-login-captcha -v
 ```
 
-### Backend -> Helpers -> Extensions
+### 后台 -> 开发工具 -> 扩展列表
 
-Enable this extension.
+启用本扩展。
 
-## View
+## 视图
 
- example 1                      | example 2                      | example 3                      
+ 示例 1                           | 示例 2                           | 示例 3                           
 --------------------------------|--------------------------------|--------------------------------
  ![example1](docs/example1.png) | ![example2](docs/example2.png) | ![example3](docs/example3.png) 
 
-## Testing
+## 测试
 
 ```bash
 composer test
 ```
 
-## Changelog
+## 变更日志
 
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+请参阅 [CHANGELOG](CHANGELOG.md) 获取最近有关更改的更多信息。
 
-## Contributing
+## 贡献指南
 
-Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
+请参阅 [CONTRIBUTING](.github/CONTRIBUTING.md) 有关详细信息。
 
-## Security Vulnerabilities
+## 安全漏洞
 
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+请查看[我们的安全政策](../../security/policy)了解如何报告安全漏洞。
 
-## Credits
+## 贡献者
 
 * [guanguans](https://github.com/guanguans)
-* [All Contributors](../../contributors)
+* [所有贡献者](../../contributors)
 
-## License
+## 协议
 
-The MIT License (MIT). Please see [License File](LICENSE) for more information.
+MIT 许可证（MIT）。有关更多信息，请参见[协议文件](LICENSE)。
