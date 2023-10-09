@@ -1,121 +1,171 @@
+<!--- BEGIN HEADER -->
 # Changelog
 
-All notable changes to `guanguans/dcat-login-captcha` will be documented in this file.
+All notable changes to this project will be documented in this file.
+<!--- END HEADER -->
 
-## 1.1.0 - 2023-03-20
+<a name="unreleased"></a>
+## [Unreleased]
 
-* chore(deps): update overtrue/phplint to support more versions.
-* update LoginCaptchaServiceProvider.php to merge config correctly(#27).
-* Bump dependabot/fetch-metadata from 1.3.5 to 1.3.6.
-* Bump actions/stale from 6 to 7.
-* Update vimeo/psalm requirement from ^4.0 to ^4.0 || ^5.0.
-* Bump dependabot/fetch-metadata from 1.3.4 to 1.3.5.
-* Bump dependabot/fetch-metadata from 1.3.3 to 1.3.4.
-* Bump actions/stale from 5 to 6.
 
-## 1.0.19 - 2022-09-08
+<a name="2.0.0-rc1"></a>
+## [2.0.0-rc1] - 2023-10-09
+### Docs
+- **BootingHandler.php:** add missing comment
+- **readme:** Update requirements and installation steps
+- **vendor-bin:** Add facade-documenter to composer.json
 
-* Fix loading config.
-* Remove version update migration.
-* Cancel service late registration.
+### Feat
+- **CaptchaBuilder:** add CaptchaBuilder class
+- **monorepo-builder-worker:** Add guanguans/monorepo-builder-worker package
+- **rector:** Add RemoveInterfacesRector
+- **rector:** Add Rector configuration
+- **version:** Add 2.0.0-RC1 version
 
-## 1.0.18 - 2022-09-01
+### Fix
+- **admin:** Handle Dcat login captcha upgrade error
+- **controller:** add return type declaration
+- **tests.yml:** Update PHP versions
+- **xml:** Fix InvalidReturnType and InvalidReturnStatement
 
-* Update to single action controller.
-* Fix setting.
-* Optimize migration file.
+### Refactor
+- **captcha:** Remove captcha.blade.php
+- **lang:** rename login_captcha.php to login-captcha.php
+- **tests:** Refactor TestCase
 
-## 1.0.17 - 2022-08-31
+### Pull Requests
+- Merge pull request [#36](https://github.com/guanguans/monorepo-builder-worker/issues/36) from guanguans/dependabot/github_actions/stefanzweifel/git-auto-commit-action-5
+  - Merge pull request [#34](https://github.com/guanguans/monorepo-builder-worker/issues/34) from guanguans/dependabot/github_actions/codecov/codecov-action-4
+  - Merge pull request [#33](https://github.com/guanguans/monorepo-builder-worker/issues/33) from guanguans/dependabot/github_actions/actions/checkout-4
+  - Merge pull request [#32](https://github.com/guanguans/monorepo-builder-worker/issues/32) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.6.0
+  - Merge pull request [#31](https://github.com/guanguans/monorepo-builder-worker/issues/31) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.5.1
+  - Merge pull request [#30](https://github.com/guanguans/monorepo-builder-worker/issues/30) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.5.0
+  - Merge pull request [#29](https://github.com/guanguans/monorepo-builder-worker/issues/29) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.4.0
+  - Merge pull request [#28](https://github.com/guanguans/monorepo-builder-worker/issues/28) from guanguans/dependabot/github_actions/actions/stale-8
+  
+  
+<a name="v1.1.0"></a>
+## [v1.1.0] - 2023-03-20
+### Docs
+- update CHANGELOG.md for version 1.1.0
 
-* Fix migration file name.
+### Fix
+- **src:** update LoginCaptchaServiceProvider.php to merge config correctly([#27](https://github.com/guanguans/monorepo-builder-worker/issues/27))
 
-## 1.0.16 - 2022-08-31
+### Pull Requests
+- Merge pull request [#26](https://github.com/guanguans/monorepo-builder-worker/issues/26) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0or-tw-4.0or-tw-9.0
+  - Merge pull request [#25](https://github.com/guanguans/monorepo-builder-worker/issues/25) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.3.6
+  - Merge pull request [#24](https://github.com/guanguans/monorepo-builder-worker/issues/24) from guanguans/dependabot/github_actions/actions/stale-7
+  - Merge pull request [#23](https://github.com/guanguans/monorepo-builder-worker/issues/23) from guanguans/dependabot/composer/vimeo/psalm-tw-4.0or-tw-5.0
+  - Merge pull request [#22](https://github.com/guanguans/monorepo-builder-worker/issues/22) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.3.5
+  - Merge pull request [#21](https://github.com/guanguans/monorepo-builder-worker/issues/21) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.3.4
+  - Merge pull request [#20](https://github.com/guanguans/monorepo-builder-worker/issues/20) from guanguans/dependabot/github_actions/actions/stale-6
+  
+  
+<a name="v1.0.19"></a>
+## [v1.0.19] - 2022-09-08
 
-* Add migration files.
+<a name="v1.0.18"></a>
+## [v1.0.18] - 2022-09-01
 
-## 1.0.15 - 2022-08-24
+<a name="v1.0.17"></a>
+## [v1.0.17] - 2022-08-31
 
-* Fix captcha check.
+<a name="v1.0.16"></a>
+## [v1.0.16] - 2022-08-31
 
-## 1.0.14 - 2022-07-13
+<a name="v1.0.15"></a>
+## [v1.0.15] - 2022-08-24
+### Pull Requests
+- Merge pull request [#17](https://github.com/guanguans/monorepo-builder-worker/issues/17) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.3.3
+  
+  
+<a name="v1.0.14"></a>
+## [v1.0.14] - 2022-07-13
 
-* Rename login_captcha_get -> login_captcha_content.
-* Update github config files.
+<a name="v1.0.13"></a>
+## [v1.0.13] - 2022-05-03
 
-## 1.0.13 - 2022-05-03
+<a name="v1.0.12"></a>
+## [v1.0.12] - 2022-04-06
+### Pull Requests
+- Merge pull request [#14](https://github.com/guanguans/monorepo-builder-worker/issues/14) from guanguans/dependabot/github_actions/codecov/codecov-action-3
+  
+  
+<a name="v1.0.11"></a>
+## [v1.0.11] - 2022-04-01
+### Pull Requests
+- Merge pull request [#13](https://github.com/guanguans/monorepo-builder-worker/issues/13) from guanguans/dependabot/github_actions/actions/cache-3
+  - Merge pull request [#12](https://github.com/guanguans/monorepo-builder-worker/issues/12) from guanguans/dependabot/github_actions/actions/checkout-3
+  - Merge pull request [#11](https://github.com/guanguans/monorepo-builder-worker/issues/11) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0or-tw-4.0
+  
+  
+<a name="v1.0.10"></a>
+## [v1.0.10] - 2021-11-09
 
-* Update JS.
+<a name="v1.0.9"></a>
+## [v1.0.9] - 2021-10-17
+### Pull Requests
+- Merge pull request [#10](https://github.com/guanguans/monorepo-builder-worker/issues/10) from guanguans/dependabot/github_actions/codecov/codecov-action-2.1.0
+  - Merge pull request [#9](https://github.com/guanguans/monorepo-builder-worker/issues/9) from guanguans/dependabot/composer/phpunit/phpunit-tw-7.0or-tw-8.0or-tw-9.0
+  
+  
+<a name="v1.0.8"></a>
+## [v1.0.8] - 2021-09-13
 
-## 1.0.12 - 2022-04-06
+<a name="v1.0.7"></a>
+## [v1.0.7] - 2021-07-31
 
-* Bump codecov/codecov-action from 2.1.0 to 3.
-* Update author info.
+<a name="v1.0.6"></a>
+## [v1.0.6] - 2021-07-26
 
-## 1.0.11 - 2022-04-01
+<a name="v1.0.5"></a>
+## [v1.0.5] - 2021-07-23
 
-* Rename `phrase_session_key` -> `captcha_phrase_session_key`.
-* Generate captcha random url.
-* Replace `Closure routing` -> `CaptchaController`.
-* Bump actions/cache from 2 to 3.
-* Bump actions/checkout from 2 to 3.
-* Update overtrue/phplint requirement from ^2.3 || ^3.0 to ^2.3 || ^3.0 || ^4.0.
+<a name="v1.0.4"></a>
+## [v1.0.4] - 2021-07-23
+### Pull Requests
+- Merge pull request [#7](https://github.com/guanguans/monorepo-builder-worker/issues/7) from guanguans/imgbot
+  
+  
+<a name="v1.0.3"></a>
+## [v1.0.3] - 2021-07-23
 
-## 1.0.10 - 2021-11-9
+<a name="v1.0.2"></a>
+## [v1.0.2] - 2021-07-23
 
-* Compatible callback type.
+<a name="v1.0.1"></a>
+## [v1.0.1] - 2021-07-23
 
-## 1.0.9 - 2021-10-17
-
-* Add parameters to the `SetResponseContentType` middleware.
-* Update github config files.
-* Update phpunit/phpunit requirement from ^7.0 || ^8.0 to ^7.0 || ^8.0 || ^9.0.
-* Optimize booting `BootingHandler`.
-* Optimize setting form .
-
-## 1.0.8 - 2021-09-13
-
-* Fix cant match routing path(#8).
-
-## 1.0.7 - 2021-07-31
-
-* Optimize `buildCaptchaJsScript`.
-
-## 1.0.6 - 2021-07-26
-
-* Rename src/BootingAdmin.php -> src/BootingHandler.php.
-* Remove src/Http/Controllers/CaptchaController.php`.
-
-## 1.0.5 - 2021-07-23
-
-* Add BootingAdmin.
-
-## 1.0.4 - 2021-07-23
-
-* Add SetResponseContentType Middleware.
-* Add content type setting config.
-
-## 1.0.3 - 2021-07-23
-
-* Add CleanObContents Middleware.
-
-## 1.0.2 - 2021-07-23
-
-* Add login_captcha_get function.
-* Update lang files.
-* Update extension alias and description.
-* Optimize LoginCaptchaServiceProvider.
-* Optimize setting form.
-
-## 1.0.1 - 2021-07-23
-
-* Add default config file.
-* Add annotation for facades.
-* Optimize `login_captcha_check` function.
-* Optimize captcha generate.
-* Optimize get setting config.
-* Rename `dcat_login_captcha_check`->`login_captcha_check`.
-* Rename `dcat_login_captcha_url`->`login_captcha_url`.
-
-## 1.0.0 - 2021-07-23
-
-* Initial release.
+<a name="v1.0.0"></a>
+## v1.0.0 - 2021-07-23
+### Pull Requests
+- Merge pull request [#5](https://github.com/guanguans/monorepo-builder-worker/issues/5) from guanguans/dependabot/composer/friendsofphp/php-cs-fixer-tw-2.17or-tw-3.0
+  - Merge pull request [#4](https://github.com/guanguans/monorepo-builder-worker/issues/4) from guanguans/imgbot
+  - Merge pull request [#3](https://github.com/guanguans/monorepo-builder-worker/issues/3) from guanguans/imgbot
+  - Merge pull request [#1](https://github.com/guanguans/monorepo-builder-worker/issues/1) from guanguans/dependabot/composer/vimeo/psalm-tw-3.11or-tw-4.0
+  - Merge pull request [#2](https://github.com/guanguans/monorepo-builder-worker/issues/2) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0
+  
+  
+[Unreleased]: https://github.com/guanguans/monorepo-builder-worker/compare/2.0.0-rc1...HEAD
+[2.0.0-rc1]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.1.0...2.0.0-rc1
+[v1.1.0]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.19...v1.1.0
+[v1.0.19]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.18...v1.0.19
+[v1.0.18]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.17...v1.0.18
+[v1.0.17]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.16...v1.0.17
+[v1.0.16]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.15...v1.0.16
+[v1.0.15]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.14...v1.0.15
+[v1.0.14]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.13...v1.0.14
+[v1.0.13]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.12...v1.0.13
+[v1.0.12]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.11...v1.0.12
+[v1.0.11]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.10...v1.0.11
+[v1.0.10]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.9...v1.0.10
+[v1.0.9]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.8...v1.0.9
+[v1.0.8]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.7...v1.0.8
+[v1.0.7]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.6...v1.0.7
+[v1.0.6]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.5...v1.0.6
+[v1.0.5]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.4...v1.0.5
+[v1.0.4]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.3...v1.0.4
+[v1.0.3]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.2...v1.0.3
+[v1.0.2]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.1...v1.0.2
+[v1.0.1]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.0...v1.0.1
