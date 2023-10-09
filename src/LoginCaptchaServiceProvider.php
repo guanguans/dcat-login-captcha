@@ -72,6 +72,15 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         return $this;
     }
 
+    /**
+     * 初始化配置.
+     */
+    protected function initConfig(): void
+    {
+        parent::initConfig();
+        $this->config = $this->config ?: require __DIR__.'/../config/login-captcha.php';
+    }
+
     protected function registerPhraseBuilder(): self
     {
         $this->app->singleton(PhraseBuilder::class, static function (): PhraseBuilder {

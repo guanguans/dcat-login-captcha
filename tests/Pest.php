@@ -10,9 +10,7 @@ declare(strict_types=1);
  * This source file is subject to the MIT license that is bundled.
  */
 
-namespace Tests;
-
-use Guanguans\DcatLoginCaptcha\Tests\TestCase;
+namespace Guanguans\DcatLoginCaptcha\Tests;
 
 uses(TestCase::class)
     ->beforeAll(function (): void {

@@ -10,9 +10,10 @@ declare(strict_types=1);
  * This source file is subject to the MIT license that is bundled.
  */
 
-namespace Guanguans\DcatLoginCaptcha\Tests;
+namespace Guanguans\DcatLoginCaptcha\Tests\Facades;
 
-it('is true', function (): void {
-    expect(true)->toBeTrue();
-    $this->markTestIncomplete('This test has not been implemented yet.');
+use Guanguans\DcatLoginCaptcha\Facades\CaptchaBuilder;
+
+it('can get captcha content', function (): void {
+    expect(CaptchaBuilder::get())->toBeString();
 })->group(__DIR__, __FILE__);
