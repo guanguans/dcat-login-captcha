@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.30.0@d0bc6e25d89f649e4f36a534f330f8bb4643dd69">
+  <file src="src/Http/Controllers/CaptchaController.php">
+    <InvalidReturnType occurrences="1">
+      <code>Response</code>
+    </InvalidReturnType>
+    <InvalidReturnStatement occurrences="1">
+      <code>response(login_captcha_content())</code>
+    </InvalidReturnStatement>
+  </file>
   <file src="src/LoginCaptchaServiceProvider.php">
     <InvalidArgument occurrences="1">
       <code>(array) static::setting() + (array) config('login-captcha', [])</code>
@@ -10,13 +18,13 @@
   </file>
   <file src="src/Setting.php">
     <InvalidReturnType occurrences="1">
-      <code>title</code>
+      <code>string</code>
     </InvalidReturnType>
     <NullableReturnStatement occurrences="1">
-      <code>$this-&gt;trans('login_captcha.setting')</code>
+      <code>$this-&gt;trans('login-captcha.setting')</code>
     </NullableReturnStatement>
     <InvalidReturnStatement occurrences="1">
-      <code>$this-&gt;trans('login_captcha.setting')</code>
+      <code>$this-&gt;trans('login-captcha.setting')</code>
     </InvalidReturnStatement>
     <UndefinedMagicMethod occurrences="1">
       <code>rows</code>
