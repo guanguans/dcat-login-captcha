@@ -102,6 +102,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
                 static::setting('font'),
                 static::setting('fingerprint')
             );
+
             return $captchaBuilder;
         });
 
