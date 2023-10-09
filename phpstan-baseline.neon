@@ -3,17 +3,17 @@ parameters:
 		-
 			message: "#^Function login_captcha_content\\(\\) should return string but returns void\\.$#"
 			count: 1
-			path: src/helpers.php
+			path: src/Support/helpers.php
 
 		-
 			message: "#^Result of static method Guanguans\\\\DcatLoginCaptcha\\\\Facades\\\\CaptchaBuilder\\:\\:get\\(\\) \\(void\\) is used\\.$#"
 			count: 1
-			path: src/helpers.php
+			path: src/Support/helpers.php
 
 		-
 			message: "#^Result of static method Guanguans\\\\DcatLoginCaptcha\\\\Facades\\\\CaptchaBuilder\\:\\:getPhrase\\(\\) \\(void\\) is used\\.$#"
 			count: 1
-			path: src/helpers.php
+			path: src/Support/helpers.php
 
 		-
 			message: "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$value\\.$#"
