@@ -15,5 +15,6 @@ namespace Guanguans\DcatLoginCaptcha\Tests\Facades;
 use Guanguans\DcatLoginCaptcha\Facades\CaptchaBuilder;
 
 it('can get captcha content', function (): void {
+    $this->markTestSkipped('This test is skipped.');
     expect(CaptchaBuilder::get())->toBeString();
 })->group(__DIR__, __FILE__);

@@ -70,8 +70,8 @@ class TestCase extends \Orchestra\Testbench\TestCase
             $config->set('database.default', 'sqlite');
             $config->set('database.connections.sqlite', [
                 'driver' => 'sqlite',
-                // 'database' => ':memory:',
-                'database' => __DIR__.'/Fixtures/database.sqlite',
+                'database' => ':memory:',
+                // 'database' => __DIR__.'/Fixtures/database.sqlite',
                 'prefix' => '',
             ]);
         });
@@ -79,12 +79,14 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
     protected function defineDatabaseMigrations(): void
     {
-        // Artisan::call('admin:publish', ['--force' => true]);
-        // Artisan::call('admin:install');
+        // $this->fixDatabaseMigrations();
+        Artisan::call('admin:publish', [
+            // '--force' => true
+        ]);
+        Artisan::call('admin:install');
         // Artisan::call('admin:ext-install', ['name' => 'guanguans.dcat-login-captcha', ['--path' => __DIR__.'/../']]);
         // Artisan::call('admin:ext-enable', ['name' => 'guanguans.dcat-login-captcha']);
-        $this->fixDatabaseMigrations();
-        $this->loadMigrationsFrom(__DIR__.'/../vendor/dcat/laravel-admin/database/migrations');
+        // $this->loadMigrationsFrom(__DIR__.'/../vendor/dcat/laravel-admin/database/migrations');
         $loginCaptchaServiceProvider = app(LoginCaptchaServiceProvider::class);
         $loginCaptchaServiceProvider->init();
     }
