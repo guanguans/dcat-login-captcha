@@ -40,9 +40,9 @@ class TestCase extends \Orchestra\Testbench\TestCase
 {
     // use DatabaseTransactions;
     // use RefreshDatabase;
+    // use WithWorkbench;
     use MockeryPHPUnitIntegration;
     use VarDumperTestTrait;
-    use WithWorkbench;
 
     protected function setUp(): void
     {

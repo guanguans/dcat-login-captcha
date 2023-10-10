@@ -12,18 +12,11 @@ declare(strict_types=1);
 
 namespace Guanguans\DcatLoginCaptcha;
 
-use Dcat\Admin\Http\JsonResponse;
-
 class Setting extends \Dcat\Admin\Extend\Setting
 {
     public function title(): string
     {
         return $this->trans('login-captcha.setting');
-    }
-
-    public function handle(array $input): JsonResponse
-    {
-        return parent::handle($input);
     }
 
     public function form(): void
@@ -63,7 +56,7 @@ class Setting extends \Dcat\Admin\Extend\Setting
 
     protected function formatInput(array $input): array
     {
-        $input['font'] = $input['font'] ?: null;
+        $input['font'] = $input['font'] ?? null ?: null;
 
         return $input;
     }
