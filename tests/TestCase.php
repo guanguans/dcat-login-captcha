@@ -48,12 +48,33 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         parent::setUp();
         $this->startMockery();
+        $this->install();
     }
 
     protected function tearDown(): void
     {
         $this->closeMockery();
         parent::tearDown();
+    }
+
+    /**
+     * @noinspection ForgottenDebugOutputInspection
+     * @noinspection DebugFunctionUsageInspection
+     */
+    protected function install(): void
+    {
+        try {
+            // $this->fixDatabaseMigrations();
+            // $this->loadMigrationsFrom(__DIR__.'/../vendor/dcat/laravel-admin/database/migrations');
+            Artisan::call('admin:publish', ['--force' => false]);
+            Artisan::call('admin:install');
+            // Artisan::call('admin:ext-install', ['name' => 'guanguans.dcat-login-captcha', ['--path' => __DIR__.'/../']]);
+            // Artisan::call('admin:ext-enable', ['name' => 'guanguans.dcat-login-captcha']);
+            $loginCaptchaServiceProvider = app(LoginCaptchaServiceProvider::class);
+            $loginCaptchaServiceProvider->init();
+        } catch (\Throwable $throwable) {
+            dump($throwable->getMessage());
+        }
     }
 
     protected function getPackageProviders($app): array
@@ -77,24 +98,16 @@ class TestCase extends \Orchestra\Testbench\TestCase
         });
     }
 
-    protected function defineDatabaseMigrations(): void
+    protected function defineRoutes($router): void
     {
-        // $this->fixDatabaseMigrations();
-        Artisan::call('admin:publish', [
-            // '--force' => true
-        ]);
-        Artisan::call('admin:install');
-        // Artisan::call('admin:ext-install', ['name' => 'guanguans.dcat-login-captcha', ['--path' => __DIR__.'/../']]);
-        // Artisan::call('admin:ext-enable', ['name' => 'guanguans.dcat-login-captcha']);
-        // $this->loadMigrationsFrom(__DIR__.'/../vendor/dcat/laravel-admin/database/migrations');
-        $loginCaptchaServiceProvider = app(LoginCaptchaServiceProvider::class);
-        $loginCaptchaServiceProvider->init();
+        Route::get('foo/bar', static function (): void {
+        })->name('dcat.admin.foo.bar');
     }
 
     protected function fixDatabaseMigrations(): void
     {
-        $traverser = new NodeTraverser();
-        $traverser->addVisitor(new class() extends NodeVisitorAbstract {
+        $nodeTraverser = new NodeTraverser();
+        $nodeTraverser->addVisitor(new class() extends NodeVisitorAbstract {
             public function enterNode(Node $node): void
             {
                 if ($node instanceof \PhpParser\Node\Expr\Closure) {
@@ -119,13 +132,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
         $migratedFile = __DIR__.'/../vendor/dcat/laravel-admin/database/migrations/2020_11_01_083237_update_admin_menu_table.php';
         $stmts = (new ParserFactory())->create(1)->parse(File::get($migratedFile));
-        $traverser->traverse($stmts);
+        $nodeTraverser->traverse($stmts);
         File::put($migratedFile, (new Standard())->prettyPrintFile($stmts));
-    }
-
-    protected function defineRoutes($router): void
-    {
-        Route::get('foo/bar', static function (): void {
-        })->name('dcat.admin.foo.bar');
     }
 }
