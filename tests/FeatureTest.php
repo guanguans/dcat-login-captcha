@@ -12,7 +12,8 @@ declare(strict_types=1);
 
 namespace Guanguans\DcatLoginCaptcha\Tests;
 
-it('is true', function (): void {
-    expect(true)->toBeTrue();
-    $this->markTestIncomplete('This test has not been implemented yet.');
+it('can generate login captcha', function (): void {
+    $this->get('admin/captcha/generate')
+        ->assertOk()
+        ->assertHeader('Content-Type', 'image/png');
 })->group(__DIR__, __FILE__);
