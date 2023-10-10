@@ -17,7 +17,8 @@ it('can check login captcha', function (): void {
 })->group(__DIR__, __FILE__);
 
 it('can get login captcha url', function (): void {
-    expect(login_captcha_url('captcha.generate'))->toBeString();
+    expect(login_captcha_url('foo.bar'))->toBeString();
+    expect(login_captcha_url())->toBeString();
 })->group(__DIR__, __FILE__);
 
 it('can get login captcha content', function (): void {

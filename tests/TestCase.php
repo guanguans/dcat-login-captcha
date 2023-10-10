@@ -12,14 +12,22 @@ declare(strict_types=1);
 
 namespace Guanguans\DcatLoginCaptcha\Tests;
 
+use Dcat\Admin\Admin;
 use Dcat\Admin\AdminServiceProvider;
 use Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider;
 use Illuminate\Config\Repository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Orchestra\Testbench\Concerns\WithWorkbench;
+use PhpParser\Node;
+use PhpParser\NodeTraverser;
+use PhpParser\NodeVisitorAbstract;
+use PhpParser\ParserFactory;
+use PhpParser\PrettyPrinter\Standard;
 use Symfony\Component\VarDumper\Test\VarDumperTestTrait;
 
 /**
@@ -71,12 +79,53 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
     protected function defineDatabaseMigrations(): void
     {
-        // $this->loadMigrationsFrom(__DIR__.'/../vendor/dcat/laravel-admin/database/migrations');
+        $this->fixDatabaseMigrations();
+        $this->loadMigrationsFrom(__DIR__.'/../vendor/dcat/laravel-admin/database/migrations');
+    }
+
+    protected function fixDatabaseMigrations(): void
+    {
+        $traverser = new NodeTraverser();
+        $traverser->addVisitor(new class() extends NodeVisitorAbstract {
+            public function enterNode(Node $node): void
+            {
+                if ($node instanceof \PhpParser\Node\Expr\Closure) {
+                    $expr = $node->stmts[0]->expr;
+                    if (
+                        $expr instanceof Node\Expr\MethodCall
+                        && $expr->var instanceof Node\Expr\Variable
+                        && 'table' === $expr->var->name
+                        && 'dropColumn' === $expr->name->name
+                        && $expr->args[0]->value instanceof Node\Scalar\String_
+                    ) {
+                        $expr->args[0]->value = new Node\Expr\Array_([
+                            new Node\Scalar\String_('show'),
+                            new Node\Scalar\String_('extension'),
+                        ]);
+
+                        unset($node->stmts[1]);
+                    }
+                }
+            }
+        });
+
+        $migratedFile = __DIR__.'/../vendor/dcat/laravel-admin/database/migrations/2020_11_01_083237_update_admin_menu_table.php';
+        $stmts = (new ParserFactory())->create(1)->parse(File::get($migratedFile));
+        $traverser->traverse($stmts);
+        File::put($migratedFile, (new Standard())->prettyPrintFile($stmts));
     }
 
     protected function defineRoutes($router): void
     {
+        // Artisan::call('admin:publish', ['--force' => true]);
+        // Artisan::call('admin:install');
+        // Artisan::call('admin:ext-install', ['name' => 'guanguans.dcat-login-captcha', ['--path' => __DIR__.'/../']]);
+        // Artisan::call('admin:ext-enable', ['name' => 'guanguans.dcat-login-captcha']);
+
         Route::get('captcha/generate', static function (): void {
         })->name('dcat.admin.captcha.generate');
+
+        Route::get('foo/bar', static function (): void {
+        })->name('dcat.admin.foo.bar');
     }
 }
