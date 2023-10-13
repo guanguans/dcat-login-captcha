@@ -132,4 +132,14 @@ return [
         'Merge pull request [#29](https://github.com/guanguans/monorepo-builder-worker/issues/29) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.4.0',
         'Merge pull request [#28](https://github.com/guanguans/monorepo-builder-worker/issues/28) from guanguans/dependabot/github_actions/actions/stale-8',
     ],
+    '2.0.0-RC2' => [
+        'src: Add initConfig method',
+        'tests: Install and enable login captcha extension',
+        'tests: Update test database',
+        'setting: remove unused handle method',
+        'tests: Refactor defineDatabaseMigrations method',
+        'FeatureTest: can generate login captcha',
+        'Support: can check login captcha',
+        'TestCase: Fix database migrations',
+    ],
 ];
