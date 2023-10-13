@@ -32,7 +32,8 @@ class LoginCaptchaServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        $this->registerPhraseBuilder()
+        $this->setupConfig()
+            ->registerPhraseBuilder()
             ->registerCaptchaBuilder();
     }
 
@@ -66,8 +67,10 @@ class LoginCaptchaServiceProvider extends ServiceProvider
      */
     protected function setupConfig(): self
     {
-        $this->mergeConfigFrom(realpath($raw = __DIR__.'/../config/login-captcha.php') ?: $raw, 'login-captcha');
-        static::setting((array) static::setting() + (array) config('login-captcha', []));
+        $this->mergeConfigFrom(
+            realpath($raw = __DIR__.'/../config/login-captcha.php') ?: $raw,
+            'login-captcha'
+        );
 
         return $this;
     }
@@ -78,7 +81,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     protected function initConfig(): void
     {
         parent::initConfig();
-        $this->config = $this->config ?: require __DIR__.'/../config/login-captcha.php';
+        $this->config = $this->config ?: config('login-captcha', []);
     }
 
     protected function registerPhraseBuilder(): self
