@@ -8,6 +8,29 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+<a name="2.0.0-rc2"></a>
+## [2.0.0-rc2] - 2023-10-13
+### Feat
+- **src:** Add initConfig method
+- **tests:** Install and enable login captcha extension
+
+### Fix
+- **tests:** Update test database
+
+### Refactor
+- **setting:** remove unused handle method
+- **tests:** Refactor defineDatabaseMigrations method
+
+### Test
+- **FeatureTest:** can generate login captcha
+- **Support:** can check login captcha
+- **TestCase:** Fix database migrations
+
+### Pull Requests
+- Merge pull request [#37](https://github.com/guanguans/monorepo-builder-worker/issues/37) from guanguans/dependabot/github_actions/actions/checkout-4
+  - Merge pull request [#38](https://github.com/guanguans/monorepo-builder-worker/issues/38) from guanguans/dependabot/github_actions/stefanzweifel/git-auto-commit-action-5
+  
+  
 <a name="2.0.0-rc1"></a>
 ## [2.0.0-rc1] - 2023-10-09
 ### Docs
@@ -147,7 +170,8 @@ All notable changes to this project will be documented in this file.
   - Merge pull request [#2](https://github.com/guanguans/monorepo-builder-worker/issues/2) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0
   
   
-[Unreleased]: https://github.com/guanguans/monorepo-builder-worker/compare/2.0.0-rc1...HEAD
+[Unreleased]: https://github.com/guanguans/monorepo-builder-worker/compare/2.0.0-rc2...HEAD
+[2.0.0-rc2]: https://github.com/guanguans/monorepo-builder-worker/compare/2.0.0-rc1...2.0.0-rc2
 [2.0.0-rc1]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.1.0...2.0.0-rc1
 [v1.1.0]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.19...v1.1.0
 [v1.0.19]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.18...v1.0.19
