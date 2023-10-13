@@ -14,13 +14,20 @@ namespace Guanguans\DcatLoginCaptcha;
 
 use Dcat\Admin\Admin;
 use Dcat\Admin\Extend\ServiceProvider;
+use Dcat\Admin\Support\Helper;
+use Dcat\Admin\Traits\HasFormResponse;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\MessageBag;
 use Illuminate\Support\Str;
 
 class LoginCaptchaServiceProvider extends ServiceProvider
 {
+    use HasFormResponse;
+
     /** @var bool */
     protected $defer = false;
 
@@ -81,7 +88,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     protected function initConfig(): void
     {
         parent::initConfig();
-        $this->config = $this->config ?: config('login-captcha', []);
+        $this->config += config('login-captcha', []);
     }
 
     protected function registerPhraseBuilder(): self
@@ -135,9 +142,44 @@ class LoginCaptchaServiceProvider extends ServiceProvider
      */
     protected function bootingAdmin(): self
     {
-        Admin::booting($this->app->make(BootingHandler::class));
+        Admin::booting(function (): void {
+            $loginPath = ltrim(admin_base_path('auth/login'), '/');
+            if (Helper::matchRequestPath("GET:$loginPath")) {
+                Admin::script($this->buildScript());
+            }
+
+            if (Helper::matchRequestPath("POST:$loginPath")) {
+                $validator = Validator::make(Request::post(), [
+                    'captcha' => 'required|dcat_login_captcha',
+                ]);
+
+                $validator->fails() and $this->throwHttpResponseException($validator);
+            }
+        });
 
         return $this;
+    }
+
+    /**
+     * @psalm-suppress InvalidArgument
+     */
+    protected function buildScript(): string
+    {
+        $replacedRules = [
+            '{{captchaUrl}}' => login_captcha_url(),
+            '{{captchaLang}}' => self::trans('login-captcha.captcha'),
+            '{{refreshCaptchaLang}}' => self::trans('login-captcha.refresh_captcha'),
+        ];
+
+        return str_replace(array_keys($replacedRules), $replacedRules, static::setting('script'));
+    }
+
+    /**
+     * @param array|\Illuminate\Validation\Validator|MessageBag $validationMessages
+     */
+    protected function throwHttpResponseException($validationMessages): void
+    {
+        throw new HttpResponseException($this->validationErrorsResponse($validationMessages));
     }
 
     /**
