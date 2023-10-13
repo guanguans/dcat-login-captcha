@@ -48,31 +48,31 @@ class BootingHandler
             LoginCaptchaServiceProvider::trans('login-captcha.refresh_captcha'),
         ];
 
-        return /** @lang JavaScript */ <<<JS
+        return <<<JS
             (function () {
-                captchaHtml = `
-            <fieldset class="form-label-group form-group position-relative has-icon-left dcat-login-captcha">
-                <input id="captcha" class="form-control" type="text" style="width: 61%;" name="captcha" placeholder="$captchaLang" required>
-                <span class="captcha-img" style="width: 37%;height: 33.5px;position: absolute;top: 0;right: 0;border-radius: .25rem;border: 1px solid #dbe3e6;">
+              const captchaDOM = `
+                <fieldset class="form-label-group form-group position-relative has-icon-left dcat-login-captcha">
+                  <input id="captcha" class="form-control" type="text" style="width: 61%;" name="captcha" placeholder="$captchaLang" required>
+                  <span class="captcha-img" style="width: 37%;height: 33.5px;position: absolute;top: 0;right: 0;border-radius: .25rem;border: 1px solid #dbe3e6;">
                     <img id="verify" class="captcha" src="$captchaUrl" data-src="$captchaUrl" alt="$captchaLang" title="$refreshCaptchaLang" style="cursor: pointer;width: 100%;height: 100%;border-radius: .25rem;">
-                </span>
-                <div class="form-control-position"><i class="feather icon-image"></i></div>
-                <label for="captcha">$captchaLang</label>
-                <div class="help-block with-errors"></div>
-            </fieldset>
-            `;
+                  </span>
+                  <div class="form-control-position"><i class="feather icon-image"></i></div>
+                  <label for="captcha">$captchaLang</label>
+                  <div class="help-block with-errors"></div>
+                </fieldset>
+              `;
 
-                $(captchaHtml).insertAfter($("#login-form fieldset.form-label-group").get(1));
+              $(captchaDOM).insertAfter($('#login-form fieldset.form-label-group').get(1));
 
-                $("#verify").click(function () {
-                    $(this).attr("src", $(this).data("src").replace(/\\?.*$/, "") + "?" + Math.random());
-                });
+              $('#verify').click(function () {
+                $(this).attr('src', $(this).data('src').replace(/\\?.*$/, '') + '?' + Math.random());
+              });
 
-                $(".dcat-login-captcha .with-errors").bind("DOMNodeInserted", function () {
-                    if ($("#captcha").val() !== "" && $(this).html().length > 0) {
-                        $("#verify").trigger("click");
-                    }
-                });
+              $('.dcat-login-captcha .with-errors').bind('DOMNodeInserted', function () {
+                if ($('#captcha').val() !== '' && $(this).html().length > 0) {
+                  $("#verify").trigger("click");
+                }
+              });
             })();
             JS;
     }
