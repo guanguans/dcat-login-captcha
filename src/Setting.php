@@ -50,8 +50,8 @@ class Setting extends \Dcat\Admin\Extend\Setting
         $this->text('font', LoginCaptchaServiceProvider::trans('login-captcha.font'))
             ->rules('nullable|file');
 
-        $this->hidden('fingerprint', LoginCaptchaServiceProvider::trans('login-captcha.fingerprint'));
-        $this->hidden('captcha_phrase_session_key', LoginCaptchaServiceProvider::trans('login-captcha.captcha_phrase_session_key'));
+        // $this->hidden('fingerprint', LoginCaptchaServiceProvider::trans('login-captcha.fingerprint'));
+        // $this->hidden('captcha_phrase_session_key', LoginCaptchaServiceProvider::trans('login-captcha.captcha_phrase_session_key'));
     }
 
     protected function formatInput(array $input): array

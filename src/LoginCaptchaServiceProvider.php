@@ -29,12 +29,6 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     /** @var bool */
     protected $defer = false;
 
-    /** @var array<string, string> */
-    protected $exceptRoutes = [
-        'auth' => 'captcha/generate',
-        'permission' => 'captcha/generate',
-    ];
-
     public function register(): void
     {
         $this->setupConfig()
@@ -44,6 +38,11 @@ class LoginCaptchaServiceProvider extends ServiceProvider
 
     public function init(): void
     {
+        $this->exceptRoutes = [
+            'auth' => $uri = self::setting('route.uri'),
+            'permission' => $uri,
+        ];
+
         parent::init();
 
         $this->setupConfig()
@@ -74,9 +73,13 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     protected function setupConfig(): self
     {
         $this->mergeConfigFrom(
-            realpath($raw = __DIR__.'/../config/login-captcha.php') ?: $raw,
+            $source = realpath($raw = __DIR__.'/../config/login-captcha.php') ?: $raw,
             'login-captcha'
         );
+
+        if ($this->app->runningInConsole()) {
+            $this->publishes([$source => config_path('login-captcha.php')], 'dcat-login-captcha');
+        }
 
         return $this;
     }
@@ -84,9 +87,10 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     protected function publishView(): self
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([
-                $this->getViewPath() => resource_path(sprintf('views/vendor/%s', $this->getName())),
-            ]);
+            $this->publishes(
+                [$this->getViewPath() => resource_path(sprintf('views/vendor/%s', $this->getName()))],
+                'dcat-login-captcha'
+            );
         }
 
         return $this;

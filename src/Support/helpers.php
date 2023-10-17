@@ -34,7 +34,10 @@ if (! function_exists('login_captcha_url')) {
      */
     function login_captcha_url(?string $routeName = null): string
     {
-        return admin_route($routeName ?? 'captcha.generate', ['random' => Str::random()]);
+        return admin_route(
+            $routeName ?? LoginCaptchaServiceProvider::setting('route.name'),
+            ['random' => Str::random()]
+        );
     }
 }
 
