@@ -16,17 +16,17 @@ use Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider;
 use Guanguans\DcatLoginCaptcha\Setting;
 use Illuminate\Support\Facades\Validator;
 
-it('can return provides', function (): void {
+it('can get provides', function (): void {
     expect(new LoginCaptchaServiceProvider(app()))
         ->provides()->toBeArray();
 })->group(__DIR__, __FILE__);
 
-it('can return setting form', function (): void {
+it('can get setting form', function (): void {
     expect(new LoginCaptchaServiceProvider(app()))
         ->settingForm()->toBeInstanceOf(Setting::class);
 })->group(__DIR__, __FILE__);
 
-it('can check dcat_login_captcha rule', function (): void {
+it('can check `dcat_login_captcha` rule', function (): void {
     expect(Validator::make(['captcha' => 'foo'], ['captcha' => 'dcat_login_captcha']))
         ->fails()->toBeTrue();
 })->group(__DIR__, __FILE__);

@@ -20,7 +20,6 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Route;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use PhpParser\Node;
@@ -70,8 +69,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
             Artisan::call('admin:install');
             // Artisan::call('admin:ext-install', ['name' => 'guanguans.dcat-login-captcha', ['--path' => __DIR__.'/../']]);
             // Artisan::call('admin:ext-enable', ['name' => 'guanguans.dcat-login-captcha']);
-            $loginCaptchaServiceProvider = app(LoginCaptchaServiceProvider::class);
-            $loginCaptchaServiceProvider->init();
+            app(LoginCaptchaServiceProvider::class)->init();
         } catch (\Throwable $throwable) {
             dump($throwable->getMessage());
         }
@@ -96,12 +94,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
                 'prefix' => '',
             ]);
         });
-    }
-
-    protected function defineRoutes($router): void
-    {
-        Route::get('foo/bar', static function (): void {
-        })->name('dcat.admin.foo.bar');
     }
 
     protected function fixDatabaseMigrations(): void

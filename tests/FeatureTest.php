@@ -12,8 +12,10 @@ declare(strict_types=1);
 
 namespace Guanguans\DcatLoginCaptcha\Tests;
 
+use Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider;
+
 it('can generate login captcha', function (): void {
-    $this->get('admin/captcha/generate')
+    $this->get(admin_base_path(LoginCaptchaServiceProvider::setting('route.uri')))
         ->assertOk()
-        ->assertHeader('Content-Type', 'image/png');
+        ->assertHeader('Content-Type', sprintf('image/%s', LoginCaptchaServiceProvider::setting('type')));
 })->group(__DIR__, __FILE__);
