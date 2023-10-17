@@ -16,12 +16,10 @@ use Dcat\Admin\Admin;
 use Dcat\Admin\Extend\ServiceProvider;
 use Dcat\Admin\Support\Helper;
 use Dcat\Admin\Traits\HasFormResponse;
-use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\MessageBag;
 use Illuminate\Support\Str;
 
 class LoginCaptchaServiceProvider extends ServiceProvider
@@ -51,7 +49,11 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         $this->setupConfig()
             ->loadMigrations()
             ->extendValidator()
-            ->bootingAdmin();
+            ->bootingCaptcha();
+
+        $this->publishes([
+            $this->getViewPath() => resource_path(sprintf('views/vendor/%s', $this->getName())),
+        ]);
     }
 
     public function provides(): array
@@ -138,14 +140,15 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     }
 
     /**
-     * @throws BindingResolutionException
+     * @psalm-suppress InvalidCast
+     * @psalm-suppress InvalidArgument
      */
-    protected function bootingAdmin(): self
+    protected function bootingCaptcha(): self
     {
         Admin::booting(function (): void {
             $loginPath = ltrim(admin_base_path('auth/login'), '/');
             if (Helper::matchRequestPath("GET:$loginPath")) {
-                Admin::script($this->buildScript());
+                Admin::script((string) view(sprintf('%s::captcha', $this->getName())));
             }
 
             if (Helper::matchRequestPath("POST:$loginPath")) {
@@ -153,33 +156,13 @@ class LoginCaptchaServiceProvider extends ServiceProvider
                     'captcha' => 'required|dcat_login_captcha',
                 ]);
 
-                $validator->fails() and $this->throwHttpResponseException($validator);
+                if ($validator->fails()) {
+                    throw new HttpResponseException($validator);
+                }
             }
         });
 
         return $this;
-    }
-
-    /**
-     * @psalm-suppress InvalidArgument
-     */
-    protected function buildScript(): string
-    {
-        $replacedRules = [
-            '{{captchaUrl}}' => login_captcha_url(),
-            '{{captchaLang}}' => self::trans('login-captcha.captcha'),
-            '{{refreshCaptchaLang}}' => self::trans('login-captcha.refresh_captcha'),
-        ];
-
-        return str_replace(array_keys($replacedRules), $replacedRules, static::setting('script'));
-    }
-
-    /**
-     * @param array|\Illuminate\Validation\Validator|MessageBag $validationMessages
-     */
-    protected function throwHttpResponseException($validationMessages): void
-    {
-        throw new HttpResponseException($this->validationErrorsResponse($validationMessages));
     }
 
     /**
