@@ -151,4 +151,9 @@ return [
         'LoginCaptchaServiceProvider: improve setupConfig method',
         'src: optimize LoginCaptchaServiceProvider',
     ],
+    '2.0.1' => [
+        'middleware: Update SetResponseContentType middleware',
+        'captcha: refactor captcha blade template',
+        'FeatureTest: update login captcha test',
+    ],
 ];
