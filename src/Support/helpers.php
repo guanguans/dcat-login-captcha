@@ -34,11 +34,7 @@ if (! function_exists('login_captcha_url')) {
      */
     function login_captcha_url(?string $routeName = null): string
     {
-        if (null === $routeName) {
-            return admin_route('captcha.generate', ['random' => Str::random()]);
-        }
-
-        return admin_route($routeName, ['random' => Str::random()]);
+        return admin_route($routeName ?? 'captcha.generate', ['random' => Str::random()]);
     }
 }
 

@@ -47,13 +47,10 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         parent::init();
 
         $this->setupConfig()
+            ->publishView()
             ->loadMigrations()
             ->extendValidator()
             ->bootingCaptcha();
-
-        $this->publishes([
-            $this->getViewPath() => resource_path(sprintf('views/vendor/%s', $this->getName())),
-        ]);
     }
 
     public function provides(): array
@@ -80,6 +77,17 @@ class LoginCaptchaServiceProvider extends ServiceProvider
             realpath($raw = __DIR__.'/../config/login-captcha.php') ?: $raw,
             'login-captcha'
         );
+
+        return $this;
+    }
+
+    protected function publishView(): self
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                $this->getViewPath() => resource_path(sprintf('views/vendor/%s', $this->getName())),
+            ]);
+        }
 
         return $this;
     }
