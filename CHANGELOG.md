@@ -8,6 +8,25 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+<a name="2.0.0"></a>
+## [2.0.0] - 2023-10-17
+### Docs
+- **readme:** Update package links
+- **src:** Update login captcha documentation
+- **src:** Update login captcha documentation
+
+### Feat
+- **views:** Add captcha.blade.php view file
+
+### Fix
+- **serviceprovider:** Fix LoginCaptchaServiceProvider validation
+- **src:** Update LoginCaptchaServiceProvider.php
+
+### Refactor
+- **LoginCaptchaServiceProvider:** improve setupConfig method
+- **src:** optimize LoginCaptchaServiceProvider
+
+
 <a name="2.0.0-rc2"></a>
 ## [2.0.0-rc2] - 2023-10-13
 ### Feat
@@ -170,7 +189,8 @@ All notable changes to this project will be documented in this file.
   - Merge pull request [#2](https://github.com/guanguans/monorepo-builder-worker/issues/2) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0
   
   
-[Unreleased]: https://github.com/guanguans/monorepo-builder-worker/compare/2.0.0-rc2...HEAD
+[Unreleased]: https://github.com/guanguans/monorepo-builder-worker/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/guanguans/monorepo-builder-worker/compare/2.0.0-rc2...2.0.0
 [2.0.0-rc2]: https://github.com/guanguans/monorepo-builder-worker/compare/2.0.0-rc1...2.0.0-rc2
 [2.0.0-rc1]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.1.0...2.0.0-rc1
 [v1.1.0]: https://github.com/guanguans/monorepo-builder-worker/compare/v1.0.19...v1.1.0
