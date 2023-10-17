@@ -17,5 +17,5 @@ trim_trailing_whitespace = false
 [*.{yml,yml.dist,yaml,yaml.dist,xml,xml.dist}]
 indent_size = 2
 
-[*.{html,css,js,ts,vue,jsx,tsx}]
-indent_size = 2
+# [*.{html,css,js,ts,vue,jsx,tsx}]
+# indent_size = 2
