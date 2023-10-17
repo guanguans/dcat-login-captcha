@@ -142,4 +142,13 @@ return [
         'Support: can check login captcha',
         'TestCase: Fix database migrations',
     ],
+    '2.0.0' => [
+        'readme: Update package links',
+        'src: Update login captcha documentation',
+        'views: Add captcha.blade.php view file',
+        'serviceprovider: Fix LoginCaptchaServiceProvider validation',
+        'src: Update LoginCaptchaServiceProvider.php',
+        'LoginCaptchaServiceProvider: improve setupConfig method',
+        'src: optimize LoginCaptchaServiceProvider',
+    ],
 ];
