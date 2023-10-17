@@ -165,7 +165,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
                 ]);
 
                 if ($validator->fails()) {
-                    throw new HttpResponseException($validator);
+                    throw new HttpResponseException($this->validationErrorsResponse($validator));
                 }
             }
         });
