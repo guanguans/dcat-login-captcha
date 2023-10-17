@@ -1,6 +1,11 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Cannot cast Illuminate\\\\Contracts\\\\View\\\\Factory\\|Illuminate\\\\Contracts\\\\View\\\\View to string\\.$#"
+			count: 1
+			path: src/LoginCaptchaServiceProvider.php
+
+		-
 			message: "#^Function login_captcha_content\\(\\) should return string but returns void\\.$#"
 			count: 1
 			path: src/Support/helpers.php
