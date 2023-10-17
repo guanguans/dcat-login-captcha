@@ -7,9 +7,9 @@
 [![tests](https://github.com/guanguans/dcat-login-captcha/workflows/tests/badge.svg)](https://github.com/guanguans/dcat-login-captcha/actions)
 [![check & fix styling](https://github.com/guanguans/dcat-login-captcha/actions/workflows/php-cs-fixer.yml/badge.svg)](https://github.com/guanguans/dcat-login-captcha/actions)
 [![codecov](https://codecov.io/gh/guanguans/dcat-login-captcha/branch/main/graph/badge.svg?token=URGFAWS6S4)](https://codecov.io/gh/guanguans/dcat-login-captcha)
-[![Latest Stable Version](https://poser.pugx.org/guanguans/dcat-login-captcha/v)](https:://packagist.org/packages/guanguans/dcat-login-captcha)
-[![Total Downloads](https://poser.pugx.org/guanguans/dcat-login-captcha/downloads)](https:://packagist.org/packages/guanguans/dcat-login-captcha)
-[![License](https://poser.pugx.org/guanguans/dcat-login-captcha/license)](https:://packagist.org/packages/guanguans/dcat-login-captcha)
+[![Latest Stable Version](https://poser.pugx.org/guanguans/dcat-login-captcha/v)](https://packagist.org/packages/guanguans/dcat-login-captcha)
+[![Total Downloads](https://poser.pugx.org/guanguans/dcat-login-captcha/downloads)](https://packagist.org/packages/guanguans/dcat-login-captcha)
+[![License](https://poser.pugx.org/guanguans/dcat-login-captcha/license)](https://packagist.org/packages/guanguans/dcat-login-captcha)
 
 ## Requirement
 
