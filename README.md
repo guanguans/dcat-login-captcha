@@ -22,7 +22,7 @@
 ### Composer installation
 
 ```bash
-composer require guanguans/dcat-login-captcha -v
+composer require guanguans/dcat-login-captcha --prefer-source -v
 ```
 
 ### Backend -> Helpers -> Extensions
