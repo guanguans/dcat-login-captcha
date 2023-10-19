@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 
 return [
+    'enabled' => 'Enabled',
     'captcha' => 'Captcha',
     'refresh_captcha' => 'Refresh captcha',
     'captcha_expired' => 'Captcha expired',

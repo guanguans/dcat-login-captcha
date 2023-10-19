@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 
 return [
+    'enabled' => '启用',
     'captcha' => '验证码',
     'refresh_captcha' => '刷新验证码',
     'captcha_expired' => '验证码已失效',

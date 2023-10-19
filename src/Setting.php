@@ -19,8 +19,19 @@ class Setting extends \Dcat\Admin\Extend\Setting
         return $this->trans('login-captcha.setting');
     }
 
+    /**
+     * @noinspection AnonymousFunctionStaticInspection
+     */
     public function form(): void
     {
+        $this->switch('enabled', LoginCaptchaServiceProvider::trans('login-captcha.enabled'))
+            ->customFormat(function (bool $value): int {
+                return (int) $value;
+            })
+            ->saving(function (int $value): bool {
+                return (bool) $value;
+            });
+
         $this->text('length', LoginCaptchaServiceProvider::trans('login-captcha.length'))
             ->required()
             ->rules('required|integer|between:3,6');
