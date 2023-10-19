@@ -24,7 +24,7 @@ class Setting extends \Dcat\Admin\Extend\Setting
      */
     public function form(): void
     {
-        $this->switch('enabled', LoginCaptchaServiceProvider::trans('login-captcha.enabled'))
+        $this->switch('enabled', $this->trans('login-captcha.enabled'))
             ->customFormat(function (bool $value): int {
                 return (int) $value;
             })
@@ -32,24 +32,24 @@ class Setting extends \Dcat\Admin\Extend\Setting
                 return (bool) $value;
             });
 
-        $this->text('length', LoginCaptchaServiceProvider::trans('login-captcha.length'))
+        $this->text('length', $this->trans('login-captcha.length'))
             ->required()
             ->rules('required|integer|between:3,6');
 
-        $this->textarea('charset', LoginCaptchaServiceProvider::trans('login-captcha.charset'))
+        $this->textarea('charset', $this->trans('login-captcha.charset'))
             ->rows(3)
             ->required()
             ->rules('required|string');
 
-        $this->text('width', LoginCaptchaServiceProvider::trans('login-captcha.width'))
+        $this->text('width', $this->trans('login-captcha.width'))
             ->required()
             ->rules('required|integer|between:100,200');
 
-        $this->text('height', LoginCaptchaServiceProvider::trans('login-captcha.height'))
+        $this->text('height', $this->trans('login-captcha.height'))
             ->required()
             ->rules('required|integer|between:30,80');
 
-        $this->radio('type', LoginCaptchaServiceProvider::trans('login-captcha.type'))
+        $this->radio('type', $this->trans('login-captcha.type'))
             ->options([
                 'png' => 'png',
                 'jpeg' => 'jpeg',
@@ -58,11 +58,11 @@ class Setting extends \Dcat\Admin\Extend\Setting
             ->required()
             ->rules('required|string');
 
-        $this->text('font', LoginCaptchaServiceProvider::trans('login-captcha.font'))
+        $this->text('font', $this->trans('login-captcha.font'))
             ->rules('nullable|file');
 
-        // $this->hidden('fingerprint', LoginCaptchaServiceProvider::trans('login-captcha.fingerprint'));
-        // $this->hidden('captcha_phrase_session_key', LoginCaptchaServiceProvider::trans('login-captcha.captcha_phrase_session_key'));
+        // $this->hidden('fingerprint', $this->trans('login-captcha.fingerprint'));
+        // $this->hidden('captcha_phrase_session_key', $this->trans('login-captcha.captcha_phrase_session_key'));
     }
 
     protected function formatInput(array $input): array
