@@ -156,4 +156,8 @@ return [
         'captcha: refactor captcha blade template',
         'FeatureTest: update login captcha test',
     ],
+    '2.1.0' => [
+        'config: Support for multi apps control enabled login captcha',
+        'readme: Update Composer installation instructions',
+    ],
 ];
