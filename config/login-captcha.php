@@ -11,6 +11,8 @@ declare(strict_types=1);
  */
 
 return [
+    'enabled' => true,
+
     'length' => 4,
     'charset' => 'abcdefghijklmnpqrstuvwxyz23456789ABCDEFGHIJKLMNOPQRSTUVWXYZ',
 

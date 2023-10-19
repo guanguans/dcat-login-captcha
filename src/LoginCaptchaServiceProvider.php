@@ -158,6 +158,11 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     protected function bootingCaptcha(): self
     {
         Admin::booting(function (): void {
+            $this->config = array_replace_recursive($this->config, config('admin.login_captcha', []));
+            if (! self::setting('enabled')) {
+                return;
+            }
+
             $loginPath = ltrim(admin_base_path('auth/login'), '/');
             if (Helper::matchRequestPath("GET:$loginPath")) {
                 Admin::script((string) view(sprintf('%s::captcha', $this->getName())));
