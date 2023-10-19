@@ -160,4 +160,10 @@ return [
         'config: Support for multi apps control enabled login captcha',
         'readme: Update Composer installation instructions',
     ],
+    '2.1.1' => [
+        'config: Remove unused path in StaticClosureRector class',
+        'LoginCaptchaServiceProvider: use self instead of static',
+        'setting: Add `enabled` switch to form',
+        'setting: Use this->trans() function to translate messages',
+    ],
 ];
