@@ -108,7 +108,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     protected function registerPhraseBuilder(): self
     {
         $this->app->singleton(PhraseBuilder::class, static function (): PhraseBuilder {
-            return new PhraseBuilder(static::setting('length'), static::setting('charset'));
+            return new PhraseBuilder(self::setting('length'), self::setting('charset'));
         });
 
         $this->alias(PhraseBuilder::class);
@@ -121,10 +121,10 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         $this->app->singleton(CaptchaBuilder::class, static function (Application $app): CaptchaBuilder {
             $captchaBuilder = new CaptchaBuilder(null, $app->get(PhraseBuilder::class));
             $captchaBuilder->build(
-                static::setting('width'),
-                static::setting('height'),
-                static::setting('font'),
-                static::setting('fingerprint')
+                self::setting('width'),
+                self::setting('height'),
+                self::setting('font'),
+                self::setting('fingerprint')
             );
 
             return $captchaBuilder;
@@ -146,7 +146,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     {
         Validator::extend('dcat_login_captcha', static function ($attribute, $value): bool {
             return login_captcha_check($value);
-        }, static::trans('login-captcha.captcha_error'));
+        }, self::trans('login-captcha.captcha_error'));
 
         return $this;
     }
