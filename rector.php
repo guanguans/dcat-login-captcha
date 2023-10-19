@@ -116,6 +116,7 @@ return static function (RectorConfig $rectorConfig): void {
             // __DIR__.'/src/OutputManager.php',
         ],
         StaticClosureRector::class => [
+            __DIR__.'/src/Setting.php',
             __DIR__.'/tests',
         ],
         // StaticArrowFunctionRector::class => [
