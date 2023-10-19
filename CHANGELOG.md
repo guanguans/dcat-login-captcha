@@ -8,6 +8,17 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+<a name="2.1.1"></a>
+## [2.1.1] - 2023-10-19
+### Feat
+- **setting:** Add 'enabled' switch to form
+
+### Refactor
+- **LoginCaptchaServiceProvider:** use self instead of static
+- **config:** Remove unused path in StaticClosureRector class
+- **setting:** Use this->trans() function to translate messages
+
+
 <a name="2.1.0"></a>
 ## [2.1.0] - 2023-10-19
 ### Docs
@@ -215,7 +226,8 @@ All notable changes to this project will be documented in this file.
   - Merge pull request [#2](https://github.com/guanguans/monorepo-builder-worker/issues/2) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0
   
   
-[Unreleased]: https://github.com/guanguans/monorepo-builder-worker/compare/2.1.0...HEAD
+[Unreleased]: https://github.com/guanguans/monorepo-builder-worker/compare/2.1.1...HEAD
+[2.1.1]: https://github.com/guanguans/monorepo-builder-worker/compare/2.1.0...2.1.1
 [2.1.0]: https://github.com/guanguans/monorepo-builder-worker/compare/2.0.1...2.1.0
 [2.0.1]: https://github.com/guanguans/monorepo-builder-worker/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/guanguans/monorepo-builder-worker/compare/2.0.0-rc2...2.0.0
