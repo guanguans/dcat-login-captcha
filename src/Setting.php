@@ -30,7 +30,8 @@ class Setting extends \Dcat\Admin\Extend\Setting
             })
             ->saving(function (int $value): bool {
                 return (bool) $value;
-            });
+            })
+            ->rules('required|boolean');
 
         $this->text('length', $this->trans('login-captcha.length'))
             ->required()
