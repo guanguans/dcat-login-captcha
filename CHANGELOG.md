@@ -8,6 +8,21 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+<a name="2.1.2"></a>
+## [2.1.2] - 2024-01-08
+### Docs
+- Update installation instructions
+- **README-zh_CN:** Update Composer installation instructions
+
+### Refactor
+- **coding-style:** remove unused Rectors
+- **monorepo-builder:** update release workers
+- **setting:** update Setting.php
+
+### Pull Requests
+- Merge pull request [#41](https://github.com/guanguans/monorepo-builder-worker/issues/41) from guanguans/dependabot/github_actions/actions/stale-9
+  
+  
 <a name="2.1.1"></a>
 ## [2.1.1] - 2023-10-19
 ### Feat
@@ -226,7 +241,8 @@ All notable changes to this project will be documented in this file.
   - Merge pull request [#2](https://github.com/guanguans/monorepo-builder-worker/issues/2) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0
   
   
-[Unreleased]: https://github.com/guanguans/monorepo-builder-worker/compare/2.1.1...HEAD
+[Unreleased]: https://github.com/guanguans/monorepo-builder-worker/compare/2.1.2...HEAD
+[2.1.2]: https://github.com/guanguans/monorepo-builder-worker/compare/2.1.1...2.1.2
 [2.1.1]: https://github.com/guanguans/monorepo-builder-worker/compare/2.1.0...2.1.1
 [2.1.0]: https://github.com/guanguans/monorepo-builder-worker/compare/2.0.1...2.1.0
 [2.0.1]: https://github.com/guanguans/monorepo-builder-worker/compare/2.0.0...2.0.1
