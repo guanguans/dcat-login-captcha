@@ -148,7 +148,7 @@
         "composer-validate": "@composer validate --check-lock --strict --ansi -v",
         "doctum": "@php ./vendor/bin/doctum.php update doctum.php --ansi -v",
         "facade-lint": "@facade-update --lint",
-        "facade-update": "/opt/local/bin/php81 -f ./facade.php -- Guanguans\\\\DcatLoginCaptcha\\\\Facades\\\\CaptchaBuilder Guanguans\\\\DcatLoginCaptcha\\\\Facades\\\\PhraseBuilder",
+        "facade-update": "/opt/homebrew/opt/php@8.3/bin/php -f ./facade.php -- Guanguans\\\\DcatLoginCaptcha\\\\Facades\\\\CaptchaBuilder Guanguans\\\\DcatLoginCaptcha\\\\Facades\\\\PhraseBuilder",
         "git-chglog": "git-chglog $(git describe --tags $(git rev-list --tags --max-count=1))",
         "infection": "@php ./vendor/bin/infection --test-framework=pest --show-mutations --threads=4 --ansi -v",
         "json-lint": "@php ./vendor/bin/jsonlint *.json .*rc",
