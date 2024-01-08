@@ -25,6 +25,15 @@
 composer require guanguans/dcat-login-captcha --prefer-source -v
 ```
 
+### Installation issues([https://github.com/guanguans/dcat-login-captcha/issues/39](https://github.com/guanguans/dcat-login-captcha/issues/39))
+
+```shell
+composer config -g repo.packagist composer https://packagist.org -v
+composer clear-cache -v
+composer remove guanguans/dcat-login-captcha -v
+composer require guanguans/dcat-login-captcha --prefer-source -v
+```
+
 ### Backend -> Helpers -> Extensions
 
 Enable this extension.

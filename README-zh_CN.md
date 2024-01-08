@@ -22,7 +22,7 @@
 ### Composer 安装
 
 ```bash
-composer require guanguans/dcat-login-captcha -v
+composer require guanguans/dcat-login-captcha --prefer-source -v
 ```
 
 ### 安装问题([https://github.com/guanguans/dcat-login-captcha/issues/39](https://github.com/guanguans/dcat-login-captcha/issues/39))
