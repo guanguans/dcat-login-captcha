@@ -8,6 +8,15 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+<a name="2.2.0"></a>
+## [2.2.0] - 2024-03-21
+### Pull Requests
+- Merge pull request [#45](https://github.com/guanguans/monorepo-builder-worker/issues/45) from guanguans/dependabot/github_actions/codecov/codecov-action-4
+  - Merge pull request [#46](https://github.com/guanguans/monorepo-builder-worker/issues/46) from guanguans/dependabot/composer/rector/rector-tw-0.18or-tw-0.19or-tw-1.0
+  - Merge pull request [#44](https://github.com/guanguans/monorepo-builder-worker/issues/44) from guanguans/dependabot/github_actions/actions/cache-4
+  - Merge pull request [#43](https://github.com/guanguans/monorepo-builder-worker/issues/43) from guanguans/dependabot/composer/rector/rector-tw-0.18or-tw-0.19
+  
+  
 <a name="2.1.2"></a>
 ## [2.1.2] - 2024-01-08
 ### Docs
@@ -241,7 +250,8 @@ All notable changes to this project will be documented in this file.
   - Merge pull request [#2](https://github.com/guanguans/monorepo-builder-worker/issues/2) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0
   
   
-[Unreleased]: https://github.com/guanguans/monorepo-builder-worker/compare/2.1.2...HEAD
+[Unreleased]: https://github.com/guanguans/monorepo-builder-worker/compare/2.2.0...HEAD
+[2.2.0]: https://github.com/guanguans/monorepo-builder-worker/compare/2.1.2...2.2.0
 [2.1.2]: https://github.com/guanguans/monorepo-builder-worker/compare/2.1.1...2.1.2
 [2.1.1]: https://github.com/guanguans/monorepo-builder-worker/compare/2.1.0...2.1.1
 [2.1.0]: https://github.com/guanguans/monorepo-builder-worker/compare/2.0.1...2.1.0
