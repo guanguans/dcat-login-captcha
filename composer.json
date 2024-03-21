@@ -40,7 +40,7 @@
         "illuminate/support": "^7.0 || ^8.0 || ^9.0 || ^10.0"
     },
     "require-dev": {
-        "brainmaestro/composer-git-hooks": "^2.8 || ^3.0",
+        "brainmaestro/composer-git-hooks": "^2.8",
         "ergebnis/composer-normalize": "^2.20",
         "friendsofphp/php-cs-fixer": "^3.4",
         "guanguans/ai-commit": "dev-main",
@@ -54,7 +54,7 @@
         "phpstan/extension-installer": "^1.3",
         "phpstan/phpstan": "^1.10",
         "phpstan/phpstan-deprecation-rules": "^1.1",
-        "rector/rector": "^0.18 || ^0.19 || ^1.0",
+        "rector/rector": "^1.0",
         "vimeo/psalm": "^4.30 || ^5.0"
     },
     "minimum-stability": "dev",
@@ -135,7 +135,8 @@
             "@lint",
             "@style-lint",
             "@test",
-            "@psalm"
+            "@psalm",
+            "@rector-dry-run"
         ],
         "composer-bin-all-update": "@composer bin all update --ansi -v",
         "composer-check-platform-reqs": "@composer check-platform-reqs --lock --ansi -v",
@@ -145,7 +146,7 @@
         "composer-require-checker": "@php ./vendor/bin/composer-require-checker check --config-file=composer-require-checker.json composer.json --ansi -v",
         "composer-unused": "@php ./vendor/bin/composer-unused --ansi -v",
         "composer-unused-checker": "@php ./vendor/bin/composer-unused --ansi -v",
-        "composer-updater": "@php ./composer-updater --highest-php-binary=/opt/homebrew/opt/php@8.3/bin/php --except-packages=guanguans/notify --except-packages=laravel/lumen-framework --except-packages=orchestra/testbench --except-packages=pestphp/pest-plugin-laravel --ansi",
+        "composer-updater": "@php ./composer-updater --highest-php-binary=/opt/homebrew/opt/php@8.3/bin/php --except-packages=dcat/laravel-admin --except-packages=laravel/lumen-framework --except-packages=orchestra/testbench --except-packages=pestphp/pest-plugin-laravel --ansi",
         "composer-updater-dry-run": "@composer-updater --dry-run",
         "composer-validate": "@composer validate --check-lock --strict --ansi -v",
         "doctum": "@php ./vendor/bin/doctum.php update doctum.php --ansi -v",
