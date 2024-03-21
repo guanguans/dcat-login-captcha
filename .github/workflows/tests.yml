@@ -11,7 +11,8 @@ jobs:
         os: [ ubuntu-latest ]
         php: [ 7.3, 8.3 ]
         dependency-version: [ prefer-stable ]
-        laravel: [ 7.0.*, 8.*, 9.*, 10.* ]
+#        laravel: [ 7.0.*, 8.*, 9.*, 10.*, 11.* ]
+        laravel: [ 7.0.*, 8.*, 9.*, 10.*]
         include:
           - laravel: 7.0.*
             testbench: 5.*
@@ -21,6 +22,8 @@ jobs:
             testbench: 7.*
           - laravel: 10.*
             testbench: 8.*
+#          - laravel: 11.*
+#            testbench: 9.*
         exclude:
           - php: 7.3
             laravel: 9.*
@@ -58,7 +61,7 @@ jobs:
         run: composer test-coverage
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
           fail_ci_if_error: false # optional (default = false)
