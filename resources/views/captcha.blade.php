@@ -28,9 +28,18 @@ $('#captcha-img').click(function () {
     $(this).attr('src', $(this).attr('src').replace(/\?random=.*$/, '?random=' + Math.random()));
 });
 
-$('#captcha .with-errors').bind('DOMNodeInserted', function () {
-    if ($('#captcha-input').val() !== '' && $(this).html().length > 0) {
-        $("#captcha-img").trigger("click");
-    }
-});
+const observer = new MutationObserver(function(mutationsList) {
+    for(let mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+            if ($('#captcha-input').val() !== '' && $('#captcha .with-errors').html().length > 0) {
+                $("#captcha-img").trigger("click");
+            }
+        }
+     }
+    });
+observer.observe($('#captcha .with-errors')[0], {
+        attributes: false,
+        childList: true,
+        subtree: true
+    });
 })();
