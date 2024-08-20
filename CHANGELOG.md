@@ -8,6 +8,18 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+<a name="2.2.1"></a>
+## [2.2.1] - 2024-08-20
+### CI
+- **rector:** add StaticClosureRector to rules
+
+### Pull Requests
+- Merge pull request [#53](https://github.com/guanguans/dcat-login-captcha/issues/53) from evenZh/issue-52-DOMNodeInserted_新版本的chrome_edge_已经不支持了
+  - Merge pull request [#51](https://github.com/guanguans/dcat-login-captcha/issues/51) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-2.2.0
+  - Merge pull request [#49](https://github.com/guanguans/dcat-login-captcha/issues/49) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-2.1.0
+  - Merge pull request [#47](https://github.com/guanguans/dcat-login-captcha/issues/47) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-2.0.0
+  
+  
 <a name="2.2.0"></a>
 ## [2.2.0] - 2024-03-21
 ### Pull Requests
@@ -250,7 +262,8 @@ All notable changes to this project will be documented in this file.
   - Merge pull request [#2](https://github.com/guanguans/dcat-login-captcha/issues/2) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0
   
   
-[Unreleased]: https://github.com/guanguans/dcat-login-captcha/compare/2.2.0...HEAD
+[Unreleased]: https://github.com/guanguans/dcat-login-captcha/compare/2.2.1...HEAD
+[2.2.1]: https://github.com/guanguans/dcat-login-captcha/compare/2.2.0...2.2.1
 [2.2.0]: https://github.com/guanguans/dcat-login-captcha/compare/2.1.2...2.2.0
 [2.1.2]: https://github.com/guanguans/dcat-login-captcha/compare/2.1.1...2.1.2
 [2.1.1]: https://github.com/guanguans/dcat-login-captcha/compare/2.1.0...2.1.1
