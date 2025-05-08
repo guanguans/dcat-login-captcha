@@ -13,7 +13,7 @@
 
 ## Requirement
 
-* PHP >= 7.3
+* PHP >= 8.0
 * laravel >= 7.0
 * dcat-admin >= 2.0
 
