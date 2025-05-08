@@ -1,5 +1,12 @@
 <?php
 
+/** @noinspection AnonymousFunctionStaticInspection */
+/** @noinspection NullPointerExceptionInspection */
+/** @noinspection PhpPossiblePolymorphicInvocationInspection */
+/** @noinspection PhpUndefinedClassInspection */
+/** @noinspection PhpUnhandledExceptionInspection */
+/** @noinspection SqlResolve */
+/** @noinspection StaticClosureCanBeUsedInspection */
 declare(strict_types=1);
 
 /**
@@ -11,7 +18,7 @@ declare(strict_types=1);
  * @see https://github.com/guanguans/dcat-login-captcha
  */
 
-namespace Guanguans\DcatLoginCaptcha\Tests;
+namespace Guanguans\DcatLoginCaptchaTests;
 
 use Dcat\Admin\Admin;
 use Dcat\Admin\AdminServiceProvider;
@@ -24,6 +31,11 @@ use Illuminate\Support\Facades\File;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use PhpParser\Node;
+use PhpParser\Node\Expr\Array_;
+use PhpParser\Node\Expr\Closure;
+use PhpParser\Node\Expr\MethodCall;
+use PhpParser\Node\Expr\Variable;
+use PhpParser\Node\Scalar\String_;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitorAbstract;
 use PhpParser\ParserFactory;
@@ -85,9 +97,9 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
     protected function defineEnvironment($app): void
     {
-        tap($app['config'], static function (Repository $config): void {
-            $config->set('database.default', 'sqlite');
-            $config->set('database.connections.sqlite', [
+        tap($app->make(\Illuminate\Contracts\Config\Repository::class), static function (Repository $repository): void {
+            $repository->set('database.default', 'sqlite');
+            $repository->set('database.connections.sqlite', [
                 'driver' => 'sqlite',
                 'database' => ':memory:',
                 // 'database' => __DIR__.'/Fixtures/database.sqlite',
@@ -102,19 +114,19 @@ class TestCase extends \Orchestra\Testbench\TestCase
         $nodeTraverser->addVisitor(new class extends NodeVisitorAbstract {
             public function enterNode(Node $node): void
             {
-                if ($node instanceof Node\Expr\Closure) {
+                if ($node instanceof Closure) {
                     $expr = $node->stmts[0]->expr;
 
                     if (
-                        $expr instanceof Node\Expr\MethodCall
-                        && $expr->var instanceof Node\Expr\Variable
+                        $expr instanceof MethodCall
+                        && $expr->var instanceof Variable
                         && 'table' === $expr->var->name
                         && 'dropColumn' === $expr->name->name
-                        && $expr->args[0]->value instanceof Node\Scalar\String_
+                        && $expr->args[0]->value instanceof String_
                     ) {
-                        $expr->args[0]->value = new Node\Expr\Array_([
-                            new Node\Scalar\String_('show'),
-                            new Node\Scalar\String_('extension'),
+                        $expr->args[0]->value = new Array_([
+                            new String_('show'),
+                            new String_('extension'),
                         ]);
 
                         unset($node->stmts[1]);

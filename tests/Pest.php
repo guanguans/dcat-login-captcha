@@ -1,5 +1,12 @@
 <?php
 
+/** @noinspection AnonymousFunctionStaticInspection */
+/** @noinspection NullPointerExceptionInspection */
+/** @noinspection PhpPossiblePolymorphicInvocationInspection */
+/** @noinspection PhpUndefinedClassInspection */
+/** @noinspection PhpUnhandledExceptionInspection */
+/** @noinspection SqlResolve */
+/** @noinspection StaticClosureCanBeUsedInspection */
 declare(strict_types=1);
 
 /**
@@ -11,7 +18,7 @@ declare(strict_types=1);
  * @see https://github.com/guanguans/dcat-login-captcha
  */
 
-namespace Guanguans\DcatLoginCaptcha\Tests;
+use Guanguans\DcatLoginCaptchaTests\TestCase;
 
 uses(TestCase::class)
     ->beforeAll(function (): void {})

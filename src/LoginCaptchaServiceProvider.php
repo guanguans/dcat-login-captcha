@@ -115,8 +115,8 @@ class LoginCaptchaServiceProvider extends ServiceProvider
 
     protected function registerCaptchaBuilder(): self
     {
-        $this->app->singleton(CaptchaBuilder::class, static function (Application $app): CaptchaBuilder {
-            $captchaBuilder = new CaptchaBuilder(null, $app->get(PhraseBuilder::class));
+        $this->app->singleton(CaptchaBuilder::class, static function (Application $application): CaptchaBuilder {
+            $captchaBuilder = new CaptchaBuilder(null, $application->get(PhraseBuilder::class));
             $captchaBuilder->build(
                 self::setting('width'),
                 self::setting('height'),
@@ -146,10 +146,6 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         return $this;
     }
 
-    /**
-     * @psalm-suppress InvalidCast
-     * @psalm-suppress InvalidArgument
-     */
     protected function bootingCaptcha(): self
     {
         Admin::booting(function (): void {

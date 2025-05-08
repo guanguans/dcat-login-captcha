@@ -1,5 +1,12 @@
 <?php
 
+/** @noinspection AnonymousFunctionStaticInspection */
+/** @noinspection NullPointerExceptionInspection */
+/** @noinspection PhpPossiblePolymorphicInvocationInspection */
+/** @noinspection PhpUndefinedClassInspection */
+/** @noinspection PhpUnhandledExceptionInspection */
+/** @noinspection SqlResolve */
+/** @noinspection StaticClosureCanBeUsedInspection */
 declare(strict_types=1);
 
 /**
@@ -10,8 +17,6 @@ declare(strict_types=1);
  *
  * @see https://github.com/guanguans/dcat-login-captcha
  */
-
-namespace Guanguans\DcatLoginCaptcha\Tests\Support;
 
 it('can check login captcha', function (): void {
     expect(login_captcha_check('foo'))->toBeBool();

@@ -99,7 +99,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Guanguans\\DcatLoginCaptcha\\Tests\\": "tests"
+            "Guanguans\\DcatLoginCaptchaTests\\": "tests"
         }
     },
     "config": {
