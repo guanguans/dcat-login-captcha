@@ -12,11 +12,11 @@ All notable changes to this project will be documented in this file.
 {{ range .Unreleased.CommitGroups -}}
 ### {{ .Title }}
 {{ range .Commits -}}
-- {{ if .Scope }}**{{ .Scope }}:** {{ end }}{{ .Subject }}
-  {{ end }}
-  {{ end -}}
-  {{ end -}}
-  {{ end -}}
+- {{ if .Scope }}**{{ .Scope }}:** {{ end }}{{ .Subject }} ([{{ .Hash.Short }}]({{ $.Info.RepositoryURL }}/commit/{{ .Hash.Short }}))
+{{ end }}
+{{ end -}}
+{{ end -}}
+{{ end -}}
 
 {{ range .Versions }}
 <a name="{{ .Tag.Name }}"></a>
@@ -24,7 +24,7 @@ All notable changes to this project will be documented in this file.
 {{ range .CommitGroups -}}
 ### {{ .Title }}
 {{ range .Commits -}}
-- {{ if .Scope }}**{{ .Scope }}:** {{ end }}{{ .Subject }}
+- {{ if .Scope }}**{{ .Scope }}:** {{ end }}{{ .Subject }} ([{{ .Hash.Short }}]({{ $.Info.RepositoryURL }}/commit/{{ .Hash.Short }}))
 {{ end }}
 {{ end -}}
 
@@ -32,15 +32,15 @@ All notable changes to this project will be documented in this file.
 ### Reverts
 {{ range .RevertCommits -}}
 - {{ .Revert.Header }}
-  {{ end }}
-  {{ end -}}
+{{ end }}
+{{ end -}}
 
 {{- if .MergeCommits -}}
 ### Pull Requests
 {{ range .MergeCommits -}}
 - {{ .Header }}
-  {{ end }}
-  {{ end -}}
+{{ end }}
+{{ end -}}
 
 {{- if .NoteGroups -}}
 {{ range .NoteGroups -}}
