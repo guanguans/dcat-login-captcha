@@ -8,175 +8,201 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+<a name="2.3.0"></a>
+## [2.3.0] - 2025-05-08
+### 📖 Documents
+- Update Composer installation command for captcha package ([457365a](https://github.com/guanguans/dcat-login-captcha/commit/457365a))
+
+### 📦 Builds
+- Update linting config and composer dependencies ([6192aff](https://github.com/guanguans/dcat-login-captcha/commit/6192aff))
+- **config:** Update .editorconfig and .gitattributes ([8c04940](https://github.com/guanguans/dcat-login-captcha/commit/8c04940))
+
+### 🤖 Continuous Integrations
+- **chglog:** Update changelog config and template formatting ([871904c](https://github.com/guanguans/dcat-login-captcha/commit/871904c))
+
+### Pull Requests
+- Merge pull request [#56](https://github.com/guanguans/dcat-login-captcha/issues/56) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-2.3.0
+- Merge pull request [#55](https://github.com/guanguans/dcat-login-captcha/issues/55) from guanguans/dependabot/github_actions/codecov/codecov-action-5
+
+
 <a name="2.2.1"></a>
 ## [2.2.1] - 2024-08-20
-### CI
-- **rector:** add StaticClosureRector to rules
+### 🎨 Styles
+- **captcha:** Improve code formatting and readability ([7f21273](https://github.com/guanguans/dcat-login-captcha/commit/7f21273))
+
+### 🤖 Continuous Integrations
+- **rector:** add StaticClosureRector to rules ([ef52ffc](https://github.com/guanguans/dcat-login-captcha/commit/ef52ffc))
 
 ### Pull Requests
 - Merge pull request [#53](https://github.com/guanguans/dcat-login-captcha/issues/53) from evenZh/issue-52-DOMNodeInserted_新版本的chrome_edge_已经不支持了
-  - Merge pull request [#51](https://github.com/guanguans/dcat-login-captcha/issues/51) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-2.2.0
-  - Merge pull request [#49](https://github.com/guanguans/dcat-login-captcha/issues/49) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-2.1.0
-  - Merge pull request [#47](https://github.com/guanguans/dcat-login-captcha/issues/47) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-2.0.0
-  
-  
+- Merge pull request [#51](https://github.com/guanguans/dcat-login-captcha/issues/51) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-2.2.0
+- Merge pull request [#49](https://github.com/guanguans/dcat-login-captcha/issues/49) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-2.1.0
+- Merge pull request [#47](https://github.com/guanguans/dcat-login-captcha/issues/47) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-2.0.0
+
+
 <a name="2.2.0"></a>
 ## [2.2.0] - 2024-03-21
 ### Pull Requests
 - Merge pull request [#45](https://github.com/guanguans/dcat-login-captcha/issues/45) from guanguans/dependabot/github_actions/codecov/codecov-action-4
-  - Merge pull request [#46](https://github.com/guanguans/dcat-login-captcha/issues/46) from guanguans/dependabot/composer/rector/rector-tw-0.18or-tw-0.19or-tw-1.0
-  - Merge pull request [#44](https://github.com/guanguans/dcat-login-captcha/issues/44) from guanguans/dependabot/github_actions/actions/cache-4
-  - Merge pull request [#43](https://github.com/guanguans/dcat-login-captcha/issues/43) from guanguans/dependabot/composer/rector/rector-tw-0.18or-tw-0.19
-  
-  
+- Merge pull request [#46](https://github.com/guanguans/dcat-login-captcha/issues/46) from guanguans/dependabot/composer/rector/rector-tw-0.18or-tw-0.19or-tw-1.0
+- Merge pull request [#44](https://github.com/guanguans/dcat-login-captcha/issues/44) from guanguans/dependabot/github_actions/actions/cache-4
+- Merge pull request [#43](https://github.com/guanguans/dcat-login-captcha/issues/43) from guanguans/dependabot/composer/rector/rector-tw-0.18or-tw-0.19
+
+
 <a name="2.1.2"></a>
 ## [2.1.2] - 2024-01-08
-### Docs
-- Update installation instructions
-- **README-zh_CN:** Update Composer installation instructions
+### 📖 Documents
+- Update installation instructions ([3791206](https://github.com/guanguans/dcat-login-captcha/commit/3791206))
+- **README-zh_CN:** Update Composer installation instructions ([58ff148](https://github.com/guanguans/dcat-login-captcha/commit/58ff148))
 
-### Refactor
-- **coding-style:** remove unused Rectors
-- **monorepo-builder:** update release workers
-- **setting:** update Setting.php
+### 💅 Code Refactorings
+- **coding-style:** remove unused Rectors ([0dfd64b](https://github.com/guanguans/dcat-login-captcha/commit/0dfd64b))
+- **monorepo-builder:** update release workers ([fa6f1ba](https://github.com/guanguans/dcat-login-captcha/commit/fa6f1ba))
+- **setting:** update Setting.php ([649c8f7](https://github.com/guanguans/dcat-login-captcha/commit/649c8f7))
 
 ### Pull Requests
 - Merge pull request [#41](https://github.com/guanguans/dcat-login-captcha/issues/41) from guanguans/dependabot/github_actions/actions/stale-9
-  
-  
+
+
 <a name="2.1.1"></a>
 ## [2.1.1] - 2023-10-19
-### Feat
-- **setting:** Add 'enabled' switch to form
+### ✨ Features
+- **setting:** Add 'enabled' switch to form ([834534a](https://github.com/guanguans/dcat-login-captcha/commit/834534a))
 
-### Refactor
-- **LoginCaptchaServiceProvider:** use self instead of static
-- **config:** Remove unused path in StaticClosureRector class
-- **setting:** Use this->trans() function to translate messages
+### 💅 Code Refactorings
+- **LoginCaptchaServiceProvider:** use self instead of static ([ea970b4](https://github.com/guanguans/dcat-login-captcha/commit/ea970b4))
+- **config:** Remove unused path in StaticClosureRector class ([36c1408](https://github.com/guanguans/dcat-login-captcha/commit/36c1408))
+- **setting:** Use this->trans() function to translate messages ([14abb56](https://github.com/guanguans/dcat-login-captcha/commit/14abb56))
 
 
 <a name="2.1.0"></a>
 ## [2.1.0] - 2023-10-19
-### Docs
-- **readme:** Update Composer installation instructions
+### ✨ Features
+- **config:** Support for multi apps control enabled login captcha ([6e895c9](https://github.com/guanguans/dcat-login-captcha/commit/6e895c9))
 
-### Feat
-- **config:** Support for multi apps control enabled login captcha
+### 📖 Documents
+- **readme:** Update Composer installation instructions ([f3bcb47](https://github.com/guanguans/dcat-login-captcha/commit/f3bcb47))
 
-### Refactor
-- **version:** Update version.php
+### 💅 Code Refactorings
+- **version:** Update version.php ([65aa791](https://github.com/guanguans/dcat-login-captcha/commit/65aa791))
 
 
 <a name="2.0.1"></a>
 ## [2.0.1] - 2023-10-17
-### Fix
-- **middleware:** Update SetResponseContentType middleware
-- **phpstan-baseline:** Ignore casting error in LoginCaptchaServiceProvider
-- **version:** Update version.php
+### 🐞 Bug Fixes
+- **middleware:** Update SetResponseContentType middleware ([cb89f31](https://github.com/guanguans/dcat-login-captcha/commit/cb89f31))
+- **phpstan-baseline:** Ignore casting error in LoginCaptchaServiceProvider ([ef795e8](https://github.com/guanguans/dcat-login-captcha/commit/ef795e8))
+- **version:** Update version.php ([84bb798](https://github.com/guanguans/dcat-login-captcha/commit/84bb798))
 
-### Refactor
-- **captcha:** refactor captcha blade template
+### 💅 Code Refactorings
+- **captcha:** refactor captcha blade template ([52034c9](https://github.com/guanguans/dcat-login-captcha/commit/52034c9))
 
-### Test
-- **FeatureTest:** update login captcha test
+### ✅ Tests
+- **FeatureTest:** update login captcha test ([eb95bd3](https://github.com/guanguans/dcat-login-captcha/commit/eb95bd3))
 
 
 <a name="2.0.0"></a>
 ## [2.0.0] - 2023-10-17
-### Docs
-- **readme:** Update package links
-- **src:** Update login captcha documentation
-- **src:** Update login captcha documentation
+### ✨ Features
+- **views:** Add captcha.blade.php view file ([3f83e47](https://github.com/guanguans/dcat-login-captcha/commit/3f83e47))
 
-### Feat
-- **views:** Add captcha.blade.php view file
+### 🐞 Bug Fixes
+- **serviceprovider:** Fix LoginCaptchaServiceProvider validation ([10f6d58](https://github.com/guanguans/dcat-login-captcha/commit/10f6d58))
+- **src:** Update LoginCaptchaServiceProvider.php ([1a3f1ea](https://github.com/guanguans/dcat-login-captcha/commit/1a3f1ea))
 
-### Fix
-- **serviceprovider:** Fix LoginCaptchaServiceProvider validation
-- **src:** Update LoginCaptchaServiceProvider.php
+### 📖 Documents
+- **readme:** Update package links ([97a4cf2](https://github.com/guanguans/dcat-login-captcha/commit/97a4cf2))
+- **src:** Update login captcha documentation ([64fe37c](https://github.com/guanguans/dcat-login-captcha/commit/64fe37c))
+- **src:** Update login captcha documentation ([2eb92a8](https://github.com/guanguans/dcat-login-captcha/commit/2eb92a8))
 
-### Refactor
-- **LoginCaptchaServiceProvider:** improve setupConfig method
-- **src:** optimize LoginCaptchaServiceProvider
+### 💅 Code Refactorings
+- **LoginCaptchaServiceProvider:** improve setupConfig method ([cae1ce4](https://github.com/guanguans/dcat-login-captcha/commit/cae1ce4))
+- **src:** optimize LoginCaptchaServiceProvider ([621f30b](https://github.com/guanguans/dcat-login-captcha/commit/621f30b))
 
 
 <a name="2.0.0-rc2"></a>
 ## [2.0.0-rc2] - 2023-10-13
-### Feat
-- **src:** Add initConfig method
-- **tests:** Install and enable login captcha extension
+### ✨ Features
+- **src:** Add initConfig method ([adcf9f8](https://github.com/guanguans/dcat-login-captcha/commit/adcf9f8))
+- **tests:** Install and enable login captcha extension ([6f160a1](https://github.com/guanguans/dcat-login-captcha/commit/6f160a1))
 
-### Fix
-- **tests:** Update test database
+### 🐞 Bug Fixes
+- **tests:** Update test database ([9970302](https://github.com/guanguans/dcat-login-captcha/commit/9970302))
 
-### Refactor
-- **setting:** remove unused handle method
-- **tests:** Refactor defineDatabaseMigrations method
+### 🎨 Styles
+- **LoginCaptchaServiceProvider:** Add missing whitespace ([9e5b9b9](https://github.com/guanguans/dcat-login-captcha/commit/9e5b9b9))
 
-### Test
-- **FeatureTest:** can generate login captcha
-- **Support:** can check login captcha
-- **TestCase:** Fix database migrations
+### 💅 Code Refactorings
+- **setting:** remove unused handle method ([645bef4](https://github.com/guanguans/dcat-login-captcha/commit/645bef4))
+- **tests:** Refactor defineDatabaseMigrations method ([e4195a1](https://github.com/guanguans/dcat-login-captcha/commit/e4195a1))
+
+### ✅ Tests
+- **FeatureTest:** can generate login captcha ([e7ddc5d](https://github.com/guanguans/dcat-login-captcha/commit/e7ddc5d))
+- **Support:** can check login captcha ([e9a4684](https://github.com/guanguans/dcat-login-captcha/commit/e9a4684))
+- **TestCase:** Fix database migrations ([a498af9](https://github.com/guanguans/dcat-login-captcha/commit/a498af9))
 
 ### Pull Requests
 - Merge pull request [#37](https://github.com/guanguans/dcat-login-captcha/issues/37) from guanguans/dependabot/github_actions/actions/checkout-4
-  - Merge pull request [#38](https://github.com/guanguans/dcat-login-captcha/issues/38) from guanguans/dependabot/github_actions/stefanzweifel/git-auto-commit-action-5
-  
-  
+- Merge pull request [#38](https://github.com/guanguans/dcat-login-captcha/issues/38) from guanguans/dependabot/github_actions/stefanzweifel/git-auto-commit-action-5
+
+
 <a name="2.0.0-rc1"></a>
 ## [2.0.0-rc1] - 2023-10-09
-### Docs
-- **BootingHandler.php:** add missing comment
-- **readme:** Update requirements and installation steps
-- **vendor-bin:** Add facade-documenter to composer.json
+### ✨ Features
+- **CaptchaBuilder:** add CaptchaBuilder class ([13ac5ac](https://github.com/guanguans/dcat-login-captcha/commit/13ac5ac))
+- **monorepo-builder-worker:** Add guanguans/monorepo-builder-worker package ([b33e867](https://github.com/guanguans/dcat-login-captcha/commit/b33e867))
+- **rector:** Add RemoveInterfacesRector ([492bb66](https://github.com/guanguans/dcat-login-captcha/commit/492bb66))
+- **rector:** Add Rector configuration ([9b55eb1](https://github.com/guanguans/dcat-login-captcha/commit/9b55eb1))
+- **version:** Add 2.0.0-RC1 version ([e6de4fe](https://github.com/guanguans/dcat-login-captcha/commit/e6de4fe))
 
-### Feat
-- **CaptchaBuilder:** add CaptchaBuilder class
-- **monorepo-builder-worker:** Add guanguans/monorepo-builder-worker package
-- **rector:** Add RemoveInterfacesRector
-- **rector:** Add Rector configuration
-- **version:** Add 2.0.0-RC1 version
+### 🐞 Bug Fixes
+- **admin:** Handle Dcat login captcha upgrade error ([3999bff](https://github.com/guanguans/dcat-login-captcha/commit/3999bff))
+- **controller:** add return type declaration ([6743c14](https://github.com/guanguans/dcat-login-captcha/commit/6743c14))
+- **tests.yml:** Update PHP versions ([b904801](https://github.com/guanguans/dcat-login-captcha/commit/b904801))
+- **xml:** Fix InvalidReturnType and InvalidReturnStatement ([c7afc24](https://github.com/guanguans/dcat-login-captcha/commit/c7afc24))
 
-### Fix
-- **admin:** Handle Dcat login captcha upgrade error
-- **controller:** add return type declaration
-- **tests.yml:** Update PHP versions
-- **xml:** Fix InvalidReturnType and InvalidReturnStatement
+### 📖 Documents
+- **BootingHandler.php:** add missing comment ([a215319](https://github.com/guanguans/dcat-login-captcha/commit/a215319))
+- **readme:** Update requirements and installation steps ([0f94bc7](https://github.com/guanguans/dcat-login-captcha/commit/0f94bc7))
+- **vendor-bin:** Add facade-documenter to composer.json ([3448c03](https://github.com/guanguans/dcat-login-captcha/commit/3448c03))
 
-### Refactor
-- **captcha:** Remove captcha.blade.php
-- **lang:** rename login_captcha.php to login-captcha.php
-- **tests:** Refactor TestCase
+### 🎨 Styles
+- update indent size for specific file types ([d7be676](https://github.com/guanguans/dcat-login-captcha/commit/d7be676))
+
+### 💅 Code Refactorings
+- **captcha:** Remove captcha.blade.php ([3477070](https://github.com/guanguans/dcat-login-captcha/commit/3477070))
+- **lang:** rename login_captcha.php to login-captcha.php ([033af90](https://github.com/guanguans/dcat-login-captcha/commit/033af90))
+- **tests:** Refactor TestCase ([02d2d37](https://github.com/guanguans/dcat-login-captcha/commit/02d2d37))
 
 ### Pull Requests
 - Merge pull request [#36](https://github.com/guanguans/dcat-login-captcha/issues/36) from guanguans/dependabot/github_actions/stefanzweifel/git-auto-commit-action-5
-  - Merge pull request [#34](https://github.com/guanguans/dcat-login-captcha/issues/34) from guanguans/dependabot/github_actions/codecov/codecov-action-4
-  - Merge pull request [#33](https://github.com/guanguans/dcat-login-captcha/issues/33) from guanguans/dependabot/github_actions/actions/checkout-4
-  - Merge pull request [#32](https://github.com/guanguans/dcat-login-captcha/issues/32) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.6.0
-  - Merge pull request [#31](https://github.com/guanguans/dcat-login-captcha/issues/31) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.5.1
-  - Merge pull request [#30](https://github.com/guanguans/dcat-login-captcha/issues/30) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.5.0
-  - Merge pull request [#29](https://github.com/guanguans/dcat-login-captcha/issues/29) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.4.0
-  - Merge pull request [#28](https://github.com/guanguans/dcat-login-captcha/issues/28) from guanguans/dependabot/github_actions/actions/stale-8
-  
-  
+- Merge pull request [#34](https://github.com/guanguans/dcat-login-captcha/issues/34) from guanguans/dependabot/github_actions/codecov/codecov-action-4
+- Merge pull request [#33](https://github.com/guanguans/dcat-login-captcha/issues/33) from guanguans/dependabot/github_actions/actions/checkout-4
+- Merge pull request [#32](https://github.com/guanguans/dcat-login-captcha/issues/32) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.6.0
+- Merge pull request [#31](https://github.com/guanguans/dcat-login-captcha/issues/31) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.5.1
+- Merge pull request [#30](https://github.com/guanguans/dcat-login-captcha/issues/30) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.5.0
+- Merge pull request [#29](https://github.com/guanguans/dcat-login-captcha/issues/29) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.4.0
+- Merge pull request [#28](https://github.com/guanguans/dcat-login-captcha/issues/28) from guanguans/dependabot/github_actions/actions/stale-8
+
+
 <a name="v1.1.0"></a>
 ## [v1.1.0] - 2023-03-20
-### Docs
-- update CHANGELOG.md for version 1.1.0
+### 🐞 Bug Fixes
+- **src:** update LoginCaptchaServiceProvider.php to merge config correctly([#27](https://github.com/guanguans/dcat-login-captcha/issues/27)) ([d32f0fb](https://github.com/guanguans/dcat-login-captcha/commit/d32f0fb))
 
-### Fix
-- **src:** update LoginCaptchaServiceProvider.php to merge config correctly([#27](https://github.com/guanguans/dcat-login-captcha/issues/27))
+### 📖 Documents
+- update CHANGELOG.md for version 1.1.0 ([e689bb1](https://github.com/guanguans/dcat-login-captcha/commit/e689bb1))
 
 ### Pull Requests
 - Merge pull request [#26](https://github.com/guanguans/dcat-login-captcha/issues/26) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0or-tw-4.0or-tw-9.0
-  - Merge pull request [#25](https://github.com/guanguans/dcat-login-captcha/issues/25) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.3.6
-  - Merge pull request [#24](https://github.com/guanguans/dcat-login-captcha/issues/24) from guanguans/dependabot/github_actions/actions/stale-7
-  - Merge pull request [#23](https://github.com/guanguans/dcat-login-captcha/issues/23) from guanguans/dependabot/composer/vimeo/psalm-tw-4.0or-tw-5.0
-  - Merge pull request [#22](https://github.com/guanguans/dcat-login-captcha/issues/22) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.3.5
-  - Merge pull request [#21](https://github.com/guanguans/dcat-login-captcha/issues/21) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.3.4
-  - Merge pull request [#20](https://github.com/guanguans/dcat-login-captcha/issues/20) from guanguans/dependabot/github_actions/actions/stale-6
-  
-  
+- Merge pull request [#25](https://github.com/guanguans/dcat-login-captcha/issues/25) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.3.6
+- Merge pull request [#24](https://github.com/guanguans/dcat-login-captcha/issues/24) from guanguans/dependabot/github_actions/actions/stale-7
+- Merge pull request [#23](https://github.com/guanguans/dcat-login-captcha/issues/23) from guanguans/dependabot/composer/vimeo/psalm-tw-4.0or-tw-5.0
+- Merge pull request [#22](https://github.com/guanguans/dcat-login-captcha/issues/22) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.3.5
+- Merge pull request [#21](https://github.com/guanguans/dcat-login-captcha/issues/21) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.3.4
+- Merge pull request [#20](https://github.com/guanguans/dcat-login-captcha/issues/20) from guanguans/dependabot/github_actions/actions/stale-6
+
+
 <a name="v1.0.19"></a>
 ## [v1.0.19] - 2022-09-08
 
@@ -193,8 +219,8 @@ All notable changes to this project will be documented in this file.
 ## [v1.0.15] - 2022-08-24
 ### Pull Requests
 - Merge pull request [#17](https://github.com/guanguans/dcat-login-captcha/issues/17) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-1.3.3
-  
-  
+
+
 <a name="v1.0.14"></a>
 ## [v1.0.14] - 2022-07-13
 
@@ -205,16 +231,16 @@ All notable changes to this project will be documented in this file.
 ## [v1.0.12] - 2022-04-06
 ### Pull Requests
 - Merge pull request [#14](https://github.com/guanguans/dcat-login-captcha/issues/14) from guanguans/dependabot/github_actions/codecov/codecov-action-3
-  
-  
+
+
 <a name="v1.0.11"></a>
 ## [v1.0.11] - 2022-04-01
 ### Pull Requests
 - Merge pull request [#13](https://github.com/guanguans/dcat-login-captcha/issues/13) from guanguans/dependabot/github_actions/actions/cache-3
-  - Merge pull request [#12](https://github.com/guanguans/dcat-login-captcha/issues/12) from guanguans/dependabot/github_actions/actions/checkout-3
-  - Merge pull request [#11](https://github.com/guanguans/dcat-login-captcha/issues/11) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0or-tw-4.0
-  
-  
+- Merge pull request [#12](https://github.com/guanguans/dcat-login-captcha/issues/12) from guanguans/dependabot/github_actions/actions/checkout-3
+- Merge pull request [#11](https://github.com/guanguans/dcat-login-captcha/issues/11) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0or-tw-4.0
+
+
 <a name="v1.0.10"></a>
 ## [v1.0.10] - 2021-11-09
 
@@ -222,9 +248,9 @@ All notable changes to this project will be documented in this file.
 ## [v1.0.9] - 2021-10-17
 ### Pull Requests
 - Merge pull request [#10](https://github.com/guanguans/dcat-login-captcha/issues/10) from guanguans/dependabot/github_actions/codecov/codecov-action-2.1.0
-  - Merge pull request [#9](https://github.com/guanguans/dcat-login-captcha/issues/9) from guanguans/dependabot/composer/phpunit/phpunit-tw-7.0or-tw-8.0or-tw-9.0
-  
-  
+- Merge pull request [#9](https://github.com/guanguans/dcat-login-captcha/issues/9) from guanguans/dependabot/composer/phpunit/phpunit-tw-7.0or-tw-8.0or-tw-9.0
+
+
 <a name="v1.0.8"></a>
 ## [v1.0.8] - 2021-09-13
 
@@ -241,8 +267,8 @@ All notable changes to this project will be documented in this file.
 ## [v1.0.4] - 2021-07-23
 ### Pull Requests
 - Merge pull request [#7](https://github.com/guanguans/dcat-login-captcha/issues/7) from guanguans/imgbot
-  
-  
+
+
 <a name="v1.0.3"></a>
 ## [v1.0.3] - 2021-07-23
 
@@ -256,13 +282,14 @@ All notable changes to this project will be documented in this file.
 ## v1.0.0 - 2021-07-23
 ### Pull Requests
 - Merge pull request [#5](https://github.com/guanguans/dcat-login-captcha/issues/5) from guanguans/dependabot/composer/friendsofphp/php-cs-fixer-tw-2.17or-tw-3.0
-  - Merge pull request [#4](https://github.com/guanguans/dcat-login-captcha/issues/4) from guanguans/imgbot
-  - Merge pull request [#3](https://github.com/guanguans/dcat-login-captcha/issues/3) from guanguans/imgbot
-  - Merge pull request [#1](https://github.com/guanguans/dcat-login-captcha/issues/1) from guanguans/dependabot/composer/vimeo/psalm-tw-3.11or-tw-4.0
-  - Merge pull request [#2](https://github.com/guanguans/dcat-login-captcha/issues/2) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0
-  
-  
-[Unreleased]: https://github.com/guanguans/dcat-login-captcha/compare/2.2.1...HEAD
+- Merge pull request [#4](https://github.com/guanguans/dcat-login-captcha/issues/4) from guanguans/imgbot
+- Merge pull request [#3](https://github.com/guanguans/dcat-login-captcha/issues/3) from guanguans/imgbot
+- Merge pull request [#1](https://github.com/guanguans/dcat-login-captcha/issues/1) from guanguans/dependabot/composer/vimeo/psalm-tw-3.11or-tw-4.0
+- Merge pull request [#2](https://github.com/guanguans/dcat-login-captcha/issues/2) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0
+
+
+[Unreleased]: https://github.com/guanguans/dcat-login-captcha/compare/2.3.0...HEAD
+[2.3.0]: https://github.com/guanguans/dcat-login-captcha/compare/2.2.1...2.3.0
 [2.2.1]: https://github.com/guanguans/dcat-login-captcha/compare/2.2.0...2.2.1
 [2.2.0]: https://github.com/guanguans/dcat-login-captcha/compare/2.1.2...2.2.0
 [2.1.2]: https://github.com/guanguans/dcat-login-captcha/compare/2.1.1...2.1.2
