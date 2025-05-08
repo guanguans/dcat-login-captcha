@@ -31,7 +31,7 @@
 *.phar   binary
 *.mp4    binary
 
-# Remove files for archives generated using `git archive --format=zip --output=laravel-soar.zip master -v`
+# Remove files for archives generated using `git archive --format=zip --output=dcat-login-captcha.zip master -v`
 # Ignore all test and documentation with "export-ignore".
 /.*/           export-ignore
 /baselines/    export-ignore

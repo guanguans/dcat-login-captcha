@@ -6,8 +6,9 @@
 name: Mark stale issues and pull requests
 
 on:
+  workflow_dispatch:
   schedule:
-  - cron: '30 08 * * *'
+    - cron: '30 08 * * *'
 
 jobs:
   stale:
@@ -18,10 +19,10 @@ jobs:
       pull-requests: write
 
     steps:
-    - uses: actions/stale@v9
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        stale-issue-message: 'Stale issue message'
-        stale-pr-message: 'Stale pull request message'
-        stale-issue-label: 'no-issue-activity'
-        stale-pr-label: 'no-pr-activity'
+      - uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          stale-issue-message: 'Stale issue message'
+          stale-pr-message: 'Stale pull request message'
+          stale-issue-label: 'no-issue-activity'
+          stale-pr-label: 'no-pr-activity'

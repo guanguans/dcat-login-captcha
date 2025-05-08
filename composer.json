@@ -123,7 +123,7 @@
             "target-directory": "vendor-bin"
         },
         "branch-alias": {
-            "dev-master": "3.x-dev"
+            "dev-main": "3.x-dev"
         },
         "composer-normalize": {
             "indent-size": 4,
@@ -328,7 +328,7 @@
         "time-end": "@php -r 'date_default_timezone_set('\\''Asia/Shanghai'\\''); echo \"\\nTime: \".round(time() - (int) getenv('\\''START_TIME'\\'')).'\\'' seconds, Memory: '\\''.round(memory_get_peak_usage(true) / 1024 / 1024, 2).\" MB\\n\";'",
         "time-start": "@putenv START_TIME=$(date +%s);",
         "trap": "@php ./vendor/bin/trap --ui --ansi -v",
-        "trufflehog": "trufflehog git https://github.com/guanguans/laravel-soar --only-verified",
+        "trufflehog": "trufflehog git https://github.com/guanguans/dcat-login-captcha --only-verified",
         "user-composer": [
             "@env-put-composer-memory-unlimited",
             "@env-put-xdebug-off",
