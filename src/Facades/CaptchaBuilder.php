@@ -42,11 +42,11 @@ use Illuminate\Support\Facades\Facade;
  * @method static void inline(void $quality = 90)
  * @method static void output(void $quality = 90)
  * @method static array getFingerprint()
- * @method static void macro(string $name, callable|object $macro)
+ * @method static void macro(string $name, object|callable $macro)
  * @method static void mixin(object $mixin, bool $replace = true)
  * @method static bool hasMacro(string $name)
  * @method static void flushMacros()
- * @method static \Guanguans\DcatLoginCaptcha\CaptchaBuilder|\Illuminate\Support\HigherOrderTapProxy tap(null|callable $callback = null)
+ * @method static \Guanguans\DcatLoginCaptcha\CaptchaBuilder|\Illuminate\Support\HigherOrderTapProxy tap(callable|null $callback = null)
  *
  * @see \Guanguans\DcatLoginCaptcha\CaptchaBuilder
  */

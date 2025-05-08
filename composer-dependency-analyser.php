@@ -17,8 +17,10 @@ use ShipMonk\ComposerDependencyAnalyser\Config\ErrorType;
 return (new Configuration)
     ->addPathsToScan(
         [
-            __DIR__.'/config',
-            __DIR__.'/src',
+            __DIR__.'/config/',
+            __DIR__.'/resources/',
+            __DIR__.'/src/',
+            __DIR__.'/updates/',
         ],
         false
     )
@@ -35,34 +37,16 @@ return (new Configuration)
     )
     ->ignoreErrorsOnPackages(
         [
-            'nesbot/carbon',
-            'symfony/console',
-            'symfony/http-foundation',
-            'symfony/var-dumper',
+            // 'nesbot/carbon',
+            // 'symfony/console',
+            // 'symfony/http-foundation',
+            // 'symfony/var-dumper',
         ],
-        [ErrorType::SHADOW_DEPENDENCY]
-    )
-    ->ignoreErrorsOnPackageAndPath(
-        'maximebf/debugbar',
-        __DIR__.'/src/Outputs/DebugBarOutput.php',
-        [ErrorType::SHADOW_DEPENDENCY]
-    )
-    ->ignoreErrorsOnPackagesAndPaths(
-        [
-            'barryvdh/laravel-debugbar',
-            // 'php-debugbar/php-debugbar',
-        ],
-        [__DIR__.'/src/Outputs/DebugBarOutput.php'],
-        [ErrorType::DEV_DEPENDENCY_IN_PROD]
-    )
-    ->ignoreErrorsOnPackageAndPath(
-        'spatie/ray',
-        __DIR__.'/src/Outputs/RayOutput.php',
         [ErrorType::SHADOW_DEPENDENCY]
     )
     ->ignoreErrorsOnPackages(
         [
-            'guanguans/ai-commit',
+            // 'guanguans/ai-commit',
         ],
         [ErrorType::DEV_DEPENDENCY_IN_PROD]
     );
