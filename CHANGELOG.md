@@ -8,6 +8,31 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+<a name="3.0.0"></a>
+## [3.0.0] - 2025-05-08
+### ✨ Features
+- **workflows:** Upgrade PHP version to 8.0 across workflows ([1cdd20c](https://github.com/guanguans/dcat-login-captcha/commit/1cdd20c))
+
+### 🎨 Styles
+- apply php-cs-fixer ([45a2572](https://github.com/guanguans/dcat-login-captcha/commit/45a2572))
+- apply php-cs-fixer ([5b0ff57](https://github.com/guanguans/dcat-login-captcha/commit/5b0ff57))
+
+### 💅 Code Refactorings
+- apply rector ([6df77b8](https://github.com/guanguans/dcat-login-captcha/commit/6df77b8))
+- **exceptions:** implement ThrowableContract and reorganize exception handling ([d8ddde7](https://github.com/guanguans/dcat-login-captcha/commit/d8ddde7))
+- **rector-config:** enhance Rector configuration and namespace declarations ([bff980f](https://github.com/guanguans/dcat-login-captcha/commit/bff980f))
+
+### ✅ Tests
+- **helpers:** add test for getting classes and reorder test cases ([2ec50b7](https://github.com/guanguans/dcat-login-captcha/commit/2ec50b7))
+
+### 📦 Builds
+- **composer:** enhance configuration and add script aliases ([c377cb3](https://github.com/guanguans/dcat-login-captcha/commit/c377cb3))
+
+### 🤖 Continuous Integrations
+- **core:** Remove obsolete files from the project ([d8e74b2](https://github.com/guanguans/dcat-login-captcha/commit/d8e74b2))
+- **github:** remove issue templates and psalm workflow ([223d2b1](https://github.com/guanguans/dcat-login-captcha/commit/223d2b1))
+
+
 <a name="2.4.0"></a>
 ## [2.4.0] - 2025-05-08
 ### ✨ Features
@@ -297,7 +322,8 @@ All notable changes to this project will be documented in this file.
 - Merge pull request [#2](https://github.com/guanguans/dcat-login-captcha/issues/2) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0
 
 
-[Unreleased]: https://github.com/guanguans/dcat-login-captcha/compare/2.4.0...HEAD
+[Unreleased]: https://github.com/guanguans/dcat-login-captcha/compare/3.0.0...HEAD
+[3.0.0]: https://github.com/guanguans/dcat-login-captcha/compare/2.4.0...3.0.0
 [2.4.0]: https://github.com/guanguans/dcat-login-captcha/compare/2.3.0...2.4.0
 [2.3.0]: https://github.com/guanguans/dcat-login-captcha/compare/2.2.1...2.3.0
 [2.2.1]: https://github.com/guanguans/dcat-login-captcha/compare/2.2.0...2.2.1
