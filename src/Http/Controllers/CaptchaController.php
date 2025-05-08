@@ -15,6 +15,7 @@ namespace Guanguans\DcatLoginCaptcha\Http\Controllers;
 
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use function Guanguans\DcatLoginCaptcha\Support\login_captcha_content;
 
 class CaptchaController extends Controller
 {

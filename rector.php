@@ -48,16 +48,21 @@ use Rector\ValueObject\PhpVersion;
 use Rector\ValueObject\Visibility;
 use Rector\Visibility\Rector\ClassMethod\ChangeMethodVisibilityRector;
 use Rector\Visibility\ValueObject\ChangeMethodVisibility;
+use RectorLaravel\Rector\Class_\AnonymousMigrationsRector;
 use RectorLaravel\Rector\Class_\ModelCastsPropertyToCastsMethodRector;
 use RectorLaravel\Rector\Empty_\EmptyToBlankAndFilledFuncRector;
 use RectorLaravel\Rector\FuncCall\FactoryFuncCallToStaticCallRector;
 use RectorLaravel\Rector\FuncCall\HelperFuncCallToFacadeClassRector;
+use RectorLaravel\Rector\FuncCall\RemoveDumpDataDeadCodeRector;
 use RectorLaravel\Rector\FuncCall\TypeHintTappableCallRector;
 use RectorLaravel\Rector\If_\ThrowIfRector;
+use RectorLaravel\Rector\MethodCall\ContainerBindConcreteWithClosureOnlyRector;
 use RectorLaravel\Rector\MethodCall\UseComponentPropertyWithinCommandsRector;
+use RectorLaravel\Rector\MethodCall\ValidationRuleArrayStringValueToArrayRector;
 use RectorLaravel\Rector\Namespace_\FactoryDefinitionRector;
 use RectorLaravel\Rector\StaticCall\DispatchToHelperFunctionsRector;
 use RectorLaravel\Set\LaravelSetList;
+use function Guanguans\DcatLoginCaptcha\Support\classes;
 
 return RectorConfig::configure()
     ->withPaths([
@@ -180,33 +185,30 @@ return RectorConfig::configure()
             ->values()
             ->all(),
     )
-    // ->withConfiguredRule(
-    //     RenameFunctionRector::class,
-    //     [
-    //         // 'app' => 'resolve',
-    //         'faker' => 'fake',
-    //         'Pest\Faker\fake' => 'fake',
-    //         'Pest\Faker\faker' => 'faker',
-    //         'test' => 'it',
-    //     ] + array_reduce(
-    //         [
-    //             'base64_encode_file',
-    //             'classes',
-    //             'env_explode',
-    //             'humanly_milliseconds',
-    //             'json_pretty_encode',
-    //             'make',
-    //             'star_for',
-    //         ],
-    //         static function (array $carry, string $func): array {
-    //             /** @see https://github.com/laravel/framework/blob/11.x/src/Illuminate/Support/functions.php */
-    //             $carry[$func] = "Guanguans\\DcatLoginCaptcha\\Support\\$func";
-    //
-    //             return $carry;
-    //         },
-    //         []
-    //     )
-    // )
+    ->withConfiguredRule(
+        RenameFunctionRector::class,
+        [
+            // 'app' => 'resolve',
+            'faker' => 'fake',
+            'Pest\Faker\fake' => 'fake',
+            'Pest\Faker\faker' => 'faker',
+            'test' => 'it',
+        ] + array_reduce(
+            [
+                'classes',
+                'login_captcha_check',
+                'login_captcha_content',
+                'login_captcha_url',
+            ],
+            static function (array $carry, string $func): array {
+                /** @see https://github.com/laravel/framework/blob/11.x/src/Illuminate/Support/functions.php */
+                $carry[$func] = "Guanguans\\DcatLoginCaptcha\\Support\\$func";
+
+                return $carry;
+            },
+            []
+        )
+    )
     ->withSkip([
         DisallowedEmptyRuleFixerRector::class,
         RenameForeachValueVariableToMatchExprVariableRector::class,
@@ -220,6 +222,10 @@ return RectorConfig::configure()
         WrapEncapsedVariableInCurlyBracesRector::class,
     ])
     ->withSkip([
+        AnonymousMigrationsRector::class,
+        ContainerBindConcreteWithClosureOnlyRector::class,
+        ValidationRuleArrayStringValueToArrayRector::class,
+
         FactoryDefinitionRector::class,
         FactoryFuncCallToStaticCallRector::class,
         ThrowIfRector::class,
@@ -232,6 +238,9 @@ return RectorConfig::configure()
         TypeHintTappableCallRector::class,
     ])
     ->withSkip([
+        RemoveDumpDataDeadCodeRector::class => $staticClosureSkipPaths = [
+            __DIR__.'/tests/TestCase.php',
+        ],
         RemoveExtraParametersRector::class => $staticClosureSkipPaths = [
             __DIR__.'/src/Mixins/QueryBuilderMixin.php',
         ],

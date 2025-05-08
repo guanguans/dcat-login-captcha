@@ -18,6 +18,10 @@ declare(strict_types=1);
  * @see https://github.com/guanguans/dcat-login-captcha
  */
 
+use function Guanguans\DcatLoginCaptcha\Support\login_captcha_check;
+use function Guanguans\DcatLoginCaptcha\Support\login_captcha_content;
+use function Guanguans\DcatLoginCaptcha\Support\login_captcha_url;
+
 it('can check login captcha', function (): void {
     expect(login_captcha_check('foo'))->toBeBool();
 })->group(__DIR__, __FILE__);

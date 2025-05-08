@@ -81,7 +81,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
             Artisan::call('admin:install');
             // Artisan::call('admin:ext-install', ['name' => 'guanguans.dcat-login-captcha', ['--path' => __DIR__.'/../']]);
             // Artisan::call('admin:ext-enable', ['name' => 'guanguans.dcat-login-captcha']);
-            app(LoginCaptchaServiceProvider::class)->init();
+            resolve(LoginCaptchaServiceProvider::class)->init();
         } catch (\Throwable $throwable) {
             dump($throwable->getMessage());
         }

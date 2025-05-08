@@ -11,6 +11,9 @@ declare(strict_types=1);
  * @see https://github.com/guanguans/dcat-login-captcha
  */
 
+namespace Guanguans\DcatLoginCaptcha\Support;
+
+use Composer\Autoload\ClassLoader;
 use Guanguans\DcatLoginCaptcha\Facades\CaptchaBuilder;
 use Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider;
 use Guanguans\DcatLoginCaptcha\PhraseBuilder;
@@ -18,47 +21,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
-if (!\function_exists('login_captcha_check')) {
-    /**
-     * 登录验证码检查.
-     */
-    function login_captcha_check(string $value): bool
-    {
-        return PhraseBuilder::comparePhrases(
-            Session::pull(LoginCaptchaServiceProvider::setting('captcha_phrase_session_key')),
-            $value
-        );
-    }
-}
-
-if (!\function_exists('login_captcha_url')) {
-    /**
-     * 获取登录验证码 url 地址.
-     */
-    function login_captcha_url(?string $routeName = null): string
-    {
-        return admin_route(
-            $routeName ?? LoginCaptchaServiceProvider::setting('route.name'),
-            ['random' => Str::random()]
-        );
-    }
-}
-
-if (!\function_exists('login_captcha_content')) {
-    /**
-     * 获取登录验证码图像内容.
-     *
-     * @noinspection PhpVoidFunctionResultUsedInspection
-     */
-    function login_captcha_content(int $quality = 90): string
-    {
-        Session::put(LoginCaptchaServiceProvider::setting('captcha_phrase_session_key'), CaptchaBuilder::getPhrase());
-
-        return CaptchaBuilder::get($quality);
-    }
-}
-
-if (!\function_exists('classes')) {
+if (!\function_exists('Guanguans\DcatLoginCaptcha\Support\classes')) {
     /**
      * @see https://github.com/alekitto/class-finder
      * @see https://github.com/ergebnis/classy
@@ -87,10 +50,50 @@ if (!\function_exists('classes')) {
             ->filter($filter)
             ->mapWithKeys(static function (string $file, string $class): array {
                 try {
-                    return [$class => new ReflectionClass($class)];
-                } catch (Throwable $throwable) {
+                    return [$class => new \ReflectionClass($class)];
+                } catch (\Throwable $throwable) {
                     return [$class => $throwable];
                 }
             });
+    }
+}
+
+if (!\function_exists('Guanguans\DcatLoginCaptcha\Support\login_captcha_check')) {
+    /**
+     * 登录验证码检查.
+     */
+    function login_captcha_check(string $value): bool
+    {
+        return PhraseBuilder::comparePhrases(
+            Session::pull(LoginCaptchaServiceProvider::setting('captcha_phrase_session_key')),
+            $value
+        );
+    }
+}
+
+if (!\function_exists('Guanguans\DcatLoginCaptcha\Support\login_captcha_content')) {
+    /**
+     * 获取登录验证码图像内容.
+     *
+     * @noinspection PhpVoidFunctionResultUsedInspection
+     */
+    function login_captcha_content(int $quality = 90): string
+    {
+        Session::put(LoginCaptchaServiceProvider::setting('captcha_phrase_session_key'), CaptchaBuilder::getPhrase());
+
+        return CaptchaBuilder::get($quality);
+    }
+}
+
+if (!\function_exists('Guanguans\DcatLoginCaptcha\Support\login_captcha_url')) {
+    /**
+     * 获取登录验证码 url 地址.
+     */
+    function login_captcha_url(?string $routeName = null): string
+    {
+        return admin_route(
+            $routeName ?? LoginCaptchaServiceProvider::setting('route.name'),
+            ['random' => Str::random()]
+        );
     }
 }

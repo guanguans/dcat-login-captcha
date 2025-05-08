@@ -22,6 +22,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use function Guanguans\DcatLoginCaptcha\Support\login_captcha_check;
 
 class LoginCaptchaServiceProvider extends ServiceProvider
 {
