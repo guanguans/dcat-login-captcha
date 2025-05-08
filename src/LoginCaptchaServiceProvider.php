@@ -102,7 +102,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     protected function initConfig(): void
     {
         parent::initConfig();
-        $this->config += config('login-captcha', []);
+        $this->config += (array) config('login-captcha', []);
     }
 
     protected function registerPhraseBuilder(): self
@@ -142,7 +142,11 @@ class LoginCaptchaServiceProvider extends ServiceProvider
 
     protected function extendValidator(): self
     {
-        Validator::extend('dcat_login_captcha', static fn ($attribute, $value): bool => login_captcha_check($value), self::trans('login-captcha.captcha_error'));
+        Validator::extend(
+            'dcat_login_captcha',
+            static fn (string $attribute, mixed $value): bool => login_captcha_check($value),
+            self::trans('login-captcha.captcha_error')
+        );
 
         return $this;
     }

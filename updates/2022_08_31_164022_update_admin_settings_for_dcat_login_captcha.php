@@ -39,7 +39,7 @@ class UpdateAdminSettingsForDcatLoginCaptcha extends Migration
                 ->mergeCasts(['value' => 'array']);
 
             /** @noinspection PhpUndefinedFieldInspection */
-            $setting->value += config('login-captcha', []);
+            $setting->value += (array) config('login-captcha', []);
             $setting->save();
         } catch (Throwable $throwable) {
             Log::error('Dcat-login-captcha upgrade error.', ['throwable' => $throwable]);

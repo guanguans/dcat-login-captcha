@@ -30,7 +30,9 @@ includes:
 parameters:
     paths:
         - config/
+        - resources/
         - src/
+#        - updates/
     scanFiles:
         - vendor/composer/InstalledVersions.php
     excludePaths:
@@ -80,35 +82,24 @@ parameters:
             function: 'env_explode()'
             message: 'use config() instead'
     ignoreErrors:
-#        - identifier: cast.string
+#        - identifier: argument.templateType
+#        - identifier: binaryOp.invalid
 #        - identifier: encapsedStringPart.nonString
 #        - identifier: logicalAnd.resultUnused
+#        - identifier: return.void
+#        - identifier: symplify.explicitTraitSuffixName
 #        - identifier: symplify.noDynamicName
 #        - identifier: typePerfect.noMixedMethodCaller
-        - identifier: argument.templateType
         - identifier: argument.type
-        - identifier: binaryOp.invalid
+        - identifier: cast.string
         - identifier: method.nonObject
         - identifier: missingType.generics
         - identifier: missingType.iterableValue
         - identifier: return.type
-        - identifier: return.void
         - identifier: shipmonk.deadMethod
-        - identifier: symplify.explicitTraitSuffixName
         - identifier: symplify.requireExceptionNamespace
-        - '#^Call to an undefined static method Guanguans\\LaravelSoar\\Facades\\Soar\:\:get.*\(\)\.$#'
-        - '#^Call to method label\(\) on an unknown class Spatie\\.*\\Ray\.$#'
-        - '#^Function clock not found\.$#'
+        - message: '#^Result of static method Guanguans\\DcatLoginCaptcha\\Facades\\CaptchaBuilder\:\:get\(\) \(void\) is used\.$#'
+        - message: '#^Result of static method Guanguans\\DcatLoginCaptcha\\Facades\\CaptchaBuilder\:\:getPhrase\(\) \(void\) is used\.$#'
         -
             identifier: symplify.explicitInterfaceSuffixName
             path: src/Contracts/
-        -
-            message: '#^Calling env\(\) is forbidden, use config\(\) instead\.$#'
-            paths:
-                - config/soar.php
-                - src/Support/helpers.php
-        -
-            messages:
-                - '#^Method Guanguans\\LaravelSoar\\Mixins\\QueryBuilderMixin\:\:.*\(\) invoked with \d parameters?, 0 required\.$#'
-                - '#^Parameter \#1 \(Closure\) of echo cannot be converted to string\.$#'
-            path: src/Mixins/
