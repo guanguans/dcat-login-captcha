@@ -1,5 +1,7 @@
 <?php
 
+/** @noinspection PhpUnusedAliasInspection */
+
 declare(strict_types=1);
 
 /**
@@ -14,6 +16,8 @@ declare(strict_types=1);
 use Guanguans\MonorepoBuilderWorker\CreateGithubReleaseReleaseWorker;
 use Guanguans\MonorepoBuilderWorker\Support\EnvironmentChecker;
 use Guanguans\MonorepoBuilderWorker\UpdateChangelogViaGoReleaseWorker;
+use Guanguans\MonorepoBuilderWorker\UpdateChangelogViaNodeReleaseWorker;
+use Guanguans\MonorepoBuilderWorker\UpdateChangelogViaPhpReleaseWorker;
 use Symplify\MonorepoBuilder\Config\MBConfig;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\AddTagToChangelogReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\PushNextDevReleaseWorker;
@@ -27,6 +31,7 @@ use Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateReplaceReleaseWorker;
 return static function (MBConfig $mbConfig): void {
     require __DIR__.'/vendor/autoload.php';
     $mbConfig->defaultBranch('main');
+    $mbConfig->disableDefaultWorkers();
 
     /**
      * release workers - in order to execute.

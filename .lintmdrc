@@ -26,7 +26,7 @@
         "correct-title-trailing-punctuation": 2,
         "no-space-in-inline-code": 2,
         "no-long-code": [
-            0,
+            1,
             {
                 "length": 200,
                 "exclude": [
