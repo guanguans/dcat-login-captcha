@@ -22,16 +22,7 @@
 ### Composer 安装
 
 ```bash
-composer require guanguans/dcat-login-captcha --prefer-source -v
-```
-
-### 安装问题([https://github.com/guanguans/dcat-login-captcha/issues/39](https://github.com/guanguans/dcat-login-captcha/issues/39))
-
-```shell
-composer config -g repo.packagist composer https://packagist.org -v
-composer clear-cache -v
-composer remove guanguans/dcat-login-captcha -v
-composer require guanguans/dcat-login-captcha --prefer-source -v
+composer require guanguans/dcat-login-captcha --ansi -v
 ```
 
 ### 后台 -> 开发工具 -> 扩展列表
