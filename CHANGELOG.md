@@ -8,6 +8,15 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+<a name="2.4.0"></a>
+## [2.4.0] - 2025-05-08
+### ✨ Features
+- **workflows:** Update PHP version in CI configuration ([c948f2a](https://github.com/guanguans/dcat-login-captcha/commit/c948f2a))
+
+### 🤖 Continuous Integrations
+- **workflows:** Update Markdown linting and PHP tests configuration ([fd611fe](https://github.com/guanguans/dcat-login-captcha/commit/fd611fe))
+
+
 <a name="2.3.0"></a>
 ## [2.3.0] - 2025-05-08
 ### 📖 Documents
@@ -288,7 +297,8 @@ All notable changes to this project will be documented in this file.
 - Merge pull request [#2](https://github.com/guanguans/dcat-login-captcha/issues/2) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0
 
 
-[Unreleased]: https://github.com/guanguans/dcat-login-captcha/compare/2.3.0...HEAD
+[Unreleased]: https://github.com/guanguans/dcat-login-captcha/compare/2.4.0...HEAD
+[2.4.0]: https://github.com/guanguans/dcat-login-captcha/compare/2.3.0...2.4.0
 [2.3.0]: https://github.com/guanguans/dcat-login-captcha/compare/2.2.1...2.3.0
 [2.2.1]: https://github.com/guanguans/dcat-login-captcha/compare/2.2.0...2.2.1
 [2.2.0]: https://github.com/guanguans/dcat-login-captcha/compare/2.1.2...2.2.0
