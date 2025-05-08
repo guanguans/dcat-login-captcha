@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Log;
 
 class UpdateAdminSettingsForDcatLoginCaptcha extends Migration
 {
+    /**
+     * @noinspection PhpMissingParentCallCommonInspection
+     */
     public function getConnection(): string
     {
         return $this->config('database.connection', config('database.default'));

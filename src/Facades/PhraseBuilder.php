@@ -1,5 +1,8 @@
 <?php
 
+/** @noinspection PhpFullyQualifiedNameUsageInspection */
+/** @noinspection ParameterImplicitlyNullableInspection */
+
 declare(strict_types=1);
 
 /**
@@ -33,6 +36,10 @@ use Illuminate\Support\Facades\Facade;
  */
 class PhraseBuilder extends Facade
 {
+    /**
+     * @noinspection PhpMissingParentCallCommonInspection
+     * @noinspection MethodVisibilityInspection
+     */
     protected static function getFacadeAccessor(): string
     {
         return \Guanguans\DcatLoginCaptcha\PhraseBuilder::class;

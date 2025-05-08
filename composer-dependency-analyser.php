@@ -37,10 +37,7 @@ return (new Configuration)
     )
     ->ignoreErrorsOnPackages(
         [
-            // 'nesbot/carbon',
-            // 'symfony/console',
-            // 'symfony/http-foundation',
-            // 'symfony/var-dumper',
+            'symfony/http-foundation',
         ],
         [ErrorType::SHADOW_DEPENDENCY]
     )

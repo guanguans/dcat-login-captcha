@@ -14,18 +14,26 @@ declare(strict_types=1);
 namespace Guanguans\DcatLoginCaptcha\Http\Middleware;
 
 use Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class SetResponseContentType
 {
     /**
-     * Handle an incoming request.
+     * @noinspection RedundantDocCommentTagInspection
+     *
+     * @param \Closure(\Illuminate\Http\Request): (JsonResponse|RedirectResponse|Response) $next
      */
-    public function handle(Request $request, \Closure $next): Response
+    public function handle(Request $request, \Closure $next): SymfonyResponse
     {
-        return tap($next($request), static function (Response $response): void {
-            $response->header('Content-Type', \sprintf('image/%s', LoginCaptchaServiceProvider::setting('type')));
+        return tap($next($request), static function (SymfonyResponse $symfonyResponse): void {
+            $symfonyResponse->headers->set(
+                'Content-Type',
+                \sprintf('image/%s', LoginCaptchaServiceProvider::setting('type'))
+            );
         });
     }
 }
