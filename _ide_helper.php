@@ -12,17 +12,11 @@ declare(strict_types=1);
  */
 
 namespace {
-    class CaptchaBuilder extends \Guanguans\DcatLoginCaptcha\Facades\CaptchaBuilder
-    {
-    }
+    class CaptchaBuilder extends Guanguans\DcatLoginCaptcha\Facades\CaptchaBuilder {}
 
-    class PhraseBuilder extends \Guanguans\DcatLoginCaptcha\Facades\PhraseBuilder
-    {
-    }
+    class PhraseBuilder extends Guanguans\DcatLoginCaptcha\Facades\PhraseBuilder {}
 }
 
 namespace Foo {
-    class Bar
-    {
-    }
+    class Bar {}
 }

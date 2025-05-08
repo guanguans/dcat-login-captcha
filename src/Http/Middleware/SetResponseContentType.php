@@ -25,7 +25,7 @@ class SetResponseContentType
     public function handle(Request $request, \Closure $next): Response
     {
         return tap($next($request), static function (Response $response): void {
-            $response->header('Content-Type', sprintf('image/%s', LoginCaptchaServiceProvider::setting('type')));
+            $response->header('Content-Type', \sprintf('image/%s', LoginCaptchaServiceProvider::setting('type')));
         });
     }
 }

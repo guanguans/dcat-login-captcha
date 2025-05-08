@@ -31,9 +31,8 @@ use PhpParser\PrettyPrinter\Standard;
 use Symfony\Component\VarDumper\Test\VarDumperTestTrait;
 
 /**
- * @internal
- *
  * @small
+ *
  * @coversNothing
  */
 class TestCase extends \Orchestra\Testbench\TestCase
@@ -99,12 +98,13 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
     protected function fixDatabaseMigrations(): void
     {
-        $nodeTraverser = new NodeTraverser();
-        $nodeTraverser->addVisitor(new class() extends NodeVisitorAbstract {
+        $nodeTraverser = new NodeTraverser;
+        $nodeTraverser->addVisitor(new class extends NodeVisitorAbstract {
             public function enterNode(Node $node): void
             {
-                if ($node instanceof \PhpParser\Node\Expr\Closure) {
+                if ($node instanceof Node\Expr\Closure) {
                     $expr = $node->stmts[0]->expr;
+
                     if (
                         $expr instanceof Node\Expr\MethodCall
                         && $expr->var instanceof Node\Expr\Variable
@@ -124,8 +124,8 @@ class TestCase extends \Orchestra\Testbench\TestCase
         });
 
         $migratedFile = __DIR__.'/../vendor/dcat/laravel-admin/database/migrations/2020_11_01_083237_update_admin_menu_table.php';
-        $stmts = (new ParserFactory())->create(1)->parse(File::get($migratedFile));
+        $stmts = (new ParserFactory)->create(1)->parse(File::get($migratedFile));
         $nodeTraverser->traverse($stmts);
-        File::put($migratedFile, (new Standard())->prettyPrintFile($stmts));
+        File::put($migratedFile, (new Standard)->prettyPrintFile($stmts));
     }
 }

@@ -12,8 +12,6 @@ declare(strict_types=1);
  */
 
 use Dcat\Admin\Models\Setting;
-use Illuminate\Config\Repository;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Log;
 
@@ -24,12 +22,7 @@ class UpdateAdminSettingsForDcatLoginCaptcha extends Migration
         return $this->config('database.connection', config('database.default'));
     }
 
-    /**
-     * @param null|mixed $default
-     *
-     * @return Application|mixed|Repository
-     */
-    public function config(string $key, $default = null)
+    public function config(string $key, mixed $default = null): mixed
     {
         return config('admin.'.$key, $default);
     }
@@ -56,7 +49,5 @@ class UpdateAdminSettingsForDcatLoginCaptcha extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
-    {
-    }
+    public function down(): void {}
 }

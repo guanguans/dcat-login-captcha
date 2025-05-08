@@ -26,9 +26,7 @@ use Illuminate\Support\Str;
 class LoginCaptchaServiceProvider extends ServiceProvider
 {
     use HasFormResponse;
-
-    /** @var bool */
-    protected $defer = false;
+    protected bool $defer = false;
 
     public function register(): void
     {
@@ -89,7 +87,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes(
-                [$this->getViewPath() => resource_path(sprintf('views/vendor/%s', $this->getName()))],
+                [$this->getViewPath() => resource_path(\sprintf('views/vendor/%s', $this->getName()))],
                 'dcat-login-captcha'
             );
         }
@@ -108,9 +106,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
 
     protected function registerPhraseBuilder(): self
     {
-        $this->app->singleton(PhraseBuilder::class, static function (): PhraseBuilder {
-            return new PhraseBuilder(self::setting('length'), self::setting('charset'));
-        });
+        $this->app->singleton(PhraseBuilder::class, static fn (): PhraseBuilder => new PhraseBuilder(self::setting('length'), self::setting('charset')));
 
         $this->alias(PhraseBuilder::class);
 
@@ -145,9 +141,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
 
     protected function extendValidator(): self
     {
-        Validator::extend('dcat_login_captcha', static function ($attribute, $value): bool {
-            return login_captcha_check($value);
-        }, self::trans('login-captcha.captcha_error'));
+        Validator::extend('dcat_login_captcha', static fn ($attribute, $value): bool => login_captcha_check($value), self::trans('login-captcha.captcha_error'));
 
         return $this;
     }
@@ -160,13 +154,15 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     {
         Admin::booting(function (): void {
             $this->config = array_replace_recursive($this->config, config('admin.login_captcha', []));
-            if (! self::setting('enabled')) {
+
+            if (!self::setting('enabled')) {
                 return;
             }
 
             $loginPath = ltrim(admin_base_path('auth/login'), '/');
+
             if (Helper::matchRequestPath("GET:$loginPath")) {
-                Admin::script((string) view(sprintf('%s::captcha', $this->getName())));
+                Admin::script((string) view(\sprintf('%s::captcha', $this->getName())));
             }
 
             if (Helper::matchRequestPath("POST:$loginPath")) {
@@ -203,9 +199,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
             ->start('\\DcatLoginCaptcha')
             ->replaceFirst('\\', '')
             ->explode('\\')
-            ->map(static function (string $name): string {
-                return Str::snake($name, '-');
-            })
+            ->map(static fn (string $name): string => Str::snake($name, '-'))
             ->implode('.');
     }
 }

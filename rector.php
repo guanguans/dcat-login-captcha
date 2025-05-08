@@ -44,10 +44,10 @@ use Rector\Strict\Rector\Empty_\DisallowedEmptyRuleFixerRector;
 use Rector\ValueObject\PhpVersion;
 
 return static function (RectorConfig $rectorConfig): void {
-    define('MHASH_XXH3', 1);
-    define('MHASH_XXH32', 1);
-    define('MHASH_XXH64', 1);
-    define('MHASH_XXH128', 1);
+    \define('MHASH_XXH3', 1);
+    \define('MHASH_XXH32', 1);
+    \define('MHASH_XXH64', 1);
+    \define('MHASH_XXH128', 1);
 
     $rectorConfig->importNames(false, false);
     $rectorConfig->importShortClasses(false);

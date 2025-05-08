@@ -26,12 +26,8 @@ class Setting extends \Dcat\Admin\Extend\Setting
     public function form(): void
     {
         $this->switch('enabled', $this->trans('login-captcha.enabled'))
-            ->customFormat(function (bool $value): int {
-                return (int) $value;
-            })
-            ->saving(function (int $value): bool {
-                return (bool) $value;
-            })
+            ->customFormat(fn (bool $value): int => (int) $value)
+            ->saving(fn (int $value): bool => (bool) $value)
             ->rules('required|boolean');
 
         $this->text('length', $this->trans('login-captcha.length'))
