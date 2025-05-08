@@ -144,9 +144,9 @@ return RectorConfig::configure()
         'SqlResolve',
         'StaticClosureCanBeUsedInspection',
     ])
-    // ->withConfiguredRule(NewExceptionToNewAnonymousExtendsExceptionImplementsRector::class, [
-    //     ThrowableContract::class,
-    // ])
+    ->withConfiguredRule(NewExceptionToNewAnonymousExtendsExceptionImplementsRector::class, [
+        ThrowableContract::class,
+    ])
     ->withConfiguredRule(RemoveNamespaceRector::class, [
         'Guanguans\DcatLoginCaptchaTests',
     ])
