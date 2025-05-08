@@ -127,8 +127,8 @@ return RectorConfig::configure()
         JsonThrowOnErrorRector::class,
         SimplifyListIndexRector::class,
         SortAssociativeArrayByKeyRector::class,
-        // StaticArrowFunctionRector::class,
-        // StaticClosureRector::class,
+        StaticArrowFunctionRector::class,
+        StaticClosureRector::class,
         ...classes(static fn (string $file, string $class): bool => str_starts_with($class, 'RectorLaravel\Rector'))
             ->filter(static fn (ReflectionClass $reflectionClass): bool => $reflectionClass->isInstantiable())
             ->keys()
@@ -245,6 +245,7 @@ return RectorConfig::configure()
             __DIR__.'/src/Mixins/QueryBuilderMixin.php',
         ],
         StaticArrowFunctionRector::class => $staticClosureSkipPaths = [
+            __DIR__.'/src/Setting.php',
             __DIR__.'/tests',
         ],
         StaticClosureRector::class => $staticClosureSkipPaths,
