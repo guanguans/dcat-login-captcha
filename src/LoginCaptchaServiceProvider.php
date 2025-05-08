@@ -21,7 +21,6 @@ use Guanguans\DcatLoginCaptcha\Exceptions\HttpResponseException;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 use function Guanguans\DcatLoginCaptcha\Support\login_captcha_check;
 
 class LoginCaptchaServiceProvider extends ServiceProvider
@@ -29,6 +28,9 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     use HasFormResponse;
     protected bool $defer = false;
 
+    /**
+     * @noinspection PhpMissingParentCallCommonInspection
+     */
     public function register(): void
     {
         $this->setupConfig()
@@ -52,11 +54,12 @@ class LoginCaptchaServiceProvider extends ServiceProvider
             ->bootingCaptcha();
     }
 
+    /**
+     * @noinspection PhpMissingParentCallCommonInspection
+     */
     public function provides(): array
     {
         return [
-            $this->toAlias(PhraseBuilder::class),
-            $this->toAlias(CaptchaBuilder::class),
             PhraseBuilder::class,
             CaptchaBuilder::class,
         ];
@@ -68,9 +71,20 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     }
 
     /**
+     * 初始化配置.
+     *
+     * @noinspection MethodVisibilityInspection
+     */
+    protected function initConfig(): void
+    {
+        parent::initConfig();
+        $this->config += (array) config('login-captcha', []);
+    }
+
+    /**
      * @noinspection RealpathInStreamContextInspection
      */
-    protected function setupConfig(): self
+    private function setupConfig(): self
     {
         $this->mergeConfigFrom(
             $source = realpath($raw = __DIR__.'/../config/login-captcha.php') ?: $raw,
@@ -84,7 +98,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         return $this;
     }
 
-    protected function publishView(): self
+    private function publishView(): self
     {
         if ($this->app->runningInConsole()) {
             $this->publishes(
@@ -96,25 +110,14 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         return $this;
     }
 
-    /**
-     * 初始化配置.
-     */
-    protected function initConfig(): void
-    {
-        parent::initConfig();
-        $this->config += (array) config('login-captcha', []);
-    }
-
-    protected function registerPhraseBuilder(): self
+    private function registerPhraseBuilder(): self
     {
         $this->app->singleton(PhraseBuilder::class, static fn (): PhraseBuilder => new PhraseBuilder(self::setting('length'), self::setting('charset')));
-
-        $this->alias(PhraseBuilder::class);
 
         return $this;
     }
 
-    protected function registerCaptchaBuilder(): self
+    private function registerCaptchaBuilder(): self
     {
         $this->app->singleton(CaptchaBuilder::class, static function (Application $application): CaptchaBuilder {
             $captchaBuilder = new CaptchaBuilder(null, $application->get(PhraseBuilder::class));
@@ -128,19 +131,17 @@ class LoginCaptchaServiceProvider extends ServiceProvider
             return $captchaBuilder;
         });
 
-        $this->alias(CaptchaBuilder::class);
-
         return $this;
     }
 
-    protected function loadMigrations(): self
+    private function loadMigrations(): self
     {
         $this->loadMigrationsFrom(__DIR__.'/../updates/2022_08_31_164022_update_admin_settings_for_dcat_login_captcha.php');
 
         return $this;
     }
 
-    protected function extendValidator(): self
+    private function extendValidator(): self
     {
         Validator::extend(
             'dcat_login_captcha',
@@ -151,7 +152,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         return $this;
     }
 
-    protected function bootingCaptcha(): self
+    private function bootingCaptcha(): self
     {
         Admin::booting(function (): void {
             $this->config = array_replace_recursive($this->config, config('admin.login_captcha', []));
@@ -178,29 +179,5 @@ class LoginCaptchaServiceProvider extends ServiceProvider
         });
 
         return $this;
-    }
-
-    /**
-     * @param class-string $class
-     */
-    protected function alias(string $class): self
-    {
-        $this->app->alias($class, $this->toAlias($class));
-
-        return $this;
-    }
-
-    /**
-     * @param class-string $class
-     */
-    protected function toAlias(string $class): string
-    {
-        return str($class)
-            ->replaceFirst(__NAMESPACE__, '')
-            ->start('\\DcatLoginCaptcha')
-            ->replaceFirst('\\', '')
-            ->explode('\\')
-            ->map(static fn (string $name): string => Str::snake($name, '-'))
-            ->implode('.');
     }
 }
