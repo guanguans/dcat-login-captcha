@@ -8,6 +8,23 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+<a name="3.0.1"></a>
+## [3.0.1] - 2025-05-09
+### ✨ Features
+- **captcha:** add additional trait support for CaptchaBuilder and PhraseBuilder ([43b1a88](https://github.com/guanguans/dcat-login-captcha/commit/43b1a88))
+
+### 🐞 Bug Fixes
+- **captcha:** update helper reference and enhance test coverage ([92de154](https://github.com/guanguans/dcat-login-captcha/commit/92de154))
+- **scripts:** adjust composer.json and improve singleton registration ([71f839f](https://github.com/guanguans/dcat-login-captcha/commit/71f839f))
+
+### 💅 Code Refactorings
+- **login-captcha:** adjust visibility and organize methods ([8a98197](https://github.com/guanguans/dcat-login-captcha/commit/8a98197))
+- **middleware:** enhance type declarations and formatting ([836b571](https://github.com/guanguans/dcat-login-captcha/commit/836b571))
+
+### 🤖 Continuous Integrations
+- **phpstan:** clean up ignored errors and add .gitkeep file ([9f4e085](https://github.com/guanguans/dcat-login-captcha/commit/9f4e085))
+
+
 <a name="3.0.0"></a>
 ## [3.0.0] - 2025-05-08
 ### ✨ Features
@@ -322,7 +339,8 @@ All notable changes to this project will be documented in this file.
 - Merge pull request [#2](https://github.com/guanguans/dcat-login-captcha/issues/2) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0
 
 
-[Unreleased]: https://github.com/guanguans/dcat-login-captcha/compare/3.0.0...HEAD
+[Unreleased]: https://github.com/guanguans/dcat-login-captcha/compare/3.0.1...HEAD
+[3.0.1]: https://github.com/guanguans/dcat-login-captcha/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/guanguans/dcat-login-captcha/compare/2.4.0...3.0.0
 [2.4.0]: https://github.com/guanguans/dcat-login-captcha/compare/2.3.0...2.4.0
 [2.3.0]: https://github.com/guanguans/dcat-login-captcha/compare/2.2.1...2.3.0
