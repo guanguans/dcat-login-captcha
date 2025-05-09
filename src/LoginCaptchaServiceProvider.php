@@ -112,7 +112,10 @@ class LoginCaptchaServiceProvider extends ServiceProvider
 
     private function registerPhraseBuilder(): self
     {
-        $this->app->singleton(PhraseBuilder::class, static fn (): PhraseBuilder => new PhraseBuilder(self::setting('length'), self::setting('charset')));
+        $this->app->singleton(
+            PhraseBuilder::class,
+            static fn (): PhraseBuilder => new PhraseBuilder(self::setting('length'), self::setting('charset'))
+        );
 
         return $this;
     }
