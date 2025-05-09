@@ -19,9 +19,44 @@ declare(strict_types=1);
  */
 
 use Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
-it('can generate login captcha', function (): void {
-    $this->get(admin_base_path(LoginCaptchaServiceProvider::setting('route.uri')))
+it('can generate and dont validate captcha', function (): void {
+    $this
+        ->get(admin_base_path('auth/login'))
+        ->assertSee([
+            'captcha-input',
+            'captcha-img',
+        ])
+        ->assertOk();
+
+    $this
+        ->postJson(
+            admin_base_path('auth/login'),
+            [
+                'username' => 'admin',
+                'password' => 'admin',
+                'captcha' => Str::random(4),
+            ]
+        )
+        ->assertStatus(422);
+})->group(__DIR__, __FILE__);
+
+it('can generate and validate captcha', function (): void {
+    $this
+        ->get(admin_base_path(LoginCaptchaServiceProvider::setting('route.uri')))
         ->assertOk()
         ->assertHeader('Content-Type', \sprintf('image/%s', LoginCaptchaServiceProvider::setting('type')));
+
+    $this
+        ->postJson(
+            admin_base_path('auth/login'),
+            [
+                'username' => 'admin',
+                'password' => 'admin',
+                'captcha' => Session::get(LoginCaptchaServiceProvider::setting('captcha_phrase_session_key')),
+            ]
+        )
+        ->assertLocation('/');
 })->group(__DIR__, __FILE__);

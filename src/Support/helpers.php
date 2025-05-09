@@ -74,8 +74,6 @@ if (!\function_exists('Guanguans\DcatLoginCaptcha\Support\login_captcha_check'))
 if (!\function_exists('Guanguans\DcatLoginCaptcha\Support\login_captcha_content')) {
     /**
      * 获取登录验证码图像内容.
-     *
-     * @noinspection PhpVoidFunctionResultUsedInspection
      */
     function login_captcha_content(int $quality = 90): string
     {

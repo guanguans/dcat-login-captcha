@@ -11,7 +11,7 @@ const captchaDOM = `
         <img
             alt="{{ Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider::trans('login-captcha.captcha') }}"
             id="captcha-img"
-            src="{{ login_captcha_url() }}"
+            src="{{ Guanguans\DcatLoginCaptcha\Support\login_captcha_url() }}"
             style="cursor: pointer;width: 100%;height: 100%;border-radius: .25rem;"
             title="{{ Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider::trans('login-captcha.refresh_captcha') }}"
         >
