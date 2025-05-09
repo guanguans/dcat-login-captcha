@@ -342,6 +342,7 @@
             "@php -d xdebug.mode=off"
         ],
         "var-dump-server": "@php ./vendor/bin/var-dump-server --ansi -v",
+        "version": "git tag --sort=committerdate | while read tag; do tag_no_v=\"${tag#v}\"; echo \"'$tag_no_v' => [\"; git log --pretty=format:\"    \\\"%s\\\",\" \"${prev}..$tag\"; prev=$tag; echo ],; done",
         "vhs": [
             "@cghooks-uninstall",
             "vhs < music-dl.tape",
