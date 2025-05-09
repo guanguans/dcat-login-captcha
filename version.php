@@ -240,4 +240,8 @@ return [
         'feat(captcha): add additional trait support for CaptchaBuilder and PhraseBuilder',
         'ci(phpstan): clean up ignored errors and add .gitkeep file',
     ],
+    '3.0.2' => [
+        'ci(composer): enhance version script with additional tagging logic',
+        'ci(versioning): add script to generate version changelogs',
+    ],
 ];
