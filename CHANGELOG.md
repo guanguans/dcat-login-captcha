@@ -8,6 +8,13 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+<a name="3.0.2"></a>
+## [3.0.2] - 2025-05-10
+### 🤖 Continuous Integrations
+- **composer:** enhance version script with additional tagging logic ([50b573b](https://github.com/guanguans/dcat-login-captcha/commit/50b573b))
+- **versioning:** add script to generate version changelogs ([e07ed32](https://github.com/guanguans/dcat-login-captcha/commit/e07ed32))
+
+
 <a name="3.0.1"></a>
 ## [3.0.1] - 2025-05-09
 ### ✨ Features
@@ -339,7 +346,8 @@ All notable changes to this project will be documented in this file.
 - Merge pull request [#2](https://github.com/guanguans/dcat-login-captcha/issues/2) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0
 
 
-[Unreleased]: https://github.com/guanguans/dcat-login-captcha/compare/3.0.1...HEAD
+[Unreleased]: https://github.com/guanguans/dcat-login-captcha/compare/3.0.2...HEAD
+[3.0.2]: https://github.com/guanguans/dcat-login-captcha/compare/3.0.1...3.0.2
 [3.0.1]: https://github.com/guanguans/dcat-login-captcha/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/guanguans/dcat-login-captcha/compare/2.4.0...3.0.0
 [2.4.0]: https://github.com/guanguans/dcat-login-captcha/compare/2.3.0...2.4.0
