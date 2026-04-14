@@ -4,10 +4,11 @@
 
 > dact admin login captcha. - dcat admin 登录验证码。
 
-[![tests](https://github.com/guanguans/dcat-login-captcha/workflows/tests/badge.svg)](https://github.com/guanguans/dcat-login-captcha/actions)
-[![check & fix styling](https://github.com/guanguans/dcat-login-captcha/actions/workflows/php-cs-fixer.yml/badge.svg)](https://github.com/guanguans/dcat-login-captcha/actions)
+[![tests](https://github.com/guanguans/dcat-login-captcha/actions/workflows/tests.yml/badge.svg)](https://github.com/guanguans/dcat-login-captcha/actions/workflows/tests.yml)
+[![php-cs-fixer](https://github.com/guanguans/dcat-login-captcha/actions/workflows/php-cs-fixer.yml/badge.svg)](https://github.com/guanguans/dcat-login-captcha/actions/workflows/php-cs-fixer.yml)
 [![codecov](https://codecov.io/gh/guanguans/dcat-login-captcha/branch/main/graph/badge.svg?token=URGFAWS6S4)](https://codecov.io/gh/guanguans/dcat-login-captcha)
 [![Latest Stable Version](https://poser.pugx.org/guanguans/dcat-login-captcha/v)](https://packagist.org/packages/guanguans/dcat-login-captcha)
+[![GitHub release (with filter)](https://img.shields.io/github/v/release/guanguans/dcat-login-captcha)](https://github.com/guanguans/dcat-login-captcha/releases)
 [![Total Downloads](https://poser.pugx.org/guanguans/dcat-login-captcha/downloads)](https://packagist.org/packages/guanguans/dcat-login-captcha)
 [![License](https://poser.pugx.org/guanguans/dcat-login-captcha/license)](https://packagist.org/packages/guanguans/dcat-login-captcha)
 
@@ -34,9 +35,11 @@ composer require guanguans/dcat-login-captcha --ansi -v
 --------------------------------|--------------------------------|--------------------------------
  ![example1](docs/example1.png) | ![example2](docs/example2.png) | ![example3](docs/example3.png) 
 
-## 测试
+## Composer 脚本
 
-```bash
+```shell
+composer checks:required
+composer php-cs-fixer:fix
 composer test
 ```
 

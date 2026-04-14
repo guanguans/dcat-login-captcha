@@ -124,7 +124,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
      */
     protected function installDcat(): void
     {
-        $this->fixDatabaseMigrations();
+        // $this->fixDatabaseMigrations();
 
         try {
             // $this->loadMigrationsFrom(__DIR__.'/../vendor/dcat/laravel-admin/database/migrations');
