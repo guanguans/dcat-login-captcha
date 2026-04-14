@@ -8,8 +8,8 @@
 /** @noinspection PhpUnhandledExceptionInspection */
 /** @noinspection PhpVoidFunctionResultUsedInspection */
 /** @noinspection StaticClosureCanBeUsedInspection */
+/** @noinspection PhpMissingParentCallCommonInspection */
 /** @noinspection PhpUnusedAliasInspection */
-/** @noinspection SqlResolve */
 declare(strict_types=1);
 
 /**
@@ -24,15 +24,17 @@ declare(strict_types=1);
 namespace Guanguans\DcatLoginCaptchaTests;
 
 use Dcat\Admin\Admin;
-use Dcat\Admin\AdminServiceProvider;
 use Dcat\Admin\Http\Controllers\AuthController;
+use Guanguans\DcatLoginCaptcha\Facades\CaptchaBuilder;
+use Guanguans\DcatLoginCaptcha\Facades\PhraseBuilder;
 use Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider;
 use Illuminate\Config\Repository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
-use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Queue;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use PhpParser\Node;
 use PhpParser\Node\ArrayItem;
@@ -47,65 +49,71 @@ use PhpParser\ParserFactory;
 use PhpParser\PrettyPrinter\Standard;
 use Symfony\Component\VarDumper\Test\VarDumperTestTrait;
 
-#[\PHPUnit\Framework\Attributes\CoversNothing]
-#[\PHPUnit\Framework\Attributes\Small]
 class TestCase extends \Orchestra\Testbench\TestCase
 {
+    // use DatabaseMigrations;
     // use DatabaseTransactions;
+    // use DatabaseTruncation;
+    // use InteractsWithViews;
+    // use LazilyRefreshDatabase;
+    // use WithCachedConfig;
+    // use WithCachedRoutes;
+
+    // use VarDumperTestTrait;
+    // use PHPMock;
+
     // use RefreshDatabase;
-    // use WithWorkbench;
-    use MockeryPHPUnitIntegration;
-    use VarDumperTestTrait;
+    use WithWorkbench;
 
     /**
-     * @noinspection MethodVisibilityInspection
+     * Performs assertions shared by all tests of a test case.
+     *
+     * This method is called between setUp() and test.
      */
-    protected function setUp(): void
+    protected function assertPreConditions(): void {}
+
+    /**
+     * Performs assertions shared by all tests of a test case.
+     *
+     * This method is called between test and tearDown().
+     *
+     * @see \Mockery\Adapter\Phpunit\MockeryPHPUnitIntegrationAssertPostConditions::assertPostConditions()
+     * @see \Mockery\Adapter\Phpunit\MockeryTestCase
+     */
+    protected function assertPostConditions(): void {}
+
+    protected function getApplicationTimezone(mixed $app): string
     {
-        parent::setUp();
-        $this->startMockery();
-        $this->install();
+        return 'Asia/Shanghai';
     }
 
     /**
-     * @noinspection MethodVisibilityInspection
+     * @return array<string, class-string>
      */
-    protected function tearDown(): void
-    {
-        $this->closeMockery();
-        parent::tearDown();
-    }
-
-    /**
-     * @noinspection MethodVisibilityInspection
-     * @noinspection PhpMissingParentCallCommonInspection
-     */
-    protected function getPackageProviders(mixed $app): array
+    protected function getPackageAliases(mixed $app): array
     {
         return [
-            AdminServiceProvider::class,
-            LoginCaptchaServiceProvider::class,
+            'CaptchaBuilder' => CaptchaBuilder::class,
+            'PhraseBuilder' => PhraseBuilder::class,
         ];
     }
 
-    /**
-     * @noinspection MethodVisibilityInspection
-     * @noinspection PhpMissingParentCallCommonInspection
-     */
     protected function defineEnvironment(mixed $app): void
     {
-        tap($app->make(\Illuminate\Contracts\Config\Repository::class), static function (Repository $repository): void {
+        tap($app, static function (): void {
+            // File::delete(glob(storage_path('logs/*.log')));
+            Mail::fake();
+            // Queue::fake();
+        });
+
+        tap($app->make(Repository::class), static function (Repository $repository): void {
             $repository->set('app.key', 'base64:UZ5sDPZSB7DSLKY+DYlU8G/V1e/qW+Ag0WF03VNxiSg=');
             $repository->set('app.debug', false);
 
             $repository->set('database.default', 'sqlite');
-            $repository->set('database.connections.sqlite', [
-                'driver' => 'sqlite',
-                'database' => ':memory:',
-                // 'database' => __DIR__.'/Fixtures/database.sqlite',
-                'prefix' => '',
-            ]);
+            $repository->set('database.connections.sqlite.database', ':memory:');
 
+            $repository->set('mail.default', 'log');
             $repository->set('admin.auth.controller', AuthController::class);
         });
     }
@@ -114,7 +122,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
      * @noinspection ForgottenDebugOutputInspection
      * @noinspection DebugFunctionUsageInspection
      */
-    private function install(): void
+    protected function installDcat(): void
     {
         $this->fixDatabaseMigrations();
 

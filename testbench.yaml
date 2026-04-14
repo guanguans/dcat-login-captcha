@@ -2,7 +2,8 @@ laravel: '@testbench'
 
 providers:
   - Workbench\App\Providers\WorkbenchServiceProvider
-  # - Guanguans\LaravelExceptionNotify\ExceptionNotifyServiceProvider
+  - Dcat\Admin\AdminServiceProvider
+  - Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider
 
 dont-discover:
   - laravel/tinker
@@ -26,8 +27,8 @@ workbench:
   start: '/'
   install: true
   discovers:
-    config: true
-    web: true
+    config: false
+    web: false
     api: false
     commands: true
     components: false
