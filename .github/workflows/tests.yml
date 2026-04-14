@@ -12,29 +12,29 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest ]
-        php: [ 8.2, 8.4 ]
-        dependency-version: [ prefer-stable ]
+        os: [ubuntu-latest]
+        php: [8.2, 8.4]
+        dependency-version: [prefer-stable]
         # laravel: [ 9.*.*, 10.*, 11.*, 12.* ]
-        laravel: [ 9.*.*, 10.*]
+        laravel: [9.*.*, 10.*]
         include:
           - laravel: 9.*.*
             testbench: 7.*
           - laravel: 10.*
             testbench: 8.*
-          # - laravel: 11.*
-          #   testbench: 9.*
-          # - laravel: 12.*
-          #   testbench: 10.*
+            # - laravel: 11.*
+            #   testbench: 9.*
+            # - laravel: 12.*
+            #   testbench: 10.*
         exclude:
           - php: 8.2
             laravel: 10.*
-          # - php: 8.2
-          #   laravel: 11.*
-          # - php: 8.2
-          #   laravel: 12.*
-          # - php: 8.4
-          #   laravel: 9.*.*
+            # - php: 8.2
+            #   laravel: 11.*
+            # - php: 8.2
+            #   laravel: 12.*
+            # - php: 8.4
+            #   laravel: 9.*.*
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }}
 

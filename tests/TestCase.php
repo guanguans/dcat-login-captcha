@@ -96,6 +96,9 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function defineEnvironment(mixed $app): void
     {
         tap($app->make(\Illuminate\Contracts\Config\Repository::class), static function (Repository $repository): void {
+            $repository->set('app.key', 'base64:UZ5sDPZSB7DSLKY+DYlU8G/V1e/qW+Ag0WF03VNxiSg=');
+            $repository->set('app.debug', false);
+
             $repository->set('database.default', 'sqlite');
             $repository->set('database.connections.sqlite', [
                 'driver' => 'sqlite',

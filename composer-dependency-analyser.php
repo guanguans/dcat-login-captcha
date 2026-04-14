@@ -15,18 +15,10 @@ use ShipMonk\ComposerDependencyAnalyser\Config\Configuration;
 use ShipMonk\ComposerDependencyAnalyser\Config\ErrorType;
 
 return (new Configuration)
-    ->addPathsToScan(
-        [
-            __DIR__.'/config/',
-            __DIR__.'/resources/',
-            __DIR__.'/src/',
-            __DIR__.'/updates/',
-        ],
-        false
-    )
+    ->addPathsToScan([__DIR__.'/config/', __DIR__.'/resources/', __DIR__.'/updates/'], false)
     ->addPathsToExclude([
-        __DIR__.'/tests',
-        // __DIR__.'/src/Support/Rectors',
+        __DIR__.'/tests/',
+        // __DIR__.'/workbench/',
     ])
     /** @see \ShipMonk\ComposerDependencyAnalyser\Analyser::CORE_EXTENSIONS */
     ->ignoreErrorsOnExtensions(
@@ -40,10 +32,4 @@ return (new Configuration)
             'symfony/http-foundation',
         ],
         [ErrorType::SHADOW_DEPENDENCY]
-    )
-    ->ignoreErrorsOnPackages(
-        [
-            // 'guanguans/ai-commit',
-        ],
-        [ErrorType::DEV_DEPENDENCY_IN_PROD]
     );

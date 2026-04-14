@@ -21,6 +21,7 @@ use Illuminate\Support\Str;
 use Rector\CodeQuality\Rector\If_\ExplicitBoolCompareRector;
 use Rector\CodeQuality\Rector\LogicalAnd\LogicalToBooleanRector;
 use Rector\CodingStyle\Rector\ArrowFunction\StaticArrowFunctionRector;
+use Rector\CodingStyle\Rector\ClassLike\NewlineBetweenClassLikeStmtsRector;
 use Rector\CodingStyle\Rector\Closure\StaticClosureRector;
 use Rector\CodingStyle\Rector\Encapsed\EncapsedStringsToSprintfRector;
 use Rector\CodingStyle\Rector\Encapsed\WrapEncapsedVariableInCurlyBracesRector;
@@ -28,10 +29,13 @@ use Rector\CodingStyle\Rector\FuncCall\ArraySpreadInsteadOfArrayMergeRector;
 use Rector\CodingStyle\Rector\Stmt\NewlineAfterStatementRector;
 use Rector\Config\RectorConfig;
 use Rector\DeadCode\Rector\ClassLike\RemoveAnnotationRector;
+use Rector\DeadCode\Rector\MethodCall\RemoveNullArgOnNullDefaultParamRector;
 use Rector\EarlyReturn\Rector\Return_\ReturnBinaryOrToEarlyReturnRector;
 use Rector\Naming\Rector\Foreach_\RenameForeachValueVariableToMatchExprVariableRector;
 use Rector\Php71\Rector\FuncCall\RemoveExtraParametersRector;
 use Rector\Php73\Rector\FuncCall\JsonThrowOnErrorRector;
+use Rector\Php80\Rector\Class_\AnnotationToAttributeRector;
+use Rector\Php81\Rector\Property\ReadOnlyPropertyRector;
 use Rector\PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Renaming\Rector\FuncCall\RenameFunctionRector;
@@ -43,6 +47,7 @@ use Rector\ValueObject\PhpVersion;
 use Rector\ValueObject\Visibility;
 use Rector\Visibility\Rector\ClassMethod\ChangeMethodVisibilityRector;
 use Rector\Visibility\ValueObject\ChangeMethodVisibility;
+use RectorLaravel\Rector\ArrayDimFetch\ArrayToArrGetRector;
 use RectorLaravel\Rector\Class_\AnonymousMigrationsRector;
 use RectorLaravel\Rector\Class_\ModelCastsPropertyToCastsMethodRector;
 use RectorLaravel\Rector\Empty_\EmptyToBlankAndFilledFuncRector;
@@ -189,6 +194,14 @@ return RectorConfig::configure()
         )
     )
     ->withSkip([
+        AnnotationToAttributeRector::class,
+        ArraySpreadInsteadOfArrayMergeRector::class,
+        ArrayToArrGetRector::class,
+        JsonThrowOnErrorRector::class,
+        NewlineBetweenClassLikeStmtsRector::class,
+        ReadOnlyPropertyRector::class,
+        RemoveNullArgOnNullDefaultParamRector::class,
+
         DisallowedEmptyRuleFixerRector::class,
         RenameForeachValueVariableToMatchExprVariableRector::class,
 

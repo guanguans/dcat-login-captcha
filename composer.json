@@ -229,7 +229,6 @@
             "@actionlint",
             "@gitleaks",
             "@lint-md",
-            "@peck",
             "@php-cs-fixer:custom-fix-dry-run",
             "@php-cs-fixer:custom-ln-config",
             "@typos",
@@ -310,7 +309,7 @@
         "mago:lint-dry-run": "@mago:lint --dry-run",
         "mago:lint-list-rules": "@mago lint --list-rules",
         "mago:lint-semantics-only": "@mago lint --semantics-only",
-        "monorepo-builder": "@php vendor/bin/monorepo-builder --config=vendor/guanguans/monorepo-builder-worker/monorepo-builder.php --ansi -vv",
+        "monorepo-builder": "@php vendor/bin/monorepo-builder --config=vendor-bin/common/vendor/guanguans/monorepo-builder-worker/monorepo-builder.php --ansi -vv",
         "monorepo-builder:release": [
             "@git-chglog",
             "@monorepo-builder release"
@@ -365,7 +364,7 @@
         "php-cs-fixer:custom-list-files": "@php-cs-fixer:custom list-files",
         "php-cs-fixer:custom-ln-config": [
             "ln -f vendor/guanguans/php-cs-fixer-custom-fixers/.php-cs-fixer-custom.php .php-cs-fixer-custom.php",
-            "YEAR=$(date +%Y); sed -i '' -e 's|guanguans/php-cs-fixer-custom-fixers|guanguans/dcat-login-captcha|g' -e \"s|2025-$YEAR|2021-$YEAR|g\" .php-cs-fixer-custom.php"
+            "YEAR=$(date +%Y); sed -i '' -e 's|guanguans/php-cs-fixer-custom-fixers|guanguans/dcat-login-captcha|g' -e \"s|2025-$YEAR|2021-$YEAR|g\" -e 's|BladeFormatterFixer::name() => true|BladeFormatterFixer::name() => false|g' .php-cs-fixer-custom.php"
         ],
         "php-cs-fixer:fix": "@php-cs-fixer fix --show-progress=dots --diff",
         "php-cs-fixer:fix-dry-run": "@php-cs-fixer:fix --dry-run",

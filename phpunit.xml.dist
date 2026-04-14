@@ -1,48 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
   bootstrap="vendor/autoload.php"
-  cacheResultFile=".build/phpunit/.phpunit.result.cache"
+  cacheDirectory=".build/phpunit/"
   colors="true"
-  verbose="true"
-  xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
+  failOnDeprecation="true"
+  failOnPhpunitWarning="false"
+  failOnRisky="true"
+  failOnWarning="true"
 >
-  <!--printerClass="NunoMaduro\Collision\Adapters\Phpunit\Printer"-->
-  <!--printerClass="NunoMaduro\Collision\Adapters\Phpunit\Printers\DefaultPrinter"-->
-  <!--printerClass="NunoMaduro\Collision\Adapters\Phpunit\Printers\ReportablePrinter"-->
-  <testsuites>
-    <testsuite name="Guanguans Test Suite">
-      <directory>tests/</directory>
-      <exclude>vendor/</exclude>
-    </testsuite>
-  </testsuites>
-  <source>
-    <include>
-      <directory suffix=".php">src/</directory>
-    </include>
-    <exclude>
-      <!--<directory>src/Contracts/</directory>-->
-      <!--<file>src/SoarServiceProvider.php</file>-->
-    </exclude>
-  </source>
-  <coverage>
-    <include>
-      <directory suffix=".php">src/</directory>
-    </include>
-    <exclude>
-      <!--<directory>src/Contracts/</directory>-->
-      <!--<file>src/SoarServiceProvider.php</file>-->
-    </exclude>
-  </coverage>
-  <extensions>
-    <!--<extension class="NunoMaduro\Collision\Adapters\Phpunit\Printer"/>-->
-    <!--<extension class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>-->
-    <!--<bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>-->
-  </extensions>
   <php>
-    <env name="APP_KEY" value="base64:e2ASw7JCNMYR6PWInGGQrzUzisuDvv8bhNl14XGbUi8="/>
-    <env name="APP_ENV" value="testing"/>
+    <ini name="error_reporting" value="-1"/>
+    <!--<env name="SYMFONY_DEPRECATIONS_HELPER" value="/PDO::MYSQL_ATTR_SSL_CA/"/>-->
+    <env name="DUMP_LIGHT_ARRAY" value=""/>
+    <env name="DUMP_STRING_LENGTH" value=""/>
+    <env name="ENV" value="testing"/>
+    <env name="ENV_EXPLODE_EMPTY" value="empty"/>
+    <env name="ENV_EXPLODE_FALSE" value="false"/>
+    <env name="ENV_EXPLODE_NULL" value="null"/>
+    <env name="ENV_EXPLODE_STRING" value="log,null"/>
+    <env name="ENV_EXPLODE_TRUE" value="true"/>
+    <!--<env name="APP_ENV" value="testing"/>
     <env name="APP_DEBUG" value="true"/>
+    <env name="APP_KEY" value="base64:UZ5sDPZSB7DSLKY+DYlU8G/V1e/qW+Ag0WF03VNxiSg="/>
     <env name="APP_MAINTENANCE_DRIVER" value="file"/>
     <env name="BCRYPT_ROUNDS" value="4"/>
     <env name="CACHE_STORE" value="array"/>
@@ -53,6 +34,21 @@
     <env name="QUEUE_CONNECTION" value="sync"/>
     <env name="SESSION_DRIVER" value="array"/>
     <env name="TELESCOPE_ENABLED" value="false"/>
-    <env name="TELESCOPE_ENABLED" value="false"/>
+    <env name="TELESCOPE_ENABLED" value="false"/>-->
   </php>
+  <testsuites>
+    <testsuite name="Guanguans Test Suite">
+      <directory>tests/</directory>
+    </testsuite>
+  </testsuites>
+  <!--<source ignoreIndirectDeprecations="true">-->
+  <source>
+    <include>
+      <directory>src/</directory>
+    </include>
+    <exclude>
+      <!--<directory>src/Contracts/</directory>-->
+      <!--<file>src/SoarServiceProvider.php</file>-->
+    </exclude>
+  </source>
 </phpunit>
