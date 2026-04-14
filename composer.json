@@ -242,7 +242,7 @@
             "@pest"
         ],
         "class-leak": "@php vendor/bin/class-leak --ansi -vv",
-        "class-leak:check": "@class-leak check config/ src/ --skip-suffix=Channel --skip-suffix=Collector --skip-suffix=Rector",
+        "class-leak:check": "@class-leak check config/ src/ --skip-path=Facades/",
         "composer-bump": [
             "@putenv:php",
             "@composer-config:disable-process-timeout",
@@ -288,7 +288,7 @@
         "jack": "@php vendor/bin/jack",
         "jack:breakpoint": "@jack breakpoint --limit=7",
         "jack:breakpoint-dev": "@jack:breakpoint --dev",
-        "jack:open-versions": "@jack open-versions --limit=99",
+        "jack:open-versions": "@jack open-versions --limit=7",
         "jack:open-versions-dev": "@jack:open-versions --dev",
         "jack:open-versions-dev-dry-run": "@jack:open-versions-dev --dry-run",
         "jack:open-versions-dry-run": "@jack:open-versions --dry-run",

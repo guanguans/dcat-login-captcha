@@ -54,6 +54,8 @@ parameters:
         allRules: true
         booleansInConditions: false
         disallowedShortTernary: false
+#    sidzIgnoreNumericStrings: true
+    sidzIgnoreMagicNumbers: [0.9, 1, 2, 3, 90]
     cognitive_complexity:
         class: 42
         function: 8
@@ -103,3 +105,15 @@ parameters:
         -
             identifier: symplify.explicitInterfaceSuffixName
             path: src/Contracts/
+
+
+
+        - identifier: ergebnis.final
+        - identifier: ergebnis.noExtends
+        - identifier: shipmonk.checkedExceptionInCallable
+        - identifier: public.method.unused
+        - identifier: shipmonk.deadProperty.neverRead
+        - identifier: shipmonk.returnListNotUsed
+        - identifier: shipmonk.forbiddenCast
+        - identifier: ergebnis.noParameterWithNullableTypeDeclaration
+        - identifier: ergebnis.noParameterWithNullDefaultValue

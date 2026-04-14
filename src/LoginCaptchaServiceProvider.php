@@ -38,6 +38,17 @@ class LoginCaptchaServiceProvider extends ServiceProvider
             ->registerCaptchaBuilder();
     }
 
+    /**
+     * @noinspection PhpMissingParentCallCommonInspection
+     */
+    public function provides(): array
+    {
+        return [
+            PhraseBuilder::class,
+            CaptchaBuilder::class,
+        ];
+    }
+
     public function init(): void
     {
         $this->exceptRoutes = [
@@ -52,17 +63,6 @@ class LoginCaptchaServiceProvider extends ServiceProvider
             ->loadMigrations()
             ->extendValidator()
             ->bootingCaptcha();
-    }
-
-    /**
-     * @noinspection PhpMissingParentCallCommonInspection
-     */
-    public function provides(): array
-    {
-        return [
-            PhraseBuilder::class,
-            CaptchaBuilder::class,
-        ];
     }
 
     public function settingForm(): Setting

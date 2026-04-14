@@ -1,5 +1,6 @@
 <?php
 
+/** @noinspection PhpMultipleClassDeclarationsInspection */
 /** @noinspection PhpUnhandledExceptionInspection */
 
 declare(strict_types=1);
@@ -14,12 +15,7 @@ declare(strict_types=1);
  */
 
 use Carbon\Carbon;
-use Ergebnis\Rector\Rules\Arrays\SortAssociativeArrayByKeyRector;
-use Guanguans\DcatLoginCaptcha\Contracts\ThrowableContract;
-use Guanguans\MonorepoBuilderWorker\Support\Rectors\AddNoinspectionsDocCommentToDeclareRector;
-use Guanguans\MonorepoBuilderWorker\Support\Rectors\NewExceptionToNewAnonymousExtendsExceptionImplementsRector;
-use Guanguans\MonorepoBuilderWorker\Support\Rectors\RemoveNamespaceRector;
-use Guanguans\MonorepoBuilderWorker\Support\Rectors\SimplifyListIndexRector;
+use Ergebnis\Rector\Rules\Expressions\Arrays\SortAssociativeArrayByKeyRector;
 use Illuminate\Support\Carbon as IlluminateCarbon;
 use Illuminate\Support\Str;
 use Rector\CodeQuality\Rector\If_\ExplicitBoolCompareRector;
@@ -32,7 +28,6 @@ use Rector\CodingStyle\Rector\FuncCall\ArraySpreadInsteadOfArrayMergeRector;
 use Rector\CodingStyle\Rector\Stmt\NewlineAfterStatementRector;
 use Rector\Config\RectorConfig;
 use Rector\DeadCode\Rector\ClassLike\RemoveAnnotationRector;
-use Rector\DowngradePhp81\Rector\Array_\DowngradeArraySpreadStringKeyRector;
 use Rector\EarlyReturn\Rector\Return_\ReturnBinaryOrToEarlyReturnRector;
 use Rector\Naming\Rector\Foreach_\RenameForeachValueVariableToMatchExprVariableRector;
 use Rector\Php71\Rector\FuncCall\RemoveExtraParametersRector;
@@ -125,7 +120,6 @@ return RectorConfig::configure()
         AddSeeTestAnnotationRector::class,
         ArraySpreadInsteadOfArrayMergeRector::class,
         JsonThrowOnErrorRector::class,
-        SimplifyListIndexRector::class,
         SortAssociativeArrayByKeyRector::class,
         StaticArrowFunctionRector::class,
         StaticClosureRector::class,
@@ -134,21 +128,6 @@ return RectorConfig::configure()
             ->keys()
             // ->dd()
             ->all(),
-    ])
-    ->withConfiguredRule(AddNoinspectionsDocCommentToDeclareRector::class, [
-        'AnonymousFunctionStaticInspection',
-        'NullPointerExceptionInspection',
-        'PhpPossiblePolymorphicInvocationInspection',
-        'PhpUndefinedClassInspection',
-        'PhpUnhandledExceptionInspection',
-        'SqlResolve',
-        'StaticClosureCanBeUsedInspection',
-    ])
-    ->withConfiguredRule(NewExceptionToNewAnonymousExtendsExceptionImplementsRector::class, [
-        ThrowableContract::class,
-    ])
-    ->withConfiguredRule(RemoveNamespaceRector::class, [
-        'Guanguans\DcatLoginCaptchaTests',
     ])
     ->withConfiguredRule(RemoveAnnotationRector::class, [
         'codeCoverageIgnore',
@@ -213,7 +192,6 @@ return RectorConfig::configure()
         DisallowedEmptyRuleFixerRector::class,
         RenameForeachValueVariableToMatchExprVariableRector::class,
 
-        DowngradeArraySpreadStringKeyRector::class,
         EncapsedStringsToSprintfRector::class,
         ExplicitBoolCompareRector::class,
         LogicalToBooleanRector::class,
@@ -256,27 +234,5 @@ return RectorConfig::configure()
             __DIR__.'/tests/',
             __DIR__.'/updates/',
             __DIR__.'/version.php',
-        ],
-        AddNoinspectionsDocCommentToDeclareRector::class => [
-            __DIR__.'/config/',
-            __DIR__.'/resources/',
-            __DIR__.'/src/',
-            __DIR__.'/updates/',
-            ...glob(__DIR__.'/{*,.*}.php', \GLOB_BRACE),
-            __DIR__.'/composer-updater',
-        ],
-        NewExceptionToNewAnonymousExtendsExceptionImplementsRector::class => [
-            __DIR__.'/src/Support/Rectors/',
-            __DIR__.'/composer-updater',
-        ],
-        RemoveNamespaceRector::class => [
-            __DIR__.'/config/',
-            __DIR__.'/resources/',
-            __DIR__.'/src/',
-            __DIR__.'/updates/',
-            ...glob(__DIR__.'/{*,.*}.php', \GLOB_BRACE),
-            __DIR__.'/composer-updater',
-            __DIR__.'/tests/Faker.php',
-            __DIR__.'/tests/TestCase.php',
         ],
     ]);

@@ -32,9 +32,9 @@ if (!\function_exists('Guanguans\DcatLoginCaptcha\Support\classes')) {
      * @see \get_declared_traits()
      * @see \DG\BypassFinals::enable()
      *
-     * @noinspection RedundantDocCommentTagInspection
-     *
      * @param callable(string, class-string): bool $filter
+     *
+     * @noinspection RedundantDocCommentTagInspection
      */
     function classes(callable $filter): Collection
     {

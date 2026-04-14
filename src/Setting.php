@@ -16,14 +16,6 @@ namespace Guanguans\DcatLoginCaptcha;
 class Setting extends \Dcat\Admin\Extend\Setting
 {
     /**
-     * @noinspection PhpMissingParentCallCommonInspection
-     */
-    public function title(): string
-    {
-        return $this->trans('login-captcha.setting');
-    }
-
-    /**
      * @noinspection AnonymousFunctionStaticInspection
      */
     public function form(): void
@@ -64,6 +56,14 @@ class Setting extends \Dcat\Admin\Extend\Setting
 
         // $this->hidden('fingerprint', $this->trans('login-captcha.fingerprint'));
         // $this->hidden('captcha_phrase_session_key', $this->trans('login-captcha.captcha_phrase_session_key'));
+    }
+
+    /**
+     * @noinspection PhpMissingParentCallCommonInspection
+     */
+    public function title(): string
+    {
+        return $this->trans('login-captcha.setting');
     }
 
     /**
