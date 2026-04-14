@@ -8,6 +8,43 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+<a name="4.0.0"></a>
+## [4.0.0] - 2026-04-14
+### ✨ Features
+- **requirements:** Update minimum PHP version to 8.2 ([0a23b5f](https://github.com/guanguans/dcat-login-captcha/commit/0a23b5f))
+
+### 🎨 Styles
+- apply php-cs-fixer ([24b2d69](https://github.com/guanguans/dcat-login-captcha/commit/24b2d69))
+
+### 💅 Code Refactorings
+- apply phpstan ([23e599e](https://github.com/guanguans/dcat-login-captcha/commit/23e599e))
+- apply rector ([f2318af](https://github.com/guanguans/dcat-login-captcha/commit/f2318af))
+
+### ✅ Tests
+- **arch:** add ArchTest.php and enhance Pest.php with custom expectations and helpers ([b576a6c](https://github.com/guanguans/dcat-login-captcha/commit/b576a6c))
+
+### 📦 Builds
+- **composer:** add tasks for version management in composer scripts ([1485b6d](https://github.com/guanguans/dcat-login-captcha/commit/1485b6d))
+
+### 🤖 Continuous Integrations
+- **composer:** Update composer.json for improved dependencies and scripts ([c2b603e](https://github.com/guanguans/dcat-login-captcha/commit/c2b603e))
+- **config:** Update github config files ([3bc3103](https://github.com/guanguans/dcat-login-captcha/commit/3bc3103))
+- **config:** Update config files ([83126c0](https://github.com/guanguans/dcat-login-captcha/commit/83126c0))
+
+### Pull Requests
+- Merge pull request [#67](https://github.com/guanguans/dcat-login-captcha/issues/67) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-2.5.0
+- Merge pull request [#66](https://github.com/guanguans/dcat-login-captcha/issues/66) from guanguans/dependabot/github_actions/actions/cache-5
+- Merge pull request [#65](https://github.com/guanguans/dcat-login-captcha/issues/65) from guanguans/dependabot/github_actions/actions/checkout-6
+- Merge pull request [#64](https://github.com/guanguans/dcat-login-captcha/issues/64) from guanguans/dependabot/github_actions/actions/setup-node-6
+- Merge pull request [#63](https://github.com/guanguans/dcat-login-captcha/issues/63) from guanguans/dependabot/github_actions/stefanzweifel/git-auto-commit-action-7
+- Merge pull request [#62](https://github.com/guanguans/dcat-login-captcha/issues/62) from guanguans/dependabot/github_actions/actions/labeler-6
+- Merge pull request [#61](https://github.com/guanguans/dcat-login-captcha/issues/61) from guanguans/dependabot/github_actions/actions/stale-10
+- Merge pull request [#60](https://github.com/guanguans/dcat-login-captcha/issues/60) from guanguans/dependabot/github_actions/actions/setup-node-5
+- Merge pull request [#59](https://github.com/guanguans/dcat-login-captcha/issues/59) from guanguans/dependabot/github_actions/actions/checkout-5
+- Merge pull request [#58](https://github.com/guanguans/dcat-login-captcha/issues/58) from guanguans/dependabot/github_actions/stefanzweifel/git-auto-commit-action-6
+- Merge pull request [#57](https://github.com/guanguans/dcat-login-captcha/issues/57) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-2.4.0
+
+
 <a name="3.0.2"></a>
 ## [3.0.2] - 2025-05-10
 ### 🤖 Continuous Integrations
@@ -346,7 +383,8 @@ All notable changes to this project will be documented in this file.
 - Merge pull request [#2](https://github.com/guanguans/dcat-login-captcha/issues/2) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0
 
 
-[Unreleased]: https://github.com/guanguans/dcat-login-captcha/compare/3.0.2...HEAD
+[Unreleased]: https://github.com/guanguans/dcat-login-captcha/compare/4.0.0...HEAD
+[4.0.0]: https://github.com/guanguans/dcat-login-captcha/compare/3.0.2...4.0.0
 [3.0.2]: https://github.com/guanguans/dcat-login-captcha/compare/3.0.1...3.0.2
 [3.0.1]: https://github.com/guanguans/dcat-login-captcha/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/guanguans/dcat-login-captcha/compare/2.4.0...3.0.0
