@@ -13,50 +13,11 @@ declare(strict_types=1);
 
 namespace Guanguans\DcatLoginCaptcha\Support;
 
-use Composer\Autoload\ClassLoader;
 use Guanguans\DcatLoginCaptcha\Facades\CaptchaBuilder;
 use Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider;
 use Guanguans\DcatLoginCaptcha\PhraseBuilder;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
-
-if (!\function_exists('Guanguans\DcatLoginCaptcha\Support\classes')) {
-    /**
-     * @see https://github.com/alekitto/class-finder
-     * @see https://github.com/ergebnis/classy
-     * @see https://gitlab.com/hpierce1102/ClassFinder
-     * @see https://packagist.org/packages/haydenpierce/class-finder
-     * @see \get_declared_classes()
-     * @see \get_declared_interfaces()
-     * @see \get_declared_traits()
-     * @see \DG\BypassFinals::enable()
-     *
-     * @param callable(string, class-string): bool $filter
-     *
-     * @noinspection RedundantDocCommentTagInspection
-     */
-    function classes(callable $filter): Collection
-    {
-        static $allClasses;
-
-        $allClasses ??= collect(spl_autoload_functions())->flatMap(
-            static fn (mixed $loader): array => \is_array($loader) && $loader[0] instanceof ClassLoader
-                ? $loader[0]->getClassMap()
-                : []
-        );
-
-        return $allClasses
-            ->filter($filter)
-            ->mapWithKeys(static function (string $file, string $class): array {
-                try {
-                    return [$class => new \ReflectionClass($class)];
-                } catch (\Throwable $throwable) {
-                    return [$class => $throwable];
-                }
-            });
-    }
-}
 
 if (!\function_exists('Guanguans\DcatLoginCaptcha\Support\login_captcha_check')) {
     /**

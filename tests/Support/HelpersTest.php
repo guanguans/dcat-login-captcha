@@ -2,11 +2,13 @@
 
 /** @noinspection AnonymousFunctionStaticInspection */
 /** @noinspection NullPointerExceptionInspection */
+/** @noinspection PhpFieldAssignmentTypeMismatchInspection */
 /** @noinspection PhpPossiblePolymorphicInvocationInspection */
 /** @noinspection PhpUndefinedClassInspection */
 /** @noinspection PhpUnhandledExceptionInspection */
-/** @noinspection SqlResolve */
+/** @noinspection PhpVoidFunctionResultUsedInspection */
 /** @noinspection StaticClosureCanBeUsedInspection */
+/** @noinspection SqlResolve */
 declare(strict_types=1);
 
 /**
@@ -18,17 +20,9 @@ declare(strict_types=1);
  * @see https://github.com/guanguans/dcat-login-captcha
  */
 
-use Illuminate\Support\Collection;
-use function Guanguans\DcatLoginCaptcha\Support\classes;
 use function Guanguans\DcatLoginCaptcha\Support\login_captcha_check;
 use function Guanguans\DcatLoginCaptcha\Support\login_captcha_content;
 use function Guanguans\DcatLoginCaptcha\Support\login_captcha_url;
-
-it('can get classes', function (): void {
-    expect(
-        classes(fn (string $file, string $class): bool => str($class)->startsWith('Rector'))
-    )->toBeInstanceOf(Collection::class);
-})->group(__DIR__, __FILE__);
 
 it('can check login captcha', function (): void {
     expect(login_captcha_check('foo'))->toBeBool();

@@ -2,14 +2,15 @@
 
 /** @noinspection AnonymousFunctionStaticInspection */
 /** @noinspection NullPointerExceptionInspection */
+/** @noinspection PhpFieldAssignmentTypeMismatchInspection */
 /** @noinspection PhpPossiblePolymorphicInvocationInspection */
 /** @noinspection PhpUndefinedClassInspection */
 /** @noinspection PhpUnhandledExceptionInspection */
-/** @noinspection SqlResolve */
+/** @noinspection PhpVoidFunctionResultUsedInspection */
 /** @noinspection StaticClosureCanBeUsedInspection */
 /** @noinspection PhpInconsistentReturnPointsInspection */
 /** @noinspection PhpInternalEntityUsedInspection */
-/** @noinspection PhpVoidFunctionResultUsedInspection */
+/** @noinspection SqlResolve */
 declare(strict_types=1);
 
 /**
@@ -80,14 +81,14 @@ function class_namespace(object|string $class): string
     return (new ReflectionClass($class))->getNamespaceName();
 }
 
-function fixtures_path(string $path = ''): string
-{
-    return __DIR__.\DIRECTORY_SEPARATOR.'Fixtures'.($path ? \DIRECTORY_SEPARATOR.$path : $path);
-}
-
 function faker(string $locale = Factory::DEFAULT_LOCALE): Generator
 {
     return fake($locale);
+}
+
+function fixtures_path(string $path = ''): string
+{
+    return __DIR__.\DIRECTORY_SEPARATOR.'Fixtures'.($path ? \DIRECTORY_SEPARATOR.$path : $path);
 }
 
 // function fake(string $locale = Factory::DEFAULT_LOCALE): Generator

@@ -2,11 +2,13 @@
 
 /** @noinspection AnonymousFunctionStaticInspection */
 /** @noinspection NullPointerExceptionInspection */
+/** @noinspection PhpFieldAssignmentTypeMismatchInspection */
 /** @noinspection PhpPossiblePolymorphicInvocationInspection */
 /** @noinspection PhpUndefinedClassInspection */
 /** @noinspection PhpUnhandledExceptionInspection */
-/** @noinspection SqlResolve */
+/** @noinspection PhpVoidFunctionResultUsedInspection */
 /** @noinspection StaticClosureCanBeUsedInspection */
+/** @noinspection SqlResolve */
 declare(strict_types=1);
 
 /**
@@ -21,6 +23,7 @@ declare(strict_types=1);
 use Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use Symfony\Component\HttpFoundation\Response;
 
 it('can generate and dont validate captcha', function (): void {
     $this
@@ -40,7 +43,7 @@ it('can generate and dont validate captcha', function (): void {
                 'captcha' => Str::random(4),
             ]
         )
-        ->assertStatus(422);
+        ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
 })->group(__DIR__, __FILE__);
 
 it('can generate and validate captcha', function (): void {

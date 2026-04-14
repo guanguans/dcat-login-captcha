@@ -94,8 +94,8 @@ parameters:
 #        - identifier: typePerfect.noMixedMethodCaller
         - identifier: argument.type
         - identifier: cast.string
-        - identifier: method.nonObject
-        - identifier: missingType.generics
+#        - identifier: method.nonObject
+#        - identifier: missingType.generics
         - identifier: missingType.iterableValue
         - identifier: return.type
         - identifier: shipmonk.deadMethod

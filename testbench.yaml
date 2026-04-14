@@ -2,7 +2,7 @@ laravel: '@testbench'
 
 providers:
   - Workbench\App\Providers\WorkbenchServiceProvider
-  - Guanguans\LaravelExceptionNotify\ExceptionNotifyServiceProvider
+  # - Guanguans\LaravelExceptionNotify\ExceptionNotifyServiceProvider
 
 dont-discover:
   - laravel/tinker
