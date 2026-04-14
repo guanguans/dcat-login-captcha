@@ -19,13 +19,13 @@ use Ergebnis\License\Year;
 use Ergebnis\PhpCsFixer\Config\Factory;
 use Ergebnis\PhpCsFixer\Config\Fixers;
 use Ergebnis\PhpCsFixer\Config\Rules;
-use Ergebnis\PhpCsFixer\Config\RuleSet\Php80;
+use Ergebnis\PhpCsFixer\Config\RuleSet\Php82;
 use Ergebnis\PhpCsFixer\Config\RuleSet\Php83;
 use PhpCsFixer\Finder;
 use PhpCsFixer\Fixer\DeprecatedFixerInterface;
 use PhpCsFixerCustomFixers\Fixer\AbstractFixer;
 
-return Factory::fromRuleSet(Php80::create()
+return Factory::fromRuleSet(Php82::create()
     ->withHeader(
         (static function (): string {
             $mit = MIT::text(
@@ -83,8 +83,8 @@ return Factory::fromRuleSet(Php80::create()
         '@PHP73Migration' => true,
         '@PHP74Migration' => true,
         '@PHP74Migration:risky' => true,
-        '@PHP80Migration' => true,
-        '@PHP80Migration:risky' => true,
+        '@PHP82Migration' => true,
+        '@PHP82Migration:risky' => true,
         // '@PHP81Migration' => true,
         // '@PHP82Migration' => true,
         // '@PHP83Migration' => true,

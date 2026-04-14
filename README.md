@@ -13,7 +13,7 @@
 
 ## Requirement
 
-* PHP >= 8.0
+* PHP >= 8.2
 * dcat-admin >= 2.0
 
 ## Installation
