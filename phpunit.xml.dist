@@ -48,7 +48,7 @@
     </include>
     <exclude>
       <!--<directory>src/Contracts/</directory>-->
-      <!--<file>src/SoarServiceProvider.php</file>-->
+      <file>src/Support/ComposerScripts.php</file>
     </exclude>
   </source>
 </phpunit>

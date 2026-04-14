@@ -8,19 +8,20 @@ includes:
     - vendor/spaze/phpstan-disallowed-calls/disallowed-loose-calls.neon
 #    - vendor/spaze/phpstan-disallowed-calls/extension.neon
 
-#    - vendor-bin/larastan/vendor/larastan/larastan/extension.neon
 #    - vendor/ekino/phpstan-banned-code/extension.neon
 #    - vendor/ergebnis/phpstan-rules/rules.neon
+#    - vendor/canvural/larastan-strict-rules/rules.neon
+#    - vendor/larastan/vendor/larastan/larastan/extension.neon
 #    - vendor/phpstan/phpstan-strict-rules/rules.neon
 #    - vendor/roave/no-floaters/rules.neon
 #    - vendor/shipmonk/dead-code-detector/rules.neon
 #    - vendor/staabm/phpstan-todo-by/extension.neon
 
-    - vendor/symplify/phpstan-rules/config/code-complexity-rules.neon
+#    - vendor/symplify/phpstan-rules/config/code-complexity-rules.neon
 #    - vendor/symplify/phpstan-rules/config/configurable-rules.neon
-    - vendor/symplify/phpstan-rules/config/naming-rules.neon
-    - vendor/symplify/phpstan-rules/config/static-rules.neon
-#    - vendor/symplify/phpstan-rules/config/symplify-rules.neon
+#    - vendor/symplify/phpstan-rules/config/naming-rules.neon
+#    - vendor/symplify/phpstan-rules/config/static-rules.neon
+    - vendor/symplify/phpstan-rules/config/symplify-rules.neon
 
 #    - vendor/symplify/phpstan-rules/config/doctrine-rules.neon
     - vendor/symplify/phpstan-rules/config/phpunit-rules.neon
@@ -29,7 +30,7 @@ includes:
 #    - vendor/symplify/phpstan-rules/config/symfony-config-rules.neon
 
 services:
-    # https://github.com/guanguans/laravel-soar/security/code-scanning
+    # https://github.com/guanguans/dcat-login-captcha/security/code-scanning
     # https://github.com/jbelien/phpstan-sarif-formatter
     errorFormatter.sarif:
         class: PHPStanSarifErrorFormatter\SarifErrorFormatter
@@ -48,16 +49,19 @@ parameters:
         - resources/
         - src/
 #        - updates/
+    scanDirectories:
+#        - vendor/rector/rector/vendor/symplify/rule-doc-generator-contracts/
     scanFiles:
-        - vendor/composer/InstalledVersions.php
+#        - vendor/composer/InstalledVersions.php
     excludePaths:
+#        - src/Support/Rectors/
+        - src/Support/ComposerScripts.php
         - tests/Fixtures/
         - *.blade.php
-    level: max
-#    level: 10
     tmpDir: .build/phpstan/
+    phpVersion: 80200
+    level: max
     editorUrl: 'phpstorm://open?file=%%file%%&line=%%line%%'
-#    errorFormat: symplify
     errorFormat: friendly
     friendly:
         lineBefore: 3
@@ -69,21 +73,31 @@ parameters:
         allRules: true
         booleansInConditions: false
         disallowedShortTernary: false
+    ergebnis:
+    guanguans:
+        exceptionMustImplementNativeThrowable:
+            nativeThrowable: Guanguans\DcatLoginCaptcha\Contracts\ThrowableContract
 #    sidzIgnoreNumericStrings: true
-    sidzIgnoreMagicNumbers: [0.9, 1, 2, 3, 90]
+    sidzIgnoreMagicNumbers: [1, 2, 3, 5, 90, 100, 600, 512, 1024, 1000, 0o755]
+#    # larastan
+#    configDirectories:
+#        - config/
+#    checkOctaneCompatibility: true
+#    listenerPaths:
+#        - src/Listeners/
     cognitive_complexity:
         class: 42
         function: 8
         dependency_tree: 150
         dependency_tree_types:
-            # only these explicit types are checked, nothing else
+#            # only these explicit types are checked, nothing else
 #            - Rector\Contract\Rector\RectorInterface
     type_coverage:
         declare: 100
-        param_type: 100
-        return_type: 100
-        constant_type: 100
-        property_type: 100
+        param: 100
+        return: 100
+        constant: 100
+        property: 100
     type_perfect:
         narrow_param: true
         narrow_return: true
@@ -91,6 +105,13 @@ parameters:
         no_mixed: false
         no_mixed_property: true
         no_mixed_caller: false
+    unused_public:
+        constants: true
+        properties: true
+        methods: true
+        local_methods: true
+        template_paths:
+#            - resources/views/
     disallowedFunctionCalls:
         -
             function: 'env()'
@@ -100,35 +121,82 @@ parameters:
             message: 'use config() instead'
     ignoreErrors:
 #        - identifier: argument.templateType
+#        - identifier: argument.type
+#        - identifier: arrayFilter.strict
+#        - identifier: assign.propertyType
 #        - identifier: binaryOp.invalid
+#        - identifier: cast.double
+#        - identifier: cast.int
+#        - identifier: cast.string
+#        - identifier: class.extendsFinalByPhpDoc
+#        - identifier: disallowed.function
+#        - identifier: empty.notAllowed
 #        - identifier: encapsedStringPart.nonString
+#        - identifier: ergebnis.final
+#        - identifier: ergebnis.finalInAbstractClass
+#        - identifier: ergebnis.noAssignByReference
+#        - identifier: ergebnis.noConstructorParameterWithDefaultValue
+#        - identifier: ergebnis.noExtends
+#        - identifier: ergebnis.noIsset
+#        - identifier: ergebnis.noNamedArgument
+#        - identifier: ergebnis.noNullableReturnTypeDeclaration
+#        - identifier: ergebnis.noParameterPassedByReference
+#        - identifier: ergebnis.noParameterWithNullableTypeDeclaration
+#        - identifier: ergebnis.noParameterWithNullDefaultValue
+#        - identifier: foreach.valueOverwrite
+#        - identifier: guanguans.forbiddenSideEffects
 #        - identifier: logicalAnd.resultUnused
-#        - identifier: return.void
-#        - identifier: symplify.explicitTraitSuffixName
-#        - identifier: symplify.noDynamicName
-#        - identifier: typePerfect.noMixedMethodCaller
-        - identifier: argument.type
-        - identifier: cast.string
-#        - identifier: method.nonObject
+#        - identifier: logicalOr.resultUnused
+#        - identifier: method.childParameterType
+#        - identifier: method.dynamicName
 #        - identifier: missingType.generics
-        - identifier: missingType.iterableValue
-        - identifier: return.type
-        - identifier: shipmonk.deadMethod
-        - identifier: symplify.requireExceptionNamespace
-        - message: '#^Result of static method Guanguans\\DcatLoginCaptcha\\Facades\\CaptchaBuilder\:\:get\(\) \(void\) is used\.$#'
-        - message: '#^Result of static method Guanguans\\DcatLoginCaptcha\\Facades\\CaptchaBuilder\:\:getPhrase\(\) \(void\) is used\.$#'
-        -
-            identifier: symplify.explicitInterfaceSuffixName
-            path: src/Contracts/
-
-
+#        - identifier: missingType.iterableValue
+#        - identifier: new.static
+#        - identifier: offsetAccess.nonOffsetAccessible
+#        - identifier: offsetAccess.notFound
+#        - identifier: paramOut.type
+#        - identifier: phpstanApi.class
+#        - identifier: return.type
+#        - identifier: return.void
+#        - identifier: shipmonk.binaryOperationWithNull
+#        - identifier: shipmonk.checkedExceptionInCallable
+#        - identifier: shipmonk.forbiddenCast
+#        - identifier: shipmonk.iteratorToArrayWithoutPreserveKeys
+#        - identifier: shipmonk.nonNormalizedType
+#        - identifier: shipmonk.variableTypeOverwritten
+#        - identifier: symplify.explicitInterfaceSuffixName
+#        - identifier: symplify.explicitTraitSuffixName
+#        - identifier: symplify.forbiddenArrayMethodCall
+#        - identifier: symplify.forbiddenExtendOfNonAbstractClass
+#        - identifier: symplify.forbiddenFuncCall
+#        - identifier: symplify.forbiddenNode
+#        - identifier: symplify.forbiddenStaticClassConstFetch
+#        - identifier: symplify.noArrayMapWithArrayCallable
+#        - identifier: symplify.noDynamicName
+#        - identifier: symplify.noGlobalConst
+#        - identifier: symplify.noReference
+#        - identifier: symplify.noReturnSetterMethod
+#        - identifier: symplify.requireExceptionNamespace
+#        - identifier: trait.unused
+#        - identifier: typePerfect.noMixedMethodCaller
+#        - message: '#^Unused Guanguans\\Notify\\Rector\\.*\\.*\:\:__construct$#'
 
         - identifier: ergebnis.final
         - identifier: ergebnis.noExtends
-        - identifier: shipmonk.checkedExceptionInCallable
-        - identifier: public.method.unused
-        - identifier: shipmonk.deadProperty.neverRead
-        - identifier: shipmonk.returnListNotUsed
-        - identifier: shipmonk.forbiddenCast
         - identifier: ergebnis.noParameterWithNullableTypeDeclaration
         - identifier: ergebnis.noParameterWithNullDefaultValue
+        - identifier: shipmonk.checkedExceptionInCallable
+        - identifier: shipmonk.forbiddenCast
+        - identifier: symplify.explicitInterfaceSuffixName
+        - identifier: symplify.forbiddenNode
+        - identifier: symplify.requireExceptionNamespace
+
+        - identifier: argument.type
+        - identifier: cast.string
+        - identifier: method.childParameterType
+        - identifier: return.type
+        - message: '#^Result of static method Guanguans\\DcatLoginCaptcha\\Facades\\CaptchaBuilder\:\:get\(\) \(void\) is used\.$#'
+        - message: '#^Result of static method Guanguans\\DcatLoginCaptcha\\Facades\\CaptchaBuilder\:\:getPhrase\(\) \(void\) is used\.$#'
+        -
+            identifier: missingType.iterableValue
+            path: src/Facades/CaptchaBuilder.php

@@ -8,6 +8,7 @@
 /** @noinspection PhpUnhandledExceptionInspection */
 /** @noinspection PhpVoidFunctionResultUsedInspection */
 /** @noinspection StaticClosureCanBeUsedInspection */
+/** @noinspection EfferentObjectCouplingInspection */
 /** @noinspection PhpMissingParentCallCommonInspection */
 /** @noinspection PhpUnusedAliasInspection */
 declare(strict_types=1);
@@ -28,6 +29,7 @@ use Dcat\Admin\Http\Controllers\AuthController;
 use Guanguans\DcatLoginCaptcha\Facades\CaptchaBuilder;
 use Guanguans\DcatLoginCaptcha\Facades\PhraseBuilder;
 use Guanguans\DcatLoginCaptcha\LoginCaptchaServiceProvider;
+use Guanguans\DcatLoginCaptcha\Support\ComposerScripts;
 use Illuminate\Config\Repository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -124,7 +126,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
      */
     protected function installDcat(): void
     {
-        // $this->fixDatabaseMigrations();
+        $this->fixDatabaseMigrations();
 
         try {
             // $this->loadMigrationsFrom(__DIR__.'/../vendor/dcat/laravel-admin/database/migrations');
@@ -134,10 +136,21 @@ class TestCase extends \Orchestra\Testbench\TestCase
             // Artisan::call('admin:ext-enable', ['name' => 'guanguans.dcat-login-captcha']);
             resolve(LoginCaptchaServiceProvider::class)->init();
         } catch (\Throwable $throwable) {
-            dump($throwable->getMessage());
+            ComposerScripts::makeSymfonyStyle()->error("Install Dcat Admin failed [{$throwable->getMessage()}].");
+            dump("Install Dcat Admin failed [{$throwable->getMessage()}].");
         }
     }
 
+    /**
+     * ```
+     * $table->dropColumn('show');
+     * $table->dropColumn('extension');
+     * ```
+     * to
+     * ```
+     * $table->dropColumn(['show', 'extension']);
+     * ```.
+     */
     private function fixDatabaseMigrations(): void
     {
         $nodeTraverser = new NodeTraverser;

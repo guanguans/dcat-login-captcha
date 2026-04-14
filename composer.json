@@ -185,7 +185,7 @@
         "actionlint": "actionlint -ignore=SC2035 -ignore=SC2086 -color -oneline -verbose",
         "app:fix-neon": "Guanguans\\PHPStanRules\\Support\\ComposerScripts::fixNeon",
         "app:generate-gitleaks-ignore": "Guanguans\\Notify\\Foundation\\Support\\ComposerScripts::generateGitleaksIgnore",
-        "app:lint-readme": "App\\Support\\ComposerScripts::lintReadme",
+        "app:lint-readme": "Guanguans\\DcatLoginCaptcha\\Support\\ComposerScripts::lintReadme",
         "app:parse-phpdoc": "Guanguans\\RectorRules\\Support\\ComposerScripts::parsePhpdoc",
         "app:version-all": "git tag --sort=committerdate | while read tag; do tag_no_v=\"${tag#v}\"; echo \"'$tag_no_v' => [\"; git log --pretty=format:\"    \\\"%s\\\",\" \"${prev}..$tag\"; prev=$tag; echo ],; done",
         "app:version-unreleased": "last_tag=$(git tag --sort=committerdate | \\tail -n1); tag_no_v=\"${last_tag#v}\"; printf \"\\n'%s..HEAD' => [\\n\" \"$tag_no_v\"; git log --pretty=format:\"    \\\"%s\\\",\" \"${last_tag}..HEAD\"; echo \"],\"",
@@ -206,6 +206,7 @@
         "checks:optional": [
             "@putenv:xdebug-off",
             "@app:fix-neon",
+            "@app:lint-readme",
             "@composer:unlink",
             "@class-leak:check",
             "@composer-dependency-analyser",
@@ -241,7 +242,7 @@
             "@pest"
         ],
         "class-leak": "@php vendor/bin/class-leak --ansi -vv",
-        "class-leak:check": "@class-leak check config/ src/ --skip-path=Facades/",
+        "class-leak:check": "@class-leak check config/ src/ --skip-path=Facades/ --skip-suffix=ComposerScripts",
         "composer-bump": [
             "@putenv:php",
             "@composer-config:disable-process-timeout",

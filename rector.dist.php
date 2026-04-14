@@ -2,7 +2,7 @@
 
 /** @noinspection PhpMultipleClassDeclarationsInspection */
 /** @noinspection PhpUnhandledExceptionInspection */
-
+/** @noinspection PhpUnusedAliasInspection */
 declare(strict_types=1);
 
 /**

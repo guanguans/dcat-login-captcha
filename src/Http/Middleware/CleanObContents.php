@@ -22,9 +22,9 @@ use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 class CleanObContents
 {
     /**
-     * @param \Closure(\Illuminate\Http\Request): (JsonResponse|RedirectResponse|Response) $next
+     * @api
      *
-     * @noinspection RedundantDocCommentTagInspection
+     * @param \Closure(\Illuminate\Http\Request): (JsonResponse|RedirectResponse|Response) $next
      */
     public function handle(Request $request, \Closure $next): SymfonyResponse
     {

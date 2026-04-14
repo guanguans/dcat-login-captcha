@@ -17,6 +17,7 @@ use ShipMonk\ComposerDependencyAnalyser\Config\ErrorType;
 return (new Configuration)
     ->addPathsToScan([__DIR__.'/config/', __DIR__.'/resources/', __DIR__.'/updates/'], false)
     ->addPathsToExclude([
+        __DIR__.'/src/Support/ComposerScripts.php',
         __DIR__.'/tests/',
         // __DIR__.'/workbench/',
     ])

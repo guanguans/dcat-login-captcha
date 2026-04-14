@@ -67,7 +67,10 @@ class Setting extends \Dcat\Admin\Extend\Setting
     }
 
     /**
-     * @noinspection MethodVisibilityInspection
+     * @param array<string, mixed> $input
+     *
+     * @return array<string, mixed>
+     *
      * @noinspection PhpMissingParentCallCommonInspection
      */
     protected function formatInput(array $input): array

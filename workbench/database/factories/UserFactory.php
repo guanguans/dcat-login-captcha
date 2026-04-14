@@ -1,5 +1,7 @@
 <?php
 
+/** @noinspection PhpMemberCanBePulledUpInspection */
+
 declare(strict_types=1);
 
 /**

@@ -64,7 +64,6 @@ class CaptchaBuilder extends Facade
 {
     /**
      * @noinspection PhpMissingParentCallCommonInspection
-     * @noinspection MethodVisibilityInspection
      */
     protected static function getFacadeAccessor(): string
     {

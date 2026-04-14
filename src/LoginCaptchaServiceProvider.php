@@ -26,7 +26,6 @@ use function Guanguans\DcatLoginCaptcha\Support\login_captcha_check;
 class LoginCaptchaServiceProvider extends ServiceProvider
 {
     use HasFormResponse;
-    protected bool $defer = false;
 
     /**
      * @noinspection PhpMissingParentCallCommonInspection
@@ -39,6 +38,8 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     }
 
     /**
+     * @return list<string>
+     *
      * @noinspection PhpMissingParentCallCommonInspection
      */
     public function provides(): array
@@ -65,6 +66,9 @@ class LoginCaptchaServiceProvider extends ServiceProvider
             ->bootingCaptcha();
     }
 
+    /**
+     * @api
+     */
     public function settingForm(): Setting
     {
         return new Setting($this);
@@ -72,8 +76,6 @@ class LoginCaptchaServiceProvider extends ServiceProvider
 
     /**
      * 初始化配置.
-     *
-     * @noinspection MethodVisibilityInspection
      */
     protected function initConfig(): void
     {
