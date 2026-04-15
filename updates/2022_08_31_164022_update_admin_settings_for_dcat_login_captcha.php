@@ -46,7 +46,11 @@ class UpdateAdminSettingsForDcatLoginCaptcha extends Migration
             $setting->value += (array) config('login-captcha', []);
             $setting->save();
         } catch (Throwable $throwable) {
-            Log::error('Dcat-login-captcha upgrade error.', ['throwable' => $throwable]);
+            /**
+             * @see \Illuminate\Foundation\Exceptions\Handler::buildExceptionContext()
+             * @see \Illuminate\Foundation\Exceptions\Handler::reportThrowable()
+             */
+            Log::error($throwable->getMessage(), ['exception' => $throwable]);
         }
     }
 
