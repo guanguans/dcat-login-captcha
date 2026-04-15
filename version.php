@@ -281,4 +281,9 @@ return [
         'build(composer): add tasks for version management in composer scripts',
         'chore(release): 3.0.2',
     ],
+    '4.0.1' => [
+        'test(login-captcha): Refactor error handling and add extension toggle test',
+        'fix(logging): Improve error logging in admin settings upgrade',
+        'chore(release): 4.0.0',
+    ],
 ];
