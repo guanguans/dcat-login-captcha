@@ -39,7 +39,6 @@ use Rector\Php82\Rector\Param\AddSensitiveParameterAttributeRector;
 use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
 use Rector\Renaming\Rector\ClassConstFetch\RenameClassConstFetchRector;
 use Rector\Renaming\Rector\FuncCall\RenameFunctionRector;
-use Rector\Renaming\Rector\Name\RenameClassRector;
 use Rector\Strict\Rector\Empty_\DisallowedEmptyRuleFixerRector;
 use Rector\Transform\Rector\Scalar\ScalarValueToConstFetchRector;
 use Rector\ValueObject\PhpVersion;
@@ -170,9 +169,6 @@ return RectorConfig::configure()
         ],
         RenameClassConstFetchRector::class => [
             __DIR__.'/workbench/config/database.php',
-        ],
-        RenameClassRector::class => [
-            __DIR__.'/tests/TestCase.php',
         ],
         RenameParamToMatchTypeRector::class => [
             __DIR__.'/tests/Pest.php',

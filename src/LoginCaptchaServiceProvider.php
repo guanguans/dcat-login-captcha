@@ -163,7 +163,7 @@ class LoginCaptchaServiceProvider extends ServiceProvider
             $this->config = array_replace_recursive($this->config, config('admin.login_captcha', []));
 
             if (!self::setting('enabled')) {
-                return;
+                return; // @codeCoverageIgnore
             }
 
             $loginPath = ltrim(admin_base_path('auth/login'), '/');

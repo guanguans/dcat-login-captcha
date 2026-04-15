@@ -44,14 +44,16 @@ use Pest\Expectation;
 uses(TestCase::class)
     ->beforeAll(function (): void {})
     ->beforeEach(function (): void {
+        /** @var \Guanguans\DcatLoginCaptchaTests\TestCase $this */
+        $this->defineEnvironment(app());
+
         static $linked;
         $linked ??= links([
             __DIR__.'/../'.basename($target = __DIR__.'/../vendor/orchestra/testbench-core/laravel/') => $target,
         ]);
 
-        /** @var \Guanguans\DcatLoginCaptchaTests\TestCase $this */
-        $this->defineEnvironment(app());
-        $this->installDcat();
+        static $installed;
+        $installed ??= $this->installDcat();
     })
     ->afterEach(function (): void {})
     ->afterAll(function (): void {})

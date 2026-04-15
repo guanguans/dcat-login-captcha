@@ -39,17 +39,18 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Queue;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use PhpParser\Node;
-use PhpParser\Node\ArrayItem;
-use PhpParser\Node\Expr\Array_;
 use PhpParser\Node\Expr\Closure;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitorAbstract;
-use PhpParser\ParserFactory;
-use PhpParser\PrettyPrinter\Standard;
+use Rector\PhpParser\Node\NodeFactory;
+use Rector\PhpParser\Parser\SimplePhpParser;
+use Rector\PhpParser\Printer\BetterStandardPrinter;
 use Symfony\Component\VarDumper\Test\VarDumperTestTrait;
+use function Laravel\Prompts\error;
+use function Laravel\Prompts\notify;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -124,66 +125,70 @@ class TestCase extends \Orchestra\Testbench\TestCase
      * @noinspection ForgottenDebugOutputInspection
      * @noinspection DebugFunctionUsageInspection
      */
-    protected function installDcat(): void
+    protected function installDcat(): int
     {
-        $this->fixDatabaseMigrations();
-
         try {
+            $this->fixDatabaseMigrations();
             // $this->loadMigrationsFrom(__DIR__.'/../vendor/dcat/laravel-admin/database/migrations');
+
             Artisan::call('admin:publish', ['--force' => false]);
-            Artisan::call('admin:install');
+            $status = Artisan::call('admin:install');
+
             // Artisan::call('admin:ext-install', ['name' => 'guanguans.dcat-login-captcha', ['--path' => __DIR__.'/../']]);
             // Artisan::call('admin:ext-enable', ['name' => 'guanguans.dcat-login-captcha']);
+
             resolve(LoginCaptchaServiceProvider::class)->init();
+
+            return $status;
         } catch (\Throwable $throwable) {
-            ComposerScripts::makeSymfonyStyle()->error("Install Dcat Admin failed [{$throwable->getMessage()}].");
+            // error("Install Dcat Admin failed [{$throwable->getMessage()}].");
             dump("Install Dcat Admin failed [{$throwable->getMessage()}].");
+            // notify("Install Dcat Admin failed [{$throwable->getMessage()}].");
+
+            return 1;
         }
     }
 
-    /**
-     * ```
-     * $table->dropColumn('show');
-     * $table->dropColumn('extension');
-     * ```
-     * to
-     * ```
-     * $table->dropColumn(['show', 'extension']);
-     * ```.
-     */
     private function fixDatabaseMigrations(): void
     {
-        $nodeTraverser = new NodeTraverser;
-        $nodeTraverser->addVisitor(new class extends NodeVisitorAbstract {
-            /**
-             * @noinspection PhpMissingParentCallCommonInspection
-             */
-            public function enterNode(Node $node): void
-            {
-                if ($node instanceof Closure) {
-                    $expr = $node->stmts[0]->expr;
+        $rectorConfig = ComposerScripts::makeRectorConfig();
+        $nodeTraverser = new NodeTraverser(
+            new class($rectorConfig->make(NodeFactory::class)) extends NodeVisitorAbstract {
+                public function __construct(private readonly NodeFactory $nodeFactory) {}
+
+                /**
+                 * ```
+                 * $table->dropColumn('show');
+                 * $table->dropColumn('extension');
+                 * ```
+                 * to
+                 * ```
+                 * $table->dropColumn(['show', 'extension']);
+                 * ```.
+                 */
+                public function enterNode(Node $node): void
+                {
+                    if (!$node instanceof Closure) {
+                        return;
+                    }
+
+                    $exprNode = $node->stmts[0]->expr;
 
                     if (
-                        $expr instanceof MethodCall
-                        && $expr->var instanceof Variable
-                        && 'table' === $expr->var->name
-                        && 'dropColumn' === $expr->name->name
-                        && $expr->args[0]->value instanceof String_
+                        $exprNode instanceof MethodCall
+                        && $exprNode->var instanceof Variable
+                        && 'table' === $exprNode->var->name
+                        && 'dropColumn' === $exprNode->name->name
+                        && $exprNode->args[0]->value instanceof String_
                     ) {
-                        $expr->args[0]->value = new Array_([
-                            new ArrayItem(new String_('show')),
-                            new ArrayItem(new String_('extension')),
-                        ]);
-
+                        $exprNode->args[0]->value = $this->nodeFactory->createArray(['show', 'extension']);
                         unset($node->stmts[1]);
                     }
                 }
             }
-        });
-
+        );
         $migratedFile = __DIR__.'/../vendor/dcat/laravel-admin/database/migrations/2020_11_01_083237_update_admin_menu_table.php';
-        $stmts = (new ParserFactory)->createForHostVersion()->parse(File::get($migratedFile));
-        $nodeTraverser->traverse($stmts);
-        File::put($migratedFile, (new Standard)->prettyPrintFile($stmts));
+        $nodes = $nodeTraverser->traverse($rectorConfig->make(SimplePhpParser::class)->parseFile($migratedFile));
+        File::put($migratedFile, $rectorConfig->make(BetterStandardPrinter::class)->prettyPrintFile($nodes));
     }
 }

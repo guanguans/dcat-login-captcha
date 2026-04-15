@@ -1,7 +1,7 @@
 {
     "require-dev": {
         "php": ">=8.2",
-        "ergebnis/composer-normalize": "^2.50",
+        "ergebnis/composer-normalize": "^2.51",
         "guanguans/monorepo-builder-worker": "^3.2",
         "laravel/framework": "^11.51 || ^12.0 || ^13.0",
         "symplify/rule-doc-generator": "^12.2"

@@ -38,3 +38,7 @@ it('can check `dcat_login_captcha` rule', function (): void {
     expect(Validator::make(['captcha' => 'foo'], ['captcha' => 'dcat_login_captcha']))
         ->fails()->toBeTrue();
 })->group(__DIR__, __FILE__);
+
+it('can enable or disable the extension', function (bool $enabled): void {
+    LoginCaptchaServiceProvider::setting(['enabled' => $enabled]);
+})->group(__DIR__, __FILE__)->with([false, true])->throwsNoExceptions();
