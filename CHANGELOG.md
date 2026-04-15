@@ -8,6 +8,15 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+<a name="4.0.1"></a>
+## [4.0.1] - 2026-04-15
+### 🐞 Bug Fixes
+- **logging:** Improve error logging in admin settings upgrade ([7941fa3](https://github.com/guanguans/dcat-login-captcha/commit/7941fa3))
+
+### ✅ Tests
+- **login-captcha:** Refactor error handling and add extension toggle test ([9647bf0](https://github.com/guanguans/dcat-login-captcha/commit/9647bf0))
+
+
 <a name="4.0.0"></a>
 ## [4.0.0] - 2026-04-14
 ### ✨ Features
@@ -383,7 +392,8 @@ All notable changes to this project will be documented in this file.
 - Merge pull request [#2](https://github.com/guanguans/dcat-login-captcha/issues/2) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0
 
 
-[Unreleased]: https://github.com/guanguans/dcat-login-captcha/compare/4.0.0...HEAD
+[Unreleased]: https://github.com/guanguans/dcat-login-captcha/compare/4.0.1...HEAD
+[4.0.1]: https://github.com/guanguans/dcat-login-captcha/compare/4.0.0...4.0.1
 [4.0.0]: https://github.com/guanguans/dcat-login-captcha/compare/3.0.2...4.0.0
 [3.0.2]: https://github.com/guanguans/dcat-login-captcha/compare/3.0.1...3.0.2
 [3.0.1]: https://github.com/guanguans/dcat-login-captcha/compare/3.0.0...3.0.1
