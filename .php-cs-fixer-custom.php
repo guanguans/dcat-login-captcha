@@ -2,7 +2,6 @@
 
 /** @noinspection PhpPossiblePolymorphicInvocationInspection */
 /** @noinspection PhpUnusedAliasInspection */
-
 declare(strict_types=1);
 
 /**

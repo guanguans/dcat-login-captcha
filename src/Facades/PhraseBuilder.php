@@ -18,10 +18,10 @@ namespace Guanguans\DcatLoginCaptcha\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static void build(void $length = null, void $charset = null)
- * @method static void niceize(void $str)
- * @method static void doNiceize(void $str)
- * @method static void comparePhrases(void $str1, void $str2)
+ * @method static bool comparePhrases(string $str1, string $str2)
+ * @method static string doNiceize(string $str)
+ * @method static string build(int|null $length = null, string|null $charset = null)
+ * @method static string niceize(string $str)
  * @method static \Guanguans\DcatLoginCaptcha\PhraseBuilder|mixed when(\Closure|mixed|null $value = null, callable|null $callback = null, callable|null $default = null)
  * @method static \Guanguans\DcatLoginCaptcha\PhraseBuilder|mixed unless(\Closure|mixed|null $value = null, callable|null $callback = null, callable|null $default = null)
  * @method static mixed withLocale(string $locale, \Closure $callback)

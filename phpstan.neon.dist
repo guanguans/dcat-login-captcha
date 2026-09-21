@@ -8,6 +8,7 @@ includes:
     - vendor/spaze/phpstan-disallowed-calls/disallowed-loose-calls.neon
 #    - vendor/spaze/phpstan-disallowed-calls/extension.neon
 
+#    - vendor-bin/larastan/vendor/larastan/larastan/extension.neon
 #    - vendor/ekino/phpstan-banned-code/extension.neon
 #    - vendor/ergebnis/phpstan-rules/rules.neon
 #    - vendor/canvural/larastan-strict-rules/rules.neon
@@ -19,6 +20,8 @@ includes:
 
 #    - vendor/symplify/phpstan-rules/config/code-complexity-rules.neon
 #    - vendor/symplify/phpstan-rules/config/configurable-rules.neon
+#    - vendor/symplify/phpstan-rules/config/ctor-rules.neon
+#    - vendor/symplify/phpstan-rules/config/mock-rules.neon
 #    - vendor/symplify/phpstan-rules/config/naming-rules.neon
 #    - vendor/symplify/phpstan-rules/config/static-rules.neon
     - vendor/symplify/phpstan-rules/config/symplify-rules.neon
@@ -62,6 +65,7 @@ parameters:
     phpVersion: 80200
     level: max
     editorUrl: 'phpstorm://open?file=%%file%%&line=%%line%%'
+#    errorFormat: symplify
     errorFormat: friendly
     friendly:
         lineBefore: 3
@@ -92,19 +96,28 @@ parameters:
         dependency_tree_types:
 #            # only these explicit types are checked, nothing else
 #            - Rector\Contract\Rector\RectorInterface
+#    symplify:
+#        pathStrings: true
+#        ctor: true
+#        mocks: true
+#        laravelReturnType: true
+#        symfonyReturnType: true
     type_coverage:
         declare: 100
         param: 100
         return: 100
         constant: 100
         property: 100
-    type_perfect:
-        narrow_param: true
-        narrow_return: true
-        null_over_false: true
-        no_mixed: false
-        no_mixed_property: true
-        no_mixed_caller: false
+#    type_perfect:
+#        narrow_param: true
+#        narrow_return: true
+#        null_over_false: true
+#        no_mixed: false
+#        no_mixed_property: true
+#        no_mixed_caller: false
+#        no_param_type_removal: true
+#        no_isset_on_object: true
+#        no_empty_on_object: true
     unused_public:
         constants: true
         properties: true
@@ -113,9 +126,6 @@ parameters:
         template_paths:
 #            - resources/views/
     disallowedFunctionCalls:
-        -
-            function: 'env()'
-            message: 'use config() instead'
         -
             function: 'env_explode()'
             message: 'use config() instead'
@@ -195,8 +205,3 @@ parameters:
         - identifier: cast.string
         - identifier: method.childParameterType
         - identifier: return.type
-        - message: '#^Result of static method Guanguans\\DcatLoginCaptcha\\Facades\\CaptchaBuilder\:\:get\(\) \(void\) is used\.$#'
-        - message: '#^Result of static method Guanguans\\DcatLoginCaptcha\\Facades\\CaptchaBuilder\:\:getPhrase\(\) \(void\) is used\.$#'
-        -
-            identifier: missingType.iterableValue
-            path: src/Facades/CaptchaBuilder.php

@@ -63,7 +63,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
     // use WithCachedRoutes;
 
     // use VarDumperTestTrait;
-    // use PHPMock;
 
     // use RefreshDatabase;
     use WithWorkbench;
