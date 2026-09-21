@@ -8,6 +8,22 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+<a name="4.1.0"></a>
+## [4.1.0] - 2026-09-21
+### ✨ Features
+- **deps:** update gregwar/captcha to version 2.1 ([1f7a1f7](https://github.com/guanguans/dcat-login-captcha/commit/1f7a1f7))
+
+### Pull Requests
+- Merge pull request [#85](https://github.com/guanguans/dcat-login-captcha/issues/85) from guanguans/dependabot/github_actions/github/codeql-action-4.38.0
+- Merge pull request [#84](https://github.com/guanguans/dcat-login-captcha/issues/84) from guanguans/dependabot/github_actions/github/codeql-action-4.37.9
+- Merge pull request [#83](https://github.com/guanguans/dcat-login-captcha/issues/83) from guanguans/dependabot/github_actions/github/codeql-action-4.37.8
+- Merge pull request [#82](https://github.com/guanguans/dcat-login-captcha/issues/82) from guanguans/dependabot/github_actions/github/codeql-action-4.37.7
+- Merge pull request [#81](https://github.com/guanguans/dcat-login-captcha/issues/81) from guanguans/dependabot/github_actions/github/codeql-action-4.37.6
+- Merge pull request [#79](https://github.com/guanguans/dcat-login-captcha/issues/79) from guanguans/dependabot/github_actions/github/codeql-action-4.37.4
+- Merge pull request [#78](https://github.com/guanguans/dcat-login-captcha/issues/78) from guanguans/dependabot/github_actions/github/codeql-action-4.37.3
+- Merge pull request [#70](https://github.com/guanguans/dcat-login-captcha/issues/70) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-3.1.0
+
+
 <a name="4.0.1"></a>
 ## [4.0.1] - 2026-04-15
 ### 🐞 Bug Fixes
@@ -392,7 +408,8 @@ All notable changes to this project will be documented in this file.
 - Merge pull request [#2](https://github.com/guanguans/dcat-login-captcha/issues/2) from guanguans/dependabot/composer/overtrue/phplint-tw-2.3or-tw-3.0
 
 
-[Unreleased]: https://github.com/guanguans/dcat-login-captcha/compare/4.0.1...HEAD
+[Unreleased]: https://github.com/guanguans/dcat-login-captcha/compare/4.1.0...HEAD
+[4.1.0]: https://github.com/guanguans/dcat-login-captcha/compare/4.0.1...4.1.0
 [4.0.1]: https://github.com/guanguans/dcat-login-captcha/compare/4.0.0...4.0.1
 [4.0.0]: https://github.com/guanguans/dcat-login-captcha/compare/3.0.2...4.0.0
 [3.0.2]: https://github.com/guanguans/dcat-login-captcha/compare/3.0.1...3.0.2
