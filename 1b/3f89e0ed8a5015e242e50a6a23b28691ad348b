@@ -1,0 +1,14 @@
+composer.json
+  h_f374ed0b3ee0f5 223,274,277,286,288,354
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "1b3f89e0ed8a5015e242e50a6a23b28691ad348b",
+  "prompts": {},
+  "humans": {
+    "h_f374ed0b3ee0f5": {
+      "author": "guanguans <ityaozm@gmail.com>"
+    }
+  }
+}
