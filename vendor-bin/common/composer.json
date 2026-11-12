@@ -1,17 +1,24 @@
 {
     "require-dev": {
         "php": ">=8.2",
-        "ergebnis/composer-normalize": "^2.53",
-        "guanguans/monorepo-builder-worker": "^3.3",
-        "laravel/framework": "^11.56 || ^12.0 || ^13.0",
+        "ergebnis/composer-normalize": "^2.56",
+        "guanguans/monorepo-builder-worker": "^3.4",
+        "laravel/facade-documenter": "dev-main",
+        "laravel/framework": "^12.72 || ^13.0",
         "symplify/rule-doc-generator": "^12.2"
     },
     "conflict": {
-        "laravel/framework": ">=12.0"
+        "laravel/framework": ">=20.0"
     },
     "suggest": {
         "canvural/larastan-strict-rules": "php > 8.2",
         "larastan/larastan": "php > 8.2"
+    },
+    "repositories": {
+        "facade-documenter": {
+            "type": "vcs",
+            "url": "git@github.com:laravel/facade-documenter.git"
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

@@ -16,8 +16,7 @@ use Dcat\Admin\Models\Setting;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Log;
 
-class UpdateAdminSettingsForDcatLoginCaptcha extends Migration
-{
+return new class extends Migration {
     /**
      * @noinspection PhpMissingParentCallCommonInspection
      */
@@ -58,4 +57,4 @@ class UpdateAdminSettingsForDcatLoginCaptcha extends Migration
      * Reverse the migrations.
      */
     public function down(): void {}
-}
+};

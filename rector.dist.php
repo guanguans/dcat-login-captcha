@@ -15,15 +15,15 @@ declare(strict_types=1);
 
 use Ergebnis\Rector\Rules\Expressions\Arrays\SortAssociativeArrayByKeyRector;
 use Guanguans\PhpCsFixerCustomFixers\Support\Utils;
+use Guanguans\RectorRules\Rector\Array_\SortListItemOfSameScalarTypeRector;
 use Guanguans\RectorRules\Rector\File\AddNoinspectionDocblockToFileFirstStmtRector;
 use Guanguans\RectorRules\Rector\Name\RenameToConventionalCaseNameRector;
+use Guanguans\RectorRules\Rector\Scalar\ScalarValueToConstFetchRector;
 use Guanguans\RectorRules\Set\SetList;
-use PhpParser\NodeVisitor\ParentConnectingVisitor;
 use Rector\CodeQuality\Rector\LogicalAnd\LogicalToBooleanRector;
 use Rector\CodingStyle\Rector\Assign\SplitDoubleAssignRector;
 use Rector\CodingStyle\Rector\ClassLike\NewlineBetweenClassLikeStmtsRector;
 use Rector\Config\RectorConfig;
-use Rector\Naming\Rector\ClassMethod\RenameParamToMatchTypeRector;
 use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
 use Rector\Renaming\Rector\ClassConstFetch\RenameClassConstFetchRector;
 use Rector\Renaming\Rector\FuncCall\RenameFunctionRector;
@@ -49,24 +49,18 @@ use RectorPest\Set\PestSetList;
 error_reporting(\E_ALL & ~\E_DEPRECATED & ~\E_USER_DEPRECATED);
 
 return RectorConfig::configure()
-    ->withPaths([
-        __DIR__.'/config/',
-        __DIR__.'/resources/',
-        __DIR__.'/src/',
-        __DIR__.'/tests/',
-        __DIR__.'/updates/',
-        __DIR__.'/workbench/',
-        ...Utils::defaultRootFiles(),
-    ])
-    ->withRootFiles()
+    ->withPaths([...Utils::defaultRootDirectories(), ...Utils::defaultRootFiles()])
     ->withSkip(['*/Fixtures/*'])
     ->withSkip([
+        SortListItemOfSameScalarTypeRector::class,
+
         LogicalToBooleanRector::class,
         NewlineBetweenClassLikeStmtsRector::class,
         PreferPHPUnitThisCallRector::class,
         SplitDoubleAssignRector::class,
     ])
     ->withSkip([
+        /** @see SortListItemOfSameScalarTypeRector */
         ContainerBindConcreteWithClosureOnlyRector::class,
         DescriptionPropertyToDescriptionAttributeRector::class,
         FillablePropertyToFillableAttributeRector::class,
@@ -88,13 +82,12 @@ return RectorConfig::configure()
         RenameClassConstFetchRector::class => [
             __DIR__.'/workbench/config/database.php',
         ],
-        RenameParamToMatchTypeRector::class => [
-            __DIR__.'/tests/Pest.php',
+        ScalarValueToConstFetchRector::class => [
+            __DIR__.'/workbench/config/database.php',
         ],
         SortAssociativeArrayByKeyRector::class => [
             /** @see vendor/rector/rector/src/PostRector/Rector/ */
             __DIR__.'/config/',
-            __DIR__.'/resources/',
             __DIR__.'/src/',
             __DIR__.'/tests/',
             __DIR__.'/workbench/',
@@ -150,10 +143,10 @@ return RectorConfig::configure()
             'PhpUndefinedClassInspection',
             'PhpUnhandledExceptionInspection',
             'PhpVoidFunctionResultUsedInspection',
+            // 'SqlResolve',
             'StaticClosureCanBeUsedInspection',
         ],
     ])
-    ->registerDecoratingNodeVisitor(ParentConnectingVisitor::class)
     ->withConfiguredRule(RenameToConventionalCaseNameRector::class, ['afterEach', 'beforeEach', 'MIT', 'PDO'])
     ->withConfiguredRule(
         RenameFunctionRector::class,

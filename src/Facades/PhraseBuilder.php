@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static void mixin(object $mixin, bool $replace = true)
  * @method static bool hasMacro(string $name)
  * @method static void flushMacros()
- * @method static \Guanguans\DcatLoginCaptcha\PhraseBuilder|\Illuminate\Support\HigherOrderTapProxy tap(callable|null $callback = null)
+ * @method static \Illuminate\Support\HigherOrderTapProxy|\Guanguans\DcatLoginCaptcha\PhraseBuilder tap(callable|null $callback = null)
  *
  * @see \Guanguans\DcatLoginCaptcha\PhraseBuilder
  */
