@@ -20,6 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::get(LoginCaptchaServiceProvider::setting('route.uri'), CaptchaController::class)
     ->name(LoginCaptchaServiceProvider::setting('route.name'))
     ->middleware([
-        SetResponseContentType::class,
         CleanObContents::class,
+        SetResponseContentType::class,
     ]);

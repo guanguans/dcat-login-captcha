@@ -45,8 +45,8 @@ class LoginCaptchaServiceProvider extends ServiceProvider
     public function provides(): array
     {
         return [
-            PhraseBuilder::class,
             CaptchaBuilder::class,
+            PhraseBuilder::class,
         ];
     }
 

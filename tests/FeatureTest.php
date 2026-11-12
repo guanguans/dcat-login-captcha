@@ -28,8 +28,8 @@ it('can generate and dont validate captcha', function (): void {
     $this
         ->get(admin_base_path('auth/login'))
         ->assertSee([
-            'captcha-input',
             'captcha-img',
+            'captcha-input',
         ])
         ->assertOk();
 

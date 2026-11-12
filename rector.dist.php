@@ -52,8 +52,6 @@ return RectorConfig::configure()
     ->withPaths([...Utils::defaultRootDirectories(), ...Utils::defaultRootFiles()])
     ->withSkip(['*/Fixtures/*'])
     ->withSkip([
-        SortListItemOfSameScalarTypeRector::class,
-
         LogicalToBooleanRector::class,
         NewlineBetweenClassLikeStmtsRector::class,
         PreferPHPUnitThisCallRector::class,
@@ -93,6 +91,9 @@ return RectorConfig::configure()
             __DIR__.'/workbench/',
             __DIR__.'/version.php',
         ],
+        SortListItemOfSameScalarTypeRector::class => [
+            __DIR__.'/tests/TestCase.php',
+        ],
         TypeHintTappableCallRector::class => [
             __DIR__.'/src/Http/Middleware/SetResponseContentType.php',
             __DIR__.'/tests/TestCase.php',
@@ -119,7 +120,7 @@ return RectorConfig::configure()
         typeDeclarations: true,
         typeDeclarationDocblocks: true,
         privatization: true,
-        naming: true,
+        // naming: true,
         // namedArgs: true,
         carbon: true,
         rectorPreset: true,
@@ -128,10 +129,10 @@ return RectorConfig::configure()
         phpunitMockToStub: true,
     )
     ->withSets([
-        SetList::ALL,
         LaravelLevelSetList::UP_TO_LARAVEL_110,
         // PestLevelSetList::UP_TO_PEST_30,
         PestSetList::PEST_CODE_QUALITY,
+        SetList::ALL,
     ])
     ->withRules([])
     ->withConfiguredRule(AddNoinspectionDocblockToFileFirstStmtRector::class, [
@@ -147,7 +148,7 @@ return RectorConfig::configure()
             'StaticClosureCanBeUsedInspection',
         ],
     ])
-    ->withConfiguredRule(RenameToConventionalCaseNameRector::class, ['afterEach', 'beforeEach', 'MIT', 'PDO'])
+    ->withConfiguredRule(RenameToConventionalCaseNameRector::class, ['MIT', 'PDO', 'afterEach', 'beforeEach'])
     ->withConfiguredRule(
         RenameFunctionRector::class,
         collect(['login_captcha_check', 'login_captcha_content', 'login_captcha_url'])
