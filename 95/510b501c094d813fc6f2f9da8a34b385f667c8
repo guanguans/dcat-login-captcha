@@ -1,0 +1,47 @@
+vendor-bin/common/composer.json
+  h_f374ed0b3ee0f5 4-5,7,11,17-22
+  s_abf191515424e5::t_3bb03331283865 6
+baselines/loader.neon
+  h_f374ed0b3ee0f5 2
+composer.json
+  h_f374ed0b3ee0f5 47-51,54,61,68,72-73,79,82,84,90-93,214,226,231,265,268,272,277,279,345
+src/Facades/PhraseBuilder.php
+  h_f374ed0b3ee0f5 32
+src/Facades/CaptchaBuilder.php
+  h_f374ed0b3ee0f5 59
+rector.dist.php
+  h_f374ed0b3ee0f5 18,20,22,34,48,68-74
+facade.php
+  h_f374ed0b3ee0f5 1-29
+phpstan.neon.dist
+  h_f374ed0b3ee0f5 75-78,87-88,91-106,202,209
+  s_abf191515424e5::t_f9a297b55cb8a8 211
+  s_abf191515424e5::t_d46279c9789dc7 210,212
+ecs-custom.php
+  s_abf191515424e5::t_f3a70e366f0065 16-20
+  h_f374ed0b3ee0f5 21
+  s_abf191515424e5::t_9ae5945ea90ff2 23
+  s_abf191515424e5::t_22a9060e9bb982 22
+  s_abf191515424e5::t_8cb56d2581af8d 25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "95510b501c094d813fc6f2f9da8a34b385f667c8",
+  "prompts": {},
+  "humans": {
+    "h_f374ed0b3ee0f5": {
+      "author": "guanguans <ityaozm@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_abf191515424e5": {
+      "agent_id": {
+        "tool": "github-copilot-jetbrains",
+        "id": "1794492913545",
+        "model": "unknown"
+      },
+      "human_author": null
+    }
+  }
+}
