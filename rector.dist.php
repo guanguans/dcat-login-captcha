@@ -2,6 +2,7 @@
 
 /** @noinspection PhpInternalEntityUsedInspection */
 /** @noinspection PhpUnhandledExceptionInspection */
+/** @noinspection PhpUnusedAliasInspection */
 declare(strict_types=1);
 
 /**
@@ -49,7 +50,7 @@ use RectorPest\Set\PestSetList;
 error_reporting(\E_ALL & ~\E_DEPRECATED & ~\E_USER_DEPRECATED);
 
 return RectorConfig::configure()
-    ->withPaths([...Utils::defaultRootDirectories(), ...Utils::defaultRootFiles()])
+    ->withPaths([...Utils::defaultRootDirectories(), ...Utils::defaultRootFiles(), __DIR__.'/resources/'])
     ->withSkip(['*/Fixtures/*'])
     ->withSkip([
         LogicalToBooleanRector::class,
@@ -61,9 +62,9 @@ return RectorConfig::configure()
         /** @see SortListItemOfSameScalarTypeRector */
         ContainerBindConcreteWithClosureOnlyRector::class,
         DescriptionPropertyToDescriptionAttributeRector::class,
+        SignaturePropertyToSignatureAttributeRector::class,
         FillablePropertyToFillableAttributeRector::class,
         HiddenPropertyToHiddenAttributeRector::class,
-        SignaturePropertyToSignatureAttributeRector::class,
         ValidationRuleArrayStringValueToArrayRector::class,
         WithoutTimestampsPropertyToWithoutTimestampsAttributeRector::class,
 
@@ -91,9 +92,6 @@ return RectorConfig::configure()
             __DIR__.'/workbench/',
             __DIR__.'/version.php',
         ],
-        SortListItemOfSameScalarTypeRector::class => [
-            __DIR__.'/tests/TestCase.php',
-        ],
         TypeHintTappableCallRector::class => [
             __DIR__.'/src/Http/Middleware/SetResponseContentType.php',
             __DIR__.'/tests/TestCase.php',
@@ -120,7 +118,7 @@ return RectorConfig::configure()
         typeDeclarations: true,
         typeDeclarationDocblocks: true,
         privatization: true,
-        // naming: true,
+        naming: true,
         // namedArgs: true,
         carbon: true,
         rectorPreset: true,
@@ -149,9 +147,8 @@ return RectorConfig::configure()
         ],
     ])
     ->withConfiguredRule(RenameToConventionalCaseNameRector::class, ['MIT', 'PDO', 'afterEach', 'beforeEach'])
-    ->withConfiguredRule(
-        RenameFunctionRector::class,
-        collect(['login_captcha_check', 'login_captcha_content', 'login_captcha_url'])
-            ->mapWithKeys(static fn (string $func): array => [$func => "Guanguans\\DcatLoginCaptcha\\Support\\$func"])
-            ->all()
-    );
+    ->withConfiguredRule(RenameFunctionRector::class, array_reduce(
+        ['login_captcha_check', 'login_captcha_content', 'login_captcha_url'],
+        static fn (array $carry, string $func): array => $carry + [$func => "Guanguans\\DcatLoginCaptcha\\Support\\$func"],
+        []
+    ));

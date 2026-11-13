@@ -29,8 +29,7 @@ return ECSConfig::configure()
         ],
     ])
     ->withSets([SetList::GUANGUANS])
-    ->withConfiguredRule(HeaderCommentFixer::class, Utils::configurationOfHeaderCommentFixer(
-        'guanguans/dcat-login-captcha',
-        '2021',
-        __DIR__.'/LICENSE'
-    ));
+    ->withConfiguredRule(
+        HeaderCommentFixer::class,
+        Utils::configurationOfHeaderCommentFixer('guanguans/dcat-login-captcha', '2021', __DIR__.'/LICENSE')
+    );

@@ -180,7 +180,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
                         && 'dropColumn' === $exprNode->name->name
                         && $exprNode->args[0]->value instanceof String_
                     ) {
-                        $exprNode->args[0]->value = $this->nodeFactory->createArray(['show', 'extension']);
+                        $exprNode->args[0]->value = $this->nodeFactory->createArray(['extension', 'show']);
                         unset($node->stmts[1]);
                     }
                 }

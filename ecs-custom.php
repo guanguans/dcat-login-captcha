@@ -17,6 +17,7 @@ use Guanguans\PhpCsFixerCustomFixers\Set\SetList;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 
 return ECSConfig::configure()
+    // ->withoutParallel()
     ->withSkip([
         BladeFormatterFixer::class => [
             __DIR__.'/resources/views/captcha.blade.php',

@@ -314,4 +314,11 @@ return [
         'chore(release): 4.0.1',
         'feat(deps): update gregwar/captcha to version 2.1',
     ],
+    '4.1.1' => [
+        'chore(composer): streamline ecs custom scripts and config path',
+        'chore(deps-dev): update rector/jack requirement',
+        'chore(release): 4.1.0',
+        'refactor(captcha): Reorganize middleware and service provider settings',
+        'refactor(captcha): Update language keys in login-captcha configuration',
+    ],
 ];

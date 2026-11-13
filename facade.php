@@ -11,6 +11,7 @@ declare(strict_types=1);
  * @see https://github.com/guanguans/dcat-login-captcha
  */
 
+// $argv = array_merge(
 //     $argv,
 //     array_map(
 //         static fn ($f) => str_replace(['app', '/', '.php'], ['App', '\\', ''], $f),

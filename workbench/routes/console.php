@@ -31,51 +31,75 @@ use Symfony\Component\Finder\SplFileInfo;
 |
 */
 
-// Artisan::command('inspire', function () {
+// Artisan::command('inspire', function (): void {
 //     $this->components->comment(Inspiring::quote());
 // })->purpose('Display an inspiring quote');
 
-Artisan::command('optimize:image {--dry-run : Only list found images}', function (): void {
-    $imagesFinder = static fn (): Collection => collect(
-        Finder::create()
-            ->in(getcwd())
-            ->exclude(['.build/', 'Fixtures/', 'vendor-bin/', 'vendor/'])
-            ->name(['/\.avif$/', '/\.gif$/', '/\.jpeg$/', '/\.jpg$/', '/\.png$/', '/\.svg$/', '/\.webp$/'])
-            ->size('> 0')
-            ->ignoreDotFiles(false)
-            ->ignoreUnreadableDirs(false)
-            ->ignoreVCS(true)
-            ->ignoreVCSIgnored(true)
-            ->files()
-    )->map(static fn (SplFileInfo $image): array => [
-        'size' => $image->getSize(),
-        'human_size' => Number::fileSize($image->getSize()),
-        'real_path' => $image->getRealPath(),
-    ]);
+Artisan::command(
+    'optimize:image {--path=* : The list of image paths(directory or file)} {--dry-run : Only list found images}',
+    function (): void {
+        $imagesFinder = function (): Collection {
+            $finder = Finder::create()
+                ->exclude(['.build/', 'Fixtures/', 'vendor-bin/', 'vendor/'])
+                ->name(['/\.avif$/', '/\.gif$/', '/\.jpeg$/', '/\.jpg$/', '/\.png$/', '/\.svg$/', '/\.webp$/'])
+                ->size('> 0')
+                ->files();
 
-    /** @var \Illuminate\Console\Command $this */
-    if ($this->option('dry-run')) {
+            return collect(
+                $this->option('path')
+                    ? array_reduce(
+                        $this->option('path'),
+                        static fn (Finder $finder, string $path): Finder => match (true) {
+                            is_dir($path) => $finder->in($path),
+                            is_file($path) => $finder->append([$path]),
+                            default => throw new InvalidArgumentException("The path [$path] is not a directory or file."),
+                        },
+                        $finder
+                    )
+                    : $finder
+                        ->in(getcwd())
+                        ->ignoreDotFiles(false)
+                        ->ignoreUnreadableDirs(false)
+                        ->ignoreVCS(true)
+                        ->ignoreVCSIgnored(true)
+            )->map(static function (SplFileInfo $image): array {
+                $size = $image->getSize();
+                \assert(\is_int($size));
+
+                return [
+                    'human_size' => Number::fileSize($size),
+                    'real_path' => $image->getRealPath(),
+                    'size' => $size,
+                ];
+            });
+        };
+
+        /** @var \Illuminate\Foundation\Console\ClosureCommand $this */
+        if ($this->option('dry-run')) {
+            $imagesFinder()
+                ->tap(fn (Collection $images) => $this->components->info("Found {$images->count()} images:"))
+                ->each(fn (array $image) => $this->components->twoColumnDetail($image['real_path'], $image['human_size']));
+
+            return;
+        }
+
         $imagesFinder()
-            ->tap(fn (Collection $images) => $this->components->info("Found {$images->count()} images:"))
-            ->each(fn (array $image) => $this->components->twoColumnDetail($image['real_path'], $image['human_size']));
-
-        return;
+            ->tap(fn (Collection $images) => $this->components->info("Optimizing {$images->count()} images:"))
+            ->each(fn (array $image) => $this->components->task(
+                $image['real_path'],
+                static fn () => resolve(OptimizerChain::class)->optimize($image['real_path'])
+            ))
+            ->tap(fn (Collection $images) => $this->components->info("Optimization results for {$images->count()} images:"))
+            ->tap(fn (Collection $images) => $imagesFinder()->each(function (array $fileInfo, string $file) use ($images): void {
+                /** @var array{human_size: string, real_path: string, size: int} $originalImage */
+                $originalImage = $images->get($file);
+                $originalSize = $originalImage['size'];
+                // $percentage = \sprintf('(%.2f%%)', ($originalSize - $fileInfo['size']) / $originalSize * 100);
+                $percentage = Number::percentage(($originalSize - $fileInfo['size']) / $originalSize * 100, 1);
+                $this->components->twoColumnDetail(
+                    $file,
+                    "{$originalImage['human_size']} -> {$fileInfo['human_size']} ($percentage)"
+                );
+            }));
     }
-
-    $imagesFinder()
-        ->tap(fn (Collection $images) => $this->components->info("Optimizing {$images->count()} images:"))
-        ->each(fn (array $image) => $this->components->task(
-            $image['real_path'],
-            static fn () => resolve(OptimizerChain::class)->optimize($image['real_path'])
-        ))
-        ->tap(fn (Collection $images) => $this->components->info("Optimization results for {$images->count()} images:"))
-        ->tap(fn (Collection $images) => $imagesFinder()->each(function (array $fileInfo, string $file) use ($images): void {
-            $originalSize = $images->get($file)['size'];
-            // $percentage = \sprintf('(%.2f%%)', ($originalSize - $fileInfo['size']) / $originalSize * 100);
-            $percentage = Number::percentage(($originalSize - $fileInfo['size']) / $originalSize * 100, 1);
-            $this->components->twoColumnDetail(
-                $file,
-                "{$images->get($file)['human_size']} -> {$fileInfo['human_size']} ($percentage)"
-            );
-        }));
-});
+);
