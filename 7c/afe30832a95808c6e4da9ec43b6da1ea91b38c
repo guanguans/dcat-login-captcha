@@ -1,0 +1,31 @@
+resources/lang/zh_CN/login-captcha.php
+  h_f374ed0b3ee0f5 17-18,20-22,24-26,28
+resources/lang/en/login-captcha.php
+  h_f374ed0b3ee0f5 17-18,20-22,24-26,28
+rector.dist.php
+  s_c78c6cefb90e0e::t_68780361acd3ec 91
+  s_c78c6cefb90e0e::t_bb7183f6446611 53
+  h_f374ed0b3ee0f5 65,92,124
+  h_f374ed0b3ee0f5 5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "7cafe30832a95808c6e4da9ec43b6da1ea91b38c",
+  "prompts": {},
+  "humans": {
+    "h_f374ed0b3ee0f5": {
+      "author": "guanguans <ityaozm@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_c78c6cefb90e0e": {
+      "agent_id": {
+        "tool": "github-copilot-jetbrains",
+        "id": "1794546728265",
+        "model": "unknown"
+      },
+      "human_author": null
+    }
+  }
+}
