@@ -1,0 +1,24 @@
+rector.dist.php
+  s_c78c6cefb90e0e::t_bb7183f6446611 52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "38ebb0194119b6b53cf6dd9786c1b72b0f5c6407",
+  "prompts": {},
+  "humans": {
+    "h_f374ed0b3ee0f5": {
+      "author": "guanguans <ityaozm@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_c78c6cefb90e0e": {
+      "agent_id": {
+        "tool": "github-copilot-jetbrains",
+        "id": "1794546728265",
+        "model": "unknown"
+      },
+      "human_author": "guanguans <ityaozm@gmail.com>"
+    }
+  }
+}
